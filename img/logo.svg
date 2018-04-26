@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 320 320" width="320" height="320">
+<defs>
+
+<path d="M199 50L24 50L24 0L199 0L199 50Z" id="a"></path>
+<path d="M59 125L234 125L234 75L59 75L59 125Z" id="b"></path>
+<path d="M97 156L272 156L272 206L97 206L97 156Z" id="c"></path>
+<path d="M43.42 -21.94L139.95 183.88L96.54 205.73L0 -0.09L43.42 -21.94Z" id="d"></path>
+
+<linearGradient id="degradado" gradientUnits="userSpaceOnUse" x1="180" y1="160" x2="23" y2="1">
+	<!-- Aquí me podeís cambiar todos los colores, añadir más o moverlos -->
+<stop style="stop-color: #373854;stop-opacity: 1" offset="0%"></stop>
+<stop style="stop-color: #493267;stop-opacity: 1" offset="20%"></stop>
+<stop style="stop-color: #9e379f;stop-opacity: 1" offset="50%"></stop>
+<stop style="stop-color: #e86af0;stop-opacity: 1" offset="85%"></stop>
+<stop style="stop-color: #7bb3ff;stop-opacity: 1" offset="100%"></stop>
+</linearGradient>
+
+</defs>
+<g><g>
+<g><use xlink:href="#a" opacity="1" fill="url(#degradado)"></use></g>
+<g><use xlink:href="#b" opacity="1" fill="url(#degradado)"></use></g>
+<g><use xlink:href="#c" opacity="1" fill="url(#degradado)"></use></g>
+<g><use xlink:href="#d" opacity="1" fill="url(#degradado)"></use></g>
+</g></g>
+</svg>
