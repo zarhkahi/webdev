@@ -103,3 +103,27 @@ label {
 button {
 	margin-left: 100px;
 } 
+
+#searchButton {
+	margin-left: 100px;
+	background: none!important;
+	color: inherit;
+	border: none; 
+	padding: 0!important;
+	font: inherit;
+	/*border is optional*/
+	border-bottom: 1px solid #444; 
+	cursor: pointer;
+}
+
+#follow {
+    background:none!important;
+     border:none; 
+     padding:0!important;
+    
+    /*optional*/
+    font-family:arial,sans-serif; /*input has OS specific font-family*/
+     color:#069;
+     text-decoration:underline;
+     cursor:pointer;
+}

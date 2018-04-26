@@ -18,21 +18,21 @@ function mostrarContenido() {
             foreach( $events as $item => $event) {
                 $html .= '<form method="POST" action="event.php" id="' . $event['nombre'] . '" class="null" enctype="">
                 <input class="null" name="event" value="'. $event['id_evento'] . '" type="hidden" readonly>	
-                <button type="submit">' . $event['nombre'] . '</button>
+                <p><h2><button type="submit" id="searchButton">' . $event['nombre'] . '</button>
                 </form>';
-                $html .= "<p><h2>" . $event['nombre'] . "</h2></p><br>";          }
+                $html .= "</h2></p><br>";          }
         }
         else
             $html .= "No events found. <br>";
         if($users){
-            $html .= "<h3> Users found: </h3><br>";
+            $html .= "<h3> Users found: </h3>";
             foreach( $users as $item => $user) { 
                 //$form = '';
                 $html .= '<form method="POST" action="user.php" id="' . $user['nombre'] . '" class="null" enctype="">
                         <input class="null" name="user" value="'. $user['id_usuario'] . '" type="hidden" readonly>	
-                        <button type="submit">' . $user['nombre'] . '</button>
+                        <p><h2><button type="submit" id="searchButton">' . $user['nombre'] . '</button>
                         </form>';
-                $html .= "<p><h2>" .  $user['nombre'] . " " . $user['apellidos'] . "</h2></p><br><p>Email: " . $user['email'] . " Sing up date: "  . $user['fecha'] . "</p> <br>";
+                $html .= " " . $user['apellidos'] . "</h2></p><p>Email: " . $user['email'] . " Sing up date: "  . $user['fecha'] . "</p><br>";
                 //$html .= $form;
             }
         }
