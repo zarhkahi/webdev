@@ -19,9 +19,10 @@ function mostrarContenido() {
 ?><!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
-  <title>Contenido</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	<link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
+  	<title>Contenido</title>
 </head>
 <body>
 
@@ -30,26 +31,11 @@ function mostrarContenido() {
 $app->doInclude('comun/cabecera.php');
 $app->doInclude('comun/sidebarIzq.php');
 ?>
-<div id="contenido">
-	<?php
-		if ($app->tieneRol('user', NULL, NULL)):
-	?>
+<div class="col-10" id="contenido">
+
 		<h1>Hello!</h1>
 		<?= mostrarContenido() ?>
-	<?php
-		elseif ($app->tieneRol('admin', NULL , NULL)):
-	?>
-		<h1>Hello!</h1>
-		<p> Consola ADMIN (work in progress). <br></p>
-		<?= mostrarContenido() ?>
-	<?php
-		else: 
-	?>
-		<h1> No estas iniciado! <br></h1> 
-		<p> Debes iniciar sesión para ver tu contenido. <br></p>
-	<?php
-		endif;
-	?>
+
 	
 </div>
 <?php

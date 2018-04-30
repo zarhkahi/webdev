@@ -39,7 +39,7 @@ function mostrarContenido() {
                             <path class="arrow-icon--arrow" d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"></path>
                             </g>
                             </svg></button></form>';
-                $html .= "</h2></p></section><p>Email: " . $user['email'] . " Sing up date: "  . $user['fecha'] . "</p><br>";
+                $html .= "</h2></p></section><p> Email: " . $user['email'] . "</p>";
                 //$html .= $form;
             }
         }
@@ -56,9 +56,10 @@ function mostrarContenido() {
 ?><!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
-  <title>SearchResults</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
+    <title>SearchResults</title>
 </head>
 <body>
 <div id="contenedor">
@@ -67,7 +68,7 @@ function mostrarContenido() {
 		$app->doInclude('comun/sidebarIzq.php');
 	?>
 
-	<div id="contenido">
+	<div class="col-10" id="contenido">
 		<h1> Resultados busqueda: </h1>
 		<?= mostrarContenido() ?>
 	</div>

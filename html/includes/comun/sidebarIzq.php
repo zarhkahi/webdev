@@ -9,15 +9,13 @@ $app = aw\Aplicacion::getSingleton();
 	<ul>
 		<li><a class="effect-3" href="<?= $app->resuelve('/index.php')?>">Inicio</a></li>
 		<li><a class="effect-3" href="<?= $app->resuelve('/contenido.php')?>">Ver contenido</a></li>
-		<!--<li><a href="<?= $app->resuelve('/admin.php')?>">Administrar</a></li>
-		<li><a href="<?= $app->resuelve('/mensajes.php')?>">Mensajes</a></li>-->
+		<!--<li><a href="<?= $app->resuelve('/admin.php')?>">Administrar</a></li>-->
 		<?php
 			if ($app->usuarioLogueado()) {
 			echo "<li><a class=\"effect-3\" href=", $app->resuelve('/createEvento.php'), ">Crear Evento</a></li>";
-			echo "<li><a class=\"effect-3\" href=", $app->resuelve('/deleteEvento.php'), ">EliminarEvento</a></li>";
 			}
-		?>
-		<li><a class="effect-3" href="<?= $app->resuelve('/register.php')?>">Registro</a></li>
-		
+			else
+				echo "<li><a class=\"effect-3\" href=", $app->resuelve('/register.php'), ">Registro</a></li>";
+		?>		
 	</ul>
 </div>

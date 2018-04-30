@@ -13,7 +13,7 @@ function mostrarContenido() {
     $user = aw\Usuario::searchUserById($id);
     $app = aw\Aplicacion::getSingleton();
 	  if ($user) {
-      $html = "<h1>" . $user->nombre() . " " . $user->apellidos() . "</h1><br><p>Email: " . $user->email() . "</p><br><p>Member since: "  . $user->fecha() . "</p><br>";
+      $html = "<h1>" . $user->nombre() . " " . $user->apellidos() . "</h1><br><p> Email: " . $user->email() . "</p><br><p>Member since: "  . $user->fecha() . "</p><br>";
       if($app->usuarioLogueado()){
         $id_u = $app->idUsuario();
         if ($id != $id_u) {
@@ -49,6 +49,7 @@ if (isset($_GET['follow'])) {
 ?><!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
   <title>Usuario</title>
@@ -59,7 +60,7 @@ if (isset($_GET['follow'])) {
     $app->doInclude('comun/cabecera.php');
     $app->doInclude('comun/sidebarIzq.php');
   ?>
-  <div id="contenido">
+  <div class="col-10" id="contenido">
 	  <?= mostrarContenido() ?>
   </div>
   <?php

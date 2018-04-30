@@ -5,9 +5,10 @@ require_once __DIR__.'/includes/config.php';
 ?><!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
-  <title>Borrar Evento</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	<link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
+  	<title>Borrar Evento</title>
 </head>
 <body>
 <div id="contenedor">
@@ -16,9 +17,9 @@ require_once __DIR__.'/includes/config.php';
 		$app->doInclude('comun/sidebarIzq.php');
 	?>
 
-	<div id="contenido">
+	<div class="col-10" id="contenido">
 		<h1>Formulario para Borrar Evento </h1>
-		<?php $formEvento = new \es\ucm\fdi\aw\FormulariosEvento('elimina',20);//,$_POST['id_evento']); 
+		<?php $formEvento = new \es\ucm\fdi\aw\FormulariosEvento('elimina', $_POST['id_e']); 
 		$formEvento->gestiona(); ?> 
 	</div>
 

@@ -7,9 +7,10 @@ $app->logout();
 ?><!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
-  <title>Logout</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	<link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
+  	<title>Logout</title>
 </head>
 <body>
 <div id="contenedor">
@@ -18,7 +19,7 @@ $app->logout();
 		$app->doInclude('comun/sidebarIzq.php');
 	?>
 
-		<div id="contenido">
+		<div class="col-10" id="contenido">
 			<h1>Hasta pronto!</h1>
 		</div>
 		

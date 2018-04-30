@@ -29,18 +29,17 @@ function mostrarContenido() {
     $events = array();
     $events = \es\ucm\fdi\aw\Evento::allEvents();
     if($events){
-			$html .= " <div class=\"accordion\"><ul>";
+			$html .= " <div class=\"wrapper\">";
       foreach( $events as $item => $event) { 
-				$html .= "<li tabindex=\"1\" ><div>" . '<form method="POST" action="event.php" class="null" enctype="">
+				$html .= '<div class="box"><form method="POST" action="event.php" class="null" enctype="">
         <input class="null" name="event" value="'. $event['id_evento'] . '" type="hidden" readonly>	
-				<button type="submit" id="event_s">';
-				$html .= "<h2>" . $event['nombre'] . "</h2><p> Lugar: " . $event['lugar'] . " Precio:"  . $event['precio'] . "€</p>";
-				$html .= "</button></form></div></li>";
+				<button id= "searchButton" type="submit" id="event_s">';
+				$html .= "<h2>" . $event['nombre'] . "</h2></button></form><p> Lugar: " . $event['lugar'] . " Precio:"  . $event['precio'] . "€</p></div>";
 				/*$html .= "<li tabindex=\"1\" ><div><a href=\"login.php\">";
 				$html .= "<h2>" . $event['nombre'] . "</h2><p> Lugar: " . $event['lugar'] . " Precio:"  . $event['precio'] . "€</p>";
 				$html .= "</a></div></li>";*/
 			}
-			$html .= "</ul></div>";
+			$html .= "</div>";
    }
    else{
      $html .= "No hay eventos.";
@@ -74,8 +73,6 @@ function mostrarContenido() {
 			?>
 
 			<div class="col-10" id="contenido">
-				<h1>Página principal</h1>
-				<p> Aquí está el contenido público, visible para todos los usuarios. </p>
 				<?= mostrarContenido() ?>
 			</div>
 		</div>

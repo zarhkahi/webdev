@@ -17,6 +17,10 @@ function mostrarContenido() {
         <input class="null" name="id_e" value="'. $id . '" type="hidden" readonly>	
         <button type="submit" id="edit">Edit</button>
         </form>';
+        $html .=  '<form method="POST" action="deleteEvento.php" class="null" enctype="">
+        <input class="null" name="id_e" value="'. $id . '" type="hidden" readonly>	
+        <button type="submit" id="edit">Delete</button>
+        </form>';
       }
     } else 
 		  $html = "Error 404";
@@ -45,6 +49,7 @@ function mostrarImg(){
 ?><!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
   <title>Evento</title>
@@ -55,7 +60,7 @@ function mostrarImg(){
       $app->doInclude('comun/cabecera.php');
       $app->doInclude('comun/sidebarIzq.php');
     ?>
-    <div id="contenido">
+    <div class="col-10" id="contenido">
 	    <?= mostrarContenido() ?>
     </div>
     <?php
