@@ -1,0 +1,643 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400);
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
+
+body {
+	font-family: 'Lato', sans-serif;
+	background-color: #CDCDCD;
+	width: 100%;
+	margin: 0px; 
+}
+
+div#contenedor {
+	width: 100%;
+	background-color: #1d292d;
+	margin: 0px; 
+}
+
+h1 {
+	font-family: 'arial';
+}
+
+h3 {
+	color: rgb(255, 255, 255);
+	font-family: 'arial';
+}
+
+div#cabecera {
+	padding: 2%;
+	width: auto;
+	background-color: #0f1b1f;
+	color: white;
+}
+
+div#cabecera a, div#cabecera a:visited {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+} 
+
+div#cabecera a:hover {
+	color: #878787;
+	font-weight: bold;
+	text-decoration: underline;
+} 
+
+
+div#sidebar-left {
+	padding: 2%; 
+	float: left;
+	width: 13%;
+	background-color: #1d292d;
+}
+
+div#contenido {
+	padding:2%;
+	float:left;
+	width: 79%;
+	min-height: 600px;
+	color: #2f2d2d;
+	background-color: #ece9e7;
+	text-align: justify;
+}
+
+div#pie {
+	clear: both;
+	padding: 20px;
+	background-color: #000000;
+	color: white;
+	text-align: center;
+}
+
+div.saludo {
+	width: 100%;
+	text-align: right;
+}
+
+fieldset {
+	border: 1px solid black;
+	width: 16em;
+	text-align: right;
+	margin: 0 auto;
+}
+
+
+legend {
+	color: #fff;
+	background: #303030;
+	text-align: left;
+	border: 1px solid black;
+	padding: 2px 6px;
+} 
+
+label {
+	width: 4em;
+	float: left;
+	text-align: left;
+	margin-right: 0.5em;
+	display: block;
+}
+
+button {
+	margin-left: 100px;
+} 
+	
+#searchButton {
+	
+	margin-left: -0px;
+	background: none!important;
+	/*color: inherit;*/
+	color:#2175FF;
+	border: none; 
+	padding: 0!important;
+	font: inherit;
+	/*border is optional*/
+	/*border-bottom: 1px solid #444; */
+	cursor: pointer;
+
+}
+
+div#search {
+	width: 900px;
+	margin: auto;
+	border: 1px solid black;
+	background-color: #aaaaaa;
+	margin-top: 30px;
+}
+
+#follow {
+    background:none!important;
+     border:none; 
+     padding:0!important;
+    
+    /*optional*/
+    font-family:arial,sans-serif; /*input has OS specific font-family*/
+     color:#069;
+     text-decoration:underline;
+     cursor:pointer;
+}
+
+
+/*
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+*/
+
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:700);
+/*h1 {
+  text-align: center;
+  font-family: Montserrat,sans-serif;
+  color: #333;
+}*/
+
+.accordion {
+  width: 100%;
+  max-width: 1080px;
+  height: 250px;
+  overflow: hidden;
+  margin: 50px auto;
+}
+.accordion ul {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  margin: 0;
+  padding: 0;
+}
+.accordion ul li {
+  display: table-cell;
+  vertical-align: bottom;
+  position: relative;
+  width: 16.666%;
+  height: 250px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: all 500ms ease;
+}
+.accordion ul li div {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+}
+
+.accordion ul li div #event_s {
+	display: block;
+	height: 250px;
+	width: 100%;
+	margin: 0%;
+	border: 0px solid black;
+	background-color: #aaaaaa00;
+	z-index: 3;
+  	padding: 15px 20px;
+  	box-sizing: border-box;
+  	color: #fff;
+  	text-decoration: none;
+ 	font-family: Open Sans, sans-serif;
+  	transition: all 200ms ease;
+	position: relative;
+}
+
+.accordion ul li div #event_s * {
+	display: block;
+	height: 250px;
+	width: 100%;
+	border: 0px solid black;
+	background-color: #aaaaaa00;
+	z-index: 3;
+  	padding: 15px 20px;
+  	box-sizing: border-box;
+  	color: #fff;
+  	text-decoration: none;
+ 	font-family: Open Sans, sans-serif;
+	position: relative;
+	opacity: 0;
+  	margin: 0;
+  	width: 100%;
+  	text-overflow: ellipsis;
+ 	position: relative;
+  	z-index: 5;
+  	white-space: nowrap;
+  	overflow: hidden;
+  	-webkit-transform: translateX(-20px);
+  	transform: translateX(-20px);
+  	-webkit-transition: all 400ms ease;
+  	transition: all 400ms ease;
+}
+
+.accordion ul li div #event_s h2 {
+	font-family: Montserrat,sans-serif;
+	text-overflow: clip;
+	font-size: 24px;
+	text-transform: uppercase;
+	margin-bottom: 2px;
+	top: 160px;
+  }
+
+  .accordion ul li div #event_s p {
+	top: 160px;
+	font-size: 13.5px;
+  }
+
+  .accordion ul:hover li:hover #event_s {
+	background: rgba(0, 0, 0, 0.4);
+  }
+  .accordion ul:hover li:hover #event_s * {
+	opacity: 1;
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+  }
+/*
+.accordion ul li div a {
+  display: block;
+  height: 250px;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+  vertical-align: bottom;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  color: #fff;
+  text-decoration: none;
+  font-family: Open Sans, sans-serif;
+  transition: all 200ms ease;
+}
+.accordion ul li div a * {
+  opacity: 0;
+  margin: 0;
+  width: 100%;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 5;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-transform: translateX(-20px);
+  transform: translateX(-20px);
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+}
+.accordion ul li div a h2 {
+  font-family: Montserrat,sans-serif;
+  text-overflow: clip;
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  top: 160px;
+}
+.accordion ul li div a p {
+  top: 160px;
+  font-size: 13.5px;
+}*/
+.accordion ul li:nth-child(1) {
+  background-image: url("http://michael-ferry.com/assets/accordion1.jpg");
+}
+.accordion ul li:nth-child(2) {
+  background-image: url("http://michael-ferry.com/assets/accordion2.jpg");
+}
+.accordion ul li:nth-child(3) {
+  background-image: url("http://michael-ferry.com/assets/accordion3.jpg");
+}
+.accordion ul li:nth-child(4) {
+  background-image: url("http://michael-ferry.com/assets/accordion4.jpg");
+}
+.accordion ul li:nth-child(5) {
+  background-image: url("http://michael-ferry.com/assets/accordion5.jpg");
+}
+.accordion ul li:nth-child(6) {
+  background-image: url("http://michael-ferry.com/assets/accordion6.jpg");
+}
+.accordion ul:hover li {
+  width: 8%;
+}
+.accordion ul:hover li:hover {
+  width: 60%;
+}/*
+.accordion ul:hover li:hover a {
+  background: rgba(0, 0, 0, 0.4);
+}
+.accordion ul:hover li:hover a * {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}*/
+
+@media screen and (max-width: 600px) {
+
+  .accordion {
+    height: auto;
+  }
+  .accordion ul li, .accordion ul li:hover, .accordion ul:hover li, .accordion ul:hover li:hover {
+    position: relative;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    -webkit-transition: none;
+    transition: none;
+  }
+}
+
+
+
+/*
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+*/
+
+
+
+div#sidebar-left a, div#sidebar-left a:visited {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	font-family:'arial'
+} 
+/*
+div#sidebar-left a:hover {
+	color: #878787;
+	text-decoration: none;
+} */
+
+
+
+div#sidebar-left a, div#sidebar-left a > span {
+  	position: relative;
+  	color: inherit;
+  	text-decoration: none;
+}
+div#sidebar-left a:before, div#sidebar-left a:after, div#sidebar-left a > span:before, div#sidebar-left a > span:after {
+	content: '';
+  	position: absolute;
+  	transition: transform .5s ease;
+}
+
+.effect-3 {
+  display: inline-block;
+  overflow: hidden;
+}
+.effect-3:before {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #0883a4;
+  transform: translateX(-100%);
+}
+.effect-3:hover:before {
+  transform: translateX(0);
+}
+
+
+
+
+/*0883a4
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+*/
+
+
+
+
+
+
+.link--arrowed {
+	display: inline-block;
+	height: 2rem;
+	line-height: 2rem;
+  }
+  .link--arrowed .arrow-icon {
+	position: relative;
+	top: -1px;
+	-webkit-transition: -webkit-transform 0.3s ease;
+	transition: -webkit-transform 0.3s ease;
+	transition: transform 0.3s ease;
+	transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+	vertical-align: middle;
+  }
+  .link--arrowed .arrow-icon--circle {
+	-webkit-transition: stroke-dashoffset .3s ease;
+	transition: stroke-dashoffset .3s ease;
+	stroke-dasharray: 95;
+	stroke-dashoffset: 95;
+  }
+  .link--arrowed:hover .arrow-icon {
+	-webkit-transform: translate3d(5px, 0, 0);
+			transform: translate3d(5px, 0, 0);
+  }
+  .link--arrowed:hover .arrow-icon--circle {
+	stroke-dashoffset: 0;
+	}
+	
+
+
+
+
+	/*
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+*/
+
+
+
+
+
+
+
+
+
+	@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400);
+	@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
+
+	input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+		color: #aca49c;
+		font-size: 0.875em;
+	}
+	
+	input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder {
+		color: #bbb5af;
+	}
+	
+	input::-moz-placeholder, textarea::-moz-placeholder {
+		color: #aca49c;
+		font-size: 0.875em;
+	}
+	
+	input:focus::-moz-placeholder, textarea:focus::-moz-placeholder {
+		color: #bbb5af;
+	}
+	
+	input::placeholder, textarea::placeholder {
+		color: #aca49c;
+		font-size: 0.875em;
+	}
+	
+	input:focus::placeholder, textarea::focus:placeholder {
+		color: #bbb5af;
+	}
+	
+	input::-ms-placeholder, textarea::-ms-placeholder {
+		color: #aca49c;
+		font-size: 0.875em;
+	}
+	
+	input:focus::-ms-placeholder, textarea:focus::-ms-placeholder {
+		color: #bbb5af;
+	}
+	
+	/* on hover placeholder */
+	
+	input:hover::-webkit-input-placeholder, textarea:hover::-webkit-input-placeholder {
+		color: #e2dedb;
+		font-size: 0.875em;
+	}
+	
+	input:hover:focus::-webkit-input-placeholder, textarea:hover:focus::-webkit-input-placeholder {
+		color: #cbc6c1;
+	}
+	
+	input:hover::-moz-placeholder, textarea:hover::-moz-placeholder {
+		color: #e2dedb;
+		font-size: 0.875em;
+	}
+	
+	input:hover:focus::-moz-placeholder, textarea:hover:focus::-moz-placeholder {
+		color: #cbc6c1;
+	}
+	
+	input:hover::placeholder, textarea:hover::placeholder {
+		color: #e2dedb;
+		font-size: 0.875em;
+	}
+	
+	input:hover:focus::placeholder, textarea:hover:focus::placeholder {
+		color: #cbc6c1;
+	}
+	
+	input:hover::placeholder, textarea:hover::placeholder {
+		color: #e2dedb;
+		font-size: 0.875em;
+	}
+	
+	input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
+		color: #cbc6c1;
+	}
+	
+
+	
+	header {
+		position: relative;
+		margin: 100px 0 25px 0;
+		font-size: 2.3em;
+		text-align: center;
+		letter-spacing: 7px;
+	}
+	
+	#register {
+		position: relative;
+		width: 500px;
+		margin: 50px auto 100px auto;
+	}
+	
+	input {
+		font-family: 'Lato', sans-serif;
+		font-size: 0.875em;
+		width: 470px;
+		height: 50px;
+		padding: 0px 15px 0px 15px;
+		
+		background: transparent;
+		outline: none;
+		color: #726659;
+		
+		border: solid 1px #b3aca7;
+		border-bottom: none;
+		
+		transition: all 0.3s ease-in-out;
+		-webkit-transition: all 0.3s ease-in-out;
+		-moz-transition: all 0.3s ease-in-out;
+		-ms-transition: all 0.3s ease-in-out;
+	}
+	
+	input:hover {
+		background: #b3aca7;
+		color: #e2dedb;
+	}
+	
+	textarea {
+		width: 470px;
+		max-width: 470px;
+		height: 110px;
+		max-height: 110px;
+		padding: 15px;
+		
+		background: transparent;
+		outline: none;
+		
+		color: #726659;
+		font-family: 'Lato', sans-serif;
+		font-size: 0.875em;
+		
+		border: solid 1px #b3aca7;
+		
+		transition: all 0.3s ease-in-out;
+		-webkit-transition: all 0.3s ease-in-out;
+		-moz-transition: all 0.3s ease-in-out;
+		-ms-transition: all 0.3s ease-in-out;
+	}
+	
+	textarea:hover {
+		background: #b3aca7;
+		color: #e2dedb;
+	}
+	
+	#submit {
+		width: 502px;
+		
+		padding: 0;
+		margin: -5px 0px 0px 0px;
+		
+		font-family: 'Lato', sans-serif;
+		font-size: 0.875em;
+		color: #42403f;
+		
+		outline:none;
+		cursor: pointer;
+		
+		border: solid 1px #b3aca7;
+		border-top: none;
+	}
+	
+	#submit:hover {
+		color: #e2dedb;
+	}
