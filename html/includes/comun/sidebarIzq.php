@@ -4,7 +4,7 @@ use es\ucm\fdi\aw;
 $app = aw\Aplicacion::getSingleton();
 ?>
 
-<div id="sidebar-left">
+<div class="col-2 menu" id="sidebar-left">
 	<h3>Menú</h3>
 	<ul>
 		<li><a class="effect-3" href="<?= $app->resuelve('/index.php')?>">Inicio</a></li>

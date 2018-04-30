@@ -12,6 +12,7 @@ img {
 </style>
 </head>
 */
+
 require_once __DIR__.'/includes/config.php';
 
 use es\ucm\fdi\aw;
@@ -53,23 +54,32 @@ function mostrarContenido() {
 ?><!DOCTYPE html>
 <html>
 <head>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--<link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/reset.css') ?>">-->
   <link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
   <title>Portada</title>
 </head>
-<body>
+<body class="container">
 <div id="contenedor">
 	<?php
 		$app->doInclude('comun/cabecera.php');
-		$app->doInclude('comun/sidebarIzq.php');
 	?>
 
-	<div id="contenido">
-		<h1>Página principal</h1>
-		<p> Aquí está el contenido público, visible para todos los usuarios. </p>
-		<?= mostrarContenido() ?>
-	</div>
-	
+		<div class="row">
+			<?php
+				$app->doInclude('comun/sidebarIzq.php');
+			?>
+
+			<div class="col-10" id="contenido">
+				<h1>Página principal</h1>
+				<p> Aquí está el contenido público, visible para todos los usuarios. </p>
+				<?= mostrarContenido() ?>
+			</div>
+		</div>
+
 	<?php
 		$app->doInclude('comun/pie.php');
 	?>
