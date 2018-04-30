@@ -216,6 +216,152 @@ div#search {
      cursor:pointer;
 }
 
+.eventCont {
+	width: 50%;
+	border-style: solid;
+	border-color: #3F51B5;
+	border-width: 4px;
+	margin-top: 15px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	box-sizing: border-box;
+}
+
+@media only screen and (max-width: 768px) {
+	.eventCont {
+		width: 100%;
+	}
+}
+
+.eventCont>div{
+	background-color: rgb(25, 59, 87);
+	color: rgb(0, 0, 0);
+	text-align: center;
+	width: 250px;
+	font-size: 100%;
+	margin: 4px;
+}
+
+/*
+.buttonCont{
+	margin-left: -0px;
+	background: none!important;
+	color:#2175FF;
+	border: none; 
+	padding: 0!important;
+	font: inherit;
+	/*border is optional*/
+	/*border-bottom: 1px solid #444; *//*
+	cursor: pointer;
+}*/
+
+.buttonCont {
+	
+  
+	margin-left: -0px;
+	padding: 0!important;
+  border: none;
+  background-color: #ebebf0;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: relative;
+  z-index: 1;
+  padding: 0;
+}
+
+.buttonCont:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 10px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 10, 50, 0.2);
+  -webkit-transition: -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  transition: -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9), -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  -webkit-transform: translate3D(0, 0, 0);
+          transform: translate3D(0, 0, 0);
+}
+.buttonCont:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ebebf0;
+  z-index: -1;
+}
+.buttonCont:hover:before, .buttonCont:focus:before {
+  -webkit-transform: translate3D(10px, 0, 0);
+          transform: translate3D(10px, 0, 0);
+}
+.buttonCont:active:before {
+  -webkit-transform: translate3D(0, 0, 0);
+          transform: translate3D(0, 0, 0);
+}
+.buttonCont:focus, .buttonCont:active {
+  outline: none;
+}
+
+
+
+.buttonCont .button__inner {
+  text-transform: uppercase;
+	letter-spacing: 0.15em;
+	font-size: 15px;
+  color: #333;
+  padding: 1em 1.5em;
+  background-color: #fbfbfb;
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  transition: -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9), -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  position: relative;
+}
+
+@media only screen and (max-width: 408px) {
+  .buttonCont .button__inner{
+    font-size: 10px;
+  }
+}
+.buttonCont:hover .button__inner, .buttonCont:focus .button__inner {
+  -webkit-transform: translate3D(0, -10px, 0);
+          transform: translate3D(0, -10px, 0);
+}
+.buttonCont:active .button__inner {
+  -webkit-transform: translate3D(0, 0, 0);
+          transform: translate3D(0, 0, 0);
+}
+.buttonCont:hover .button__inner, .buttonCont:focus .button__inner {
+  background-color: #fff;
+}
+
+.buttonCont--secondary {
+  background-color: #00d18e;
+  z-index: 0;
+}
+.buttonCont--secondary:after {
+  background-color: #00d18e;
+}
+.buttonCont--secondary .button__inner {
+  background-color: #00ffb2;
+}
+.buttonCont--secondary:hover .button__inner, .buttonCont--secondary:focus .button__inner {
+  background-color: #11ffb3;
+}
+
 /*
 .wrapper {
   display: grid;
