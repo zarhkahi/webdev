@@ -1,5 +1,17 @@
 <?php
 
+/*<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+</head>
+*/
 require_once __DIR__.'/includes/config.php';
 
 use es\ucm\fdi\aw;
