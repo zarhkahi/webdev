@@ -78,10 +78,14 @@ class Actividad {
     $app = App::getSingleton();
     $conn = $app->conexionBd();
     $id_u = $datos['id_usuario'];
-    $id_evento = $datos['id_evento'];
-
+    
     switch ($datos['tipo']) {
       case 'crea':
+          $id_actividad = $datos['id_actividad'];
+          $query = sprintf("DELETE FROM Crea WHERE id_actividad=$id_actividad");
+          $rs = $conn->query($query);
+          $query = sprintf("DELETE FROM Actividades WHERE id_actividad=$id_actividad");
+          $rs = $conn->query($query);
           break;
       case "asiste":
           break;

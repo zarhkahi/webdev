@@ -18,61 +18,80 @@ class Evento {
 
   private $id_usuario;
 
-  public function __construct($id_evento, $nombre, $fecha, $lugar, $precio, $id_usuario) {
+  private $descripcion;
+
+  public function __construct($id_evento, $nombre, $fecha, $lugar, $precio, $id_usuario, $descripcion) {
     $this->id_evento = $id_evento;
     $this->nombre = $nombre;
     $this->fecha = $fecha;
     $this->lugar = $lugar;
     $this->precio = $precio;
     $this->id_usuario = $id_usuario;
+    $this->descripcion=$descripcion;
   }
 
-    public static function deleteEvent($EventName, $idUser) {
-    $app = App::getSingleton();
-       if(self::searchEventByName($EventName, $idUser)){
-         $conn = $app->conexionBd();
-         //Ojito si intentas eliminar de Eventos un evento que este en la actividad crea se queja, primero tienes que eliminar
-         //la de la tabla crea quizas se puede hacer mejor pero esto lo apaña, funciona si el usuario no tiene dos eventos con el mismo nombre. 
-         $query = sprintf("SELECT * FROM Eventos E, Crea C WHERE E.id_evento=C.id_evento and E.id_usuario=$idUser and E.nombre='%s'", $conn->real_escape_string($EventName));
-         $rs = $conn->query($query);
-         $fila = $rs->fetch_assoc();
-         $idAct=$fila['id_actividad'];
-         $idEvent=$fila['id_evento'];
-         $rs->free(); //Por ssi acaso al sobrescribir la variable no lo libera.
-         $query = sprintf("DELETE FROM Crea WHERE id_actividad=$idAct");
-         $rs = $conn->query($query);
-         $query = sprintf("DELETE FROM Actividades WHERE id_actividad=$idAct");
-         $rs = $conn->query($query);
-         $query = sprintf("DELETE FROM Imagen WHERE id_evento=$idEvent");
-         $rs = $conn->query($query);
-         $query = sprintf("DELETE FROM Eventos WHERE nombre='%s' and id_usuario=$idUser",$conn->real_escape_string($EventName));
-         $rs = $conn->query($query);
-          if ($rs===TRUE) {
-            return true;//new Evento($conn->insert_id, $nombre, $fecha, $lugar, $precio, $id_usuario);
-          }
-          else
-            return 'Error al eliminar el evento.';   
-          }
+    public function deleteEvent(){
+      $app = App::getSingleton();
+      $conn = $app->conexionBd();
+      $rs=self::deleteCreates();
+      //$query = sprintf("DELETE FROM Imagen WHERE id_evento=$this->id_evento");
+      //$rs = $rs && $conn->query($query);
+      $query = sprintf("DELETE FROM Eventos WHERE id_evento=$this->id_evento");
+      $rs = $rs &&  $conn->query($query);
+      if ($rs===TRUE) {
+        return true;//new Evento($conn->insert_id, $nombre, $fecha, $lugar, $precio, $id_usuario);
+      }
       else
-        return 'No tienes un evento con ese nombre o no tienes eventos. ';         
-
+        return 'Error al eliminar el evento. ';       
    }
  
  
-  public static function createEvent($EventName, $EventDate, $EventLugar, $precio, $idUser) {
+  public static function createEvent($EventName, $EventDate, $EventLugar, $precio, $idUser,$EventDes) {
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("INSERT INTO Eventos (nombre,fecha,lugar,precio,id_usuario) VALUES('%s','%s','%s',$precio,$idUser)",$conn->real_escape_string($EventName),$conn->real_escape_string($EventDate),$conn->real_escape_string($EventLugar) ); //Sanear precio?
+    $query = sprintf("INSERT INTO Eventos (nombre,fecha,lugar,precio,id_usuario,descripcion) VALUES('%s','%s','%s',$precio,$idUser,'%s')",$conn->real_escape_string($EventName),$conn->real_escape_string($EventDate),
+            $conn->real_escape_string($EventLugar),$conn->real_escape_string($EventDes) ); 
     $rs = $conn->query($query);
     if ($rs===TRUE) {
-      $event=new Evento($conn->insert_id, $EventName, $EventDate, $EventLugar, $precio, $idUser);
-      $act = array('tipo' => "crea", 'id_evento' => $conn->insert_id, 'id_usuario' => $idUser, 'id_siguiendo' => null, 'descripcion' => null);
-      if(!Actividad::crearActividad($act))
-        return false;
-      return $event;//new Evento($conn->insert_id, $nombre, $fecha, $lugar, $precio, $id_usuario);
+      $event=new Evento($conn->insert_id, $EventName, $EventDate, $EventLugar, $precio, $idUser,$EventDes);
+      return self::NotifyCreate($event->id_evento(),$idUser) ? $event : 'Error al notificar. '.$conn->error;//new Evento($conn->insert_id, $nombre, $fecha, $lugar, $precio, $id_usuario);
     }   
     else 
-      return false;//'Error al crear el evento, fallo en la BD.';     
+      return 'Error al actualizar la tabla de Eventos. ';     
+  }
+
+
+  private function NotifyCreate($idEvent,$idUser){
+    $act = array('tipo' => "crea", 'id_evento' => $idEvent, 'id_usuario' => $idUser, 'id_siguiendo' => null, 'descripcion' => null);
+    $ok=Actividad::crearActividad($act);
+    $followers=Usuario::getMyFollowers($idUser);   
+    if($ok && is_array($followers)){
+      foreach ($followers as $value){
+        $act['id_usuario']=$value['id_usuario'];
+        if(!Actividad::crearActividad($act)){
+          unset($value);    
+          return false;
+        }
+      }//For
+      unset($value);
+  }
+    return $ok;
+  }
+
+  private function deleteCreates(){
+    $app = App::getSingleton();
+    $conn = $app->conexionBd();
+    $query = sprintf("SELECT id_actividad FROM Eventos E NATURAL JOIN Crea C WHERE id_evento=$this->id_evento" );
+    $rs = $conn->query($query);
+    if($rs && $rs->num_rows > 0){
+      $ok=TRUE;
+      $act = array('tipo' => "crea", 'id_actividad' => null, 'id_usuario' => $this->id_usuario, 'id_siguiendo' => null, 'descripcion' => null);
+      while($ok===TRUE && $row = $rs->fetch_assoc()){
+        $act['id_actividad'] = $row['id_actividad'];
+        $ok=Actividad::eliminarActividad($act);
+      }
+   }
+   return $ok;
   }
 
   //$conn->error con esto comprobamos los errore de la consulta, devuelve un string con el error usadlo.
@@ -84,7 +103,7 @@ class Evento {
     $rs = $conn->query($query);
     if ($rs && $rs->num_rows == 1) {
       $fila = $rs->fetch_assoc();
-      $event = new Evento($fila['id_evento'], $fila['nombre'], $fila['fecha'], $fila['lugar'], $fila['precio'], $fila['id_usuario']);
+      $event = new Evento($fila['id_evento'], $fila['nombre'], $fila['fecha'], $fila['lugar'], $fila['precio'], $fila['id_usuario'],$fila['descripcion']);
       $rs->free();
 
       return $event;
@@ -123,28 +142,43 @@ public static function searchEventByName($EventName,$idUser) { //nombre
       return false;
   }
 
+
+  public function deleteImage(){
+    $query = sprintf("SELECT * FROM Eventos E, Imagen I WHERE E.id_evento=I.id_evento '");
+    $rs = $conn->query($query);
+    $fila = $rs->fetch_assoc();
+    $rutaArchivo = DIRECTORY_SEPARATOR.$fila['ruta']; //Obtengo la dir.
+    
+    return unlink($rutaArchivo) ? true : 'Error al borrar el archivo. ';
+  }
+
+
+
   public function addImage($rutaTemporal​, $nombreOriginal){
     if(file_exists($rutaTemporal​)){
       $app = App::getSingleton();
       $conn = $app->conexionBd();
       $extension = substr(strrchr($nombreOriginal, "."), 1); //Obtengo la extension del archivo.
       $rutaArchivo = dirname(__DIR__).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'fotos-eventos'.DIRECTORY_SEPARATOR.$this->id_evento.'.'.$extension;
-      if(move_uploaded_file($rutaTemporal​, $rutaArchivo)){
-        $query = sprintf("INSERT INTO Imagen (id_evento,descripcion) VALUES($this->id_evento,'%s')",$conn->real_escape_string($rutaArchivo));
-        $rs = $conn->query($query);
+      if (file_exists($rutaArchivo) )
+		    $query = sprintf("UPDATE Imagen SET ruta='%s' WHERE id_evento=$this->id_evento",$conn->real_escape_string($rutaArchivo));
+      else
+		    $query = sprintf("INSERT INTO Imagen (id_evento,ruta) VALUES($this->id_evento,'%s')",$conn->real_escape_string($rutaArchivo));
+	  if(move_uploaded_file($rutaTemporal​, $rutaArchivo)){
+		    $rs = $conn->query($query);
         return $rs;
       }
       else
       	return 'No se ha podido mover la imagen';
     }
-    return false;
+    return 'No exsiste el archivo tmp. ';
   }
 
   public function updateEvent() {
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("UPDATE Eventos SET nombre='%s',fecha='%s',lugar='%s',precio=$this->precio  WHERE id_evento=$this->id_evento",
-      $conn->real_escape_string($this->nombre),$conn->real_escape_string($this->fecha),$conn->real_escape_string($this->lugar));
+    $query = sprintf("UPDATE Eventos SET nombre='%s',fecha='%s',lugar='%s',precio=$this->precio,descripcion='%s'  WHERE id_evento=$this->id_evento",
+      $conn->real_escape_string($this->nombre),$conn->real_escape_string($this->fecha),$conn->real_escape_string($this->lugar),$conn->real_escape_string($this->descripcion));
     $rs = $conn->query($query);
     
     return $rs===TRUE ? true : 'Error al actualizar el evento. '; 
@@ -229,6 +263,10 @@ public static function searchEventByName($EventName,$idUser) { //nombre
     return $this->id_evento;
   }
 
+  public function id_usuario() {
+    return $this->id_usuario;
+  }
+
   public function nombre_evento() {
     return $this->nombre;
   }
@@ -243,6 +281,10 @@ public static function searchEventByName($EventName,$idUser) { //nombre
 
   public function precio_evento() {
     return $this->precio;
+  }
+
+  public function descripcion_evento(){
+    return $this->descripcion;
   }
 //--
   public function cambiarName($nuevo_nombre) {
@@ -260,8 +302,12 @@ public static function searchEventByName($EventName,$idUser) { //nombre
   public function cambiaPrice($nuevo_precio) {
     $this->precio = $nuevo_precio;
   }
+
+  public function cambiarDescripcion($des){
+    $this->descripcion=$des;
+  }
 //--
 
-}
+}//Class
 
 ?>

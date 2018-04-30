@@ -39,7 +39,7 @@ class FormularioUsuario extends Form {
       <legend>Login</legend>
       <p><label>E-mail:</label> <input type="email" pattern="$this->HTML5_EMAIL_REGEXP" title="$this->HTML5_EMAIL_TITLE" name="email" value="$email" required/></p>
       <p><label>Password:</label> <input type="password" name="password" value="$password" required/><br /></p>
-      <button type="submit">Entrar</button>
+      <button id="submit" type="submit">Entrar</button>
     </fieldset>
 EOF;
     return $camposFormulario;
@@ -68,7 +68,7 @@ EOF;
       <p><label>Nombre:</label> <input type="text" pattern="$this->TEXTO_REGEXP" title="$this->TEXTO_TITLE" name="nombre" value="$nombre" required/></p>
       <p><label>Apellidos:</label> <input type="text" pattern="$this->TEXTO_REGEXP" title="$this->TEXTO_TITLE" name="apellidos" value="$apellidos" required/></p>
       <p><label>Password:</label> <input type="password" pattern="$this->PASS_REGEXP" title="$this->PASS_TITLE" name="password" value="$password" required/><br /></p>
-      <button type="submit">Entrar</button>
+      <input id="submit" type="submit" value="Registrarse">
     </fieldset>
 EOF;
     }

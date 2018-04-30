@@ -20,19 +20,26 @@ function mostrarContenido() {
                 <input class="null" name="event" value="'. $event['id_evento'] . '" type="hidden" readonly>	
                 <p><h2><button type="submit" id="searchButton">' . $event['nombre'] . '</button>
                 </form>';
-                $html .= "</h2></p><br>";          }
+                $html .= "</h2></p><br>";
+            }
         }
+        
         else
             $html .= "No events found. <br>";
         if($users){
-            $html .= "<h3> Users found: </h3>";
+            $html .= "<h3> Users found: </h3><br>";
             foreach( $users as $item => $user) { 
                 //$form = '';
-                $html .= '<form method="POST" action="user.php" id="' . $user['nombre'] . '" class="null" enctype="">
-                        <input class="null" name="user" value="'. $user['id_usuario'] . '" type="hidden" readonly>	
-                        <p><h2><button type="submit" id="searchButton">' . $user['nombre'] . '</button>
-                        </form>';
-                $html .= " " . $user['apellidos'] . "</h2></p><p>Email: " . $user['email'] . " Sing up date: "  . $user['fecha'] . "</p><br>";
+                $html .= '<section class="centered-container"><p><h2><form method="POST" action="user.php" id="' . $user['nombre'] . '" class="null" enctype="">
+                        <input class="null" name="user" value="'. $user['id_usuario'] . '" type="hidden" readonly>
+                        <button class = "link--arrowed" type="submit" id="searchButton">' . $user['nombre'] . " "  .  $user['apellidos'];
+                $html .=    '<svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                            <g fill="none" stroke="#2175FF" stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10">
+                            <circle class="arrow-icon--circle" cx="16" cy="16" r="15.12"></circle>
+                            <path class="arrow-icon--arrow" d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"></path>
+                            </g>
+                            </svg></button></form>';
+                $html .= "</h2></p></section><p>Email: " . $user['email'] . " Sing up date: "  . $user['fecha'] . "</p><br>";
                 //$html .= $form;
             }
         }
@@ -66,7 +73,6 @@ function mostrarContenido() {
 	</div>
 	
 	<?php
-		$app->doInclude('comun/sidebarDer.php');
 		$app->doInclude('comun/pie.php');
 	?>
 </div>

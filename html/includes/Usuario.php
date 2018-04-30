@@ -142,6 +142,7 @@ class Usuario {
   }
     
 
+  //Los usuarios que sigue $id_U
   public static function getFollowers($id_u){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
@@ -157,6 +158,28 @@ class Usuario {
     }
     return false;
   }
+
+
+  //Los usuarios que siguen a $id_U
+  public static function getMyFollowers($id_u){
+    $app = App::getSingleton();
+    $conn = $app->conexionBd();
+    $query = sprintf("SELECT id_usuario FROM Seguidores WHERE id_siguiendo = $id_u");
+    $rs = $conn->query($query);
+    if($rs && $rs->num_rows > 0){
+      $followers = array();
+      while($row = $rs->fetch_assoc()){
+          $followers[] = $row;
+      }
+      $rs->free();
+      return $followers;
+    }
+    return false;
+  }
+
+
+
+
 
   public function id() {
     return $this->id;

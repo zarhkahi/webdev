@@ -23,7 +23,6 @@ $app->logout();
 		</div>
 		
 	<?php
-		$app->doInclude('comun/sidebarDer.php');
 		$app->doInclude('comun/pie.php');
 	?>
 </div>

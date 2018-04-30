@@ -18,11 +18,11 @@ require_once __DIR__.'/includes/config.php';
 
 	<div id="contenido">
 		<h1>Formulario para Borrar Evento </h1>
-		<?php $formEvento = new \es\ucm\fdi\aw\FormulariosEvento('elimina'); $formEvento->gestiona(); ?>
+		<?php $formEvento = new \es\ucm\fdi\aw\FormulariosEvento('elimina',20);//,$_POST['id_evento']); 
+		$formEvento->gestiona(); ?> 
 	</div>
 
 	<?php
-		$app->doInclude('comun/sidebarDer.php');
 		$app->doInclude('comun/pie.php');
 	?>
 </div>

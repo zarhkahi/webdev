@@ -11,7 +11,28 @@ function mostrarContenido() {
 		//$html = \es\ucm\fdi\aw\Evento::showUserEvents($app->idUsuario());
 		$html = \es\ucm\fdi\aw\Actividad::motrarActividad($app->idUsuario());  
 	} else {
-		$html = \es\ucm\fdi\aw\Evento::showAllEvents();
+
+		$html = "<h1> Welcome to E-VENTS </h1><br>";
+    $events = array();
+    $events = \es\ucm\fdi\aw\Evento::allEvents();
+    if($events){
+			$html .= " <div class=\"accordion\"><ul>";
+      foreach( $events as $item => $event) { 
+				$html .= "<li tabindex=\"1\" ><div>" . '<form method="POST" action="event.php" class="null" enctype="">
+        <input class="null" name="event" value="'. $event['id_evento'] . '" type="hidden" readonly>	
+				<button type="submit" id="event_s">';
+				$html .= "<h2>" . $event['nombre'] . "</h2><p> Lugar: " . $event['lugar'] . " Precio:"  . $event['precio'] . "€</p>";
+				$html .= "</button></form></div></li>";
+				/*$html .= "<li tabindex=\"1\" ><div><a href=\"login.php\">";
+				$html .= "<h2>" . $event['nombre'] . "</h2><p> Lugar: " . $event['lugar'] . " Precio:"  . $event['precio'] . "€</p>";
+				$html .= "</a></div></li>";*/
+			}
+			$html .= "</ul></div>";
+   }
+   else{
+     $html .= "No hay eventos.";
+	 }
+	 
   }
 
   return $html;
@@ -38,7 +59,6 @@ function mostrarContenido() {
 	</div>
 	
 	<?php
-		$app->doInclude('comun/sidebarDer.php');
 		$app->doInclude('comun/pie.php');
 	?>
 </div>

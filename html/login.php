@@ -22,7 +22,6 @@ require_once __DIR__.'/includes/config.php';
 		</div>
 		
 	<?php
-		$app->doInclude('comun/sidebarDer.php');
 		$app->doInclude('comun/pie.php');
 	?>
 </div>

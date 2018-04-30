@@ -6,17 +6,40 @@ use es\ucm\fdi\aw;
 
 function mostrarContenido() {
   $html = '';
+  $app = aw\Aplicacion::getSingleton();
   if(isset($_POST['event'])){
     $id = $_POST['event'];
     $event = aw\Evento::searchEventById($id);
 	  if ($event) {
-		  $html = "<div class= 'event'> <h1>" . $event->nombre_evento() . "</h1><br><p>Fecha: " . $event->fecha_evento() . "</p><br><p> Precio: "  . $event->precio_evento() . "€ </p><br><p>Lugar: " . $event->lugar_evento() . "</p></div><br>";
-	  } else 
+		  $html = "<div class= 'event'> <h1 style=\"background-color:DodgerBlue; border:2px solid Tomato;\">" . $event->nombre_evento() . "</h1><br><p>Fecha: " . $event->fecha_evento() . "</p><br><p> Precio: "  . $event->precio_evento() . "€ </p><br><p>Lugar: " . $event->lugar_evento() . "</p></div><br>";
+      if($app->usuarioLogueado() && ($event->id_usuario() == $app->idUsuario())){
+        $html .=  '<form method="POST" action="updateEvento.php" class="null" enctype="">
+        <input class="null" name="id_e" value="'. $id . '" type="hidden" readonly>	
+        <button type="submit" id="edit">Edit</button>
+        </form>';
+      }
+    } else 
 		  $html = "Error 404";
   }
   else
     $html = "Event not specified";
   return $html;
+}
+
+function mostrarImg(){
+  $imagesDirectory = "fotos-eventos/";
+  if(is_dir($imagesDirectory)) {
+    $opendirectory = opendir($imagesDirectory);
+    while (($image = readdir($opendirectory)) !== false) {
+      if(($image == '.') || ($image == '..')) continue;
+        $imgFileType = pathinfo($image,PATHINFO_EXTENSION);
+      if(($imgFileType == 'jpg') || ($imgFileType == 'png') ||($imgFileType == 'jpeg'))
+        echo "<img src='fotos-eventos/".$image."' width='200'> ";
+    }
+   closedir($opendirectory);
+  }
+  else 
+    echo 'no se puede mostrar la imagen';
 }
 
 ?><!DOCTYPE html>
@@ -36,7 +59,6 @@ function mostrarContenido() {
 	    <?= mostrarContenido() ?>
     </div>
     <?php
-      $app->doInclude('comun/sidebarDer.php');
       $app->doInclude('comun/pie.php');
     ?>
   </div>

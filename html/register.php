@@ -21,7 +21,6 @@ require_once __DIR__.'/includes/config.php';
 			<?php $formRegister = new \es\ucm\fdi\aw\FormularioUsuario('register'); $formRegister->gestiona(); ?>
 		</div>
 	<?php
-		$app->doInclude('comun/sidebarDer.php');
 		$app->doInclude('comun/pie.php');
 	?>
 </div>
