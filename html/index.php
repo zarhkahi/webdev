@@ -61,25 +61,27 @@ function mostrarContenido() {
 	<link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
   <title>Portada</title>
 </head>
-<body class="container">
-<div id="contenedor">
-	<?php
-		$app->doInclude('comun/cabecera.php');
-	?>
+<div class="site">
+		<div class="header">
+			<?php
+				$app->doInclude('comun/cabecera.php');
+			?>
+		</div>
 
-		<div class="row">
+		<div class="sidebar">
 			<?php
 				$app->doInclude('comun/sidebarIzq.php');
 			?>
-
-			<div class="col-10" id="contenido">
-				<?= mostrarContenido() ?>
-			</div>
 		</div>
 
-	<?php
-		$app->doInclude('comun/pie.php');
-	?>
+		<div class="maincontent">
+			<?= mostrarContenido() ?>
+		</div>
+
+		<div class= "footer"> 
+			<?php
+				$app->doInclude('comun/pie.php');
+			?>
+		</div>
 </div>
-</body>
 </html>
