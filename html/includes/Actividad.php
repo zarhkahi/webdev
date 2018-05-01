@@ -105,6 +105,7 @@ class Actividad {
 
             return true;
           }
+          $rs = false;
           break;
       case "comenta":
           self::comentaAct($id_actividad, $datos['descripcion']);
@@ -127,7 +128,7 @@ class Actividad {
 
   public function recopilarActividadSeguidores($id_u){//, $fecha) {
     $listaCrea = array();
-    $followers = Usuario::getFollowers($id_u); //
+    $followers = Usuario::getFollowing($id_u); //
     if($followers){
       $app = App::getSingleton();
       $conn = $app->conexionBd();

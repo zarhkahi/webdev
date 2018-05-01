@@ -131,7 +131,7 @@ class Usuario {
   public static function unfollow($id_u, $id_f){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("DELETE FROM Seguidores WHERE id_usuario = %s AND id_siguiendo = %s", $conn->real_escape_string($id_u), $conn->real_escape_string($id_f));
+    $query = sprintf("DELETE FROM Seguidores WHERE id_usuario = $id_u AND id_siguiendo = $id_f");
     if($rs = $conn->query($query)){
       $act = array('tipo' => "sigue", 'id_evento' => null, 'id_usuario' => $id_u, 'id_siguiendo' => $id_f);
       if(!Actividad::eliminarActividad($act))
@@ -143,10 +143,26 @@ class Usuario {
     
 
   //Los usuarios que sigue $id_U
-  public static function getFollowers($id_u){
+  public static function getFollowing($id_u){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
     $query = sprintf("SELECT id_siguiendo FROM Seguidores WHERE id_usuario = $id_u");
+    $rs = $conn->query($query);
+    if($rs && $rs->num_rows > 0){
+      $followers = array();
+      while($row = $rs->fetch_assoc()){
+          $followers[] = $row;
+      }
+      $rs->free();
+      return $followers;
+    }
+    return false;
+  }
+
+  public static function getFollower($id_u){ //s when all changed
+    $app = App::getSingleton();
+    $conn = $app->conexionBd();
+    $query = sprintf("SELECT id_usuario FROM Seguidores WHERE id_siguiendo = $id_u");
     $rs = $conn->query($query);
     if($rs && $rs->num_rows > 0){
       $followers = array();

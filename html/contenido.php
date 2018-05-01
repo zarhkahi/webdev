@@ -11,19 +11,22 @@ function mostrarContenido() {
 		$events = \es\ucm\fdi\aw\Evento::userEvents($app->idUsuario()); 
 		if($events){
 		  foreach ($events as $item => $event){
-			$html .= "<div class=\"eventCont\">";
-			$html .= '<div><img src="/AW/includes/fotos-eventos/37.jpg"></div>';
-			//$html .= "<1h>" . $item->nombre_evento() . "</1h> \n" . "<p>" . $item->fecha_evento() . " "  . $item->precio_evento() . "</p> \n";
-			$html .= "<div><h1>" . $event['nombre'] . "</h1>" . "<p> Fecha:" . $event['fecha']  . "</p></div>";
-			$html .=  '<div><p><form method="POST" action="updateEvento.php" class="null" enctype="">
+				$html .= "<div class=\"eventCont\">";
+				//$html .= '<div><img src="/AW/includes/fotos-eventos/37.jpg"></div>';
+				$html .= '<div class="miniEvent" ><form method="POST" action="event.php" id="' . $event['nombre'] . '" class="null">
+                <input class="null" name="event" value="'. $event['id_evento'] . '" type="hidden" readonly>	
+                <input class="imgEventMini" type="image" src="/AW/includes/fotos-eventos/37.jpg" alt="Submit Form" /></form></div>';
+				//$html .= "<1h>" . $item->nombre_evento() . "</1h> \n" . "<p>" . $item->fecha_evento() . " "  . $item->precio_evento() . "</p> \n";
+				$html .= "<div><h1>" . $event['nombre'] . "</h1><p> Fecha: " . $event['fecha']  . "</p></div>";
+				$html .=  '<div><p><form method="POST" action="updateEvento.php" class="null" enctype="">
         	<input class="null" name="id_e" value="'. $event['id_evento'] . '" type="hidden" readonly>	
         	<button class="buttonCont" type="submit"><span class="button__inner">Edit</span></button>
         	</form></p>';
-        	$html .=  '<p><form method="POST" action="deleteEvento.php" class="null" enctype="">
+      	$html .=  '<p><form method="POST" action="deleteEvento.php" class="null" enctype="">
         	<input class="null" name="id_e" value="'. $event['id_evento'] . '" type="hidden" readonly>	
         	<button class="buttonCont buttonCont--secondary" type="submit"><span class="button__inner">Delete</span></button>
         	</form></p></div>';
-			$html .= "</div>";
+				$html .= "</div>";
 		  }
 		}
 		else{

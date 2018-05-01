@@ -17,14 +17,14 @@ function mostrarSaludo() {
 }
 
 ?>
+
+	
 <div id="cabecera">
 	<h1>E-Vents</h1>
 	<div class = "Buscar">
 		 <form method = "GET" action = "search.php">
-	   		<input class="form-control moduleField smallSearchField required dooFinderSearch"
-		    id="smallSearchCriteriaField" name="search" placeholder="Buscar " value="" 
-		    data-positional="{&quot;on_right_side&quot;:true,&quot;left_side&quot;:355,&quot;right_side&quot;:1013}" type="text">	
-			<input type="submit" class="boton" value="Buscar"/>
+		 <fieldset>	<input name="search" placeholder="Buscar " type="text">	
+			<input type="submit" class="inputSearch" value="Buscar"/></fieldset>
 		</form>
 	</div>
 	<div class="saludo">
