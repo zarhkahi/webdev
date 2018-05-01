@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2018 at 01:54 PM
+-- Generation Time: May 01, 2018 at 09:09 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -44,7 +44,8 @@ INSERT INTO `actividades` (`id_actividad`, `fecha`, `id_usuario`) VALUES
 (3, '2018-04-30 00:04:30', 4),
 (4, '2018-04-30 00:05:23', 6),
 (5, '2018-04-30 00:06:03', 7),
-(6, '2018-04-30 00:06:46', 8);
+(6, '2018-04-30 00:06:46', 8),
+(9, '2018-05-01 14:52:35', 4);
 
 -- --------------------------------------------------------
 
@@ -173,6 +174,13 @@ CREATE TABLE `seguidores` (
   `id_siguiendo` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+--
+-- Dumping data for table `seguidores`
+--
+
+INSERT INTO `seguidores` (`id_usuario`, `id_siguiendo`) VALUES
+(4, 7);
+
 -- --------------------------------------------------------
 
 --
@@ -183,6 +191,13 @@ CREATE TABLE `sigue` (
   `id_actividad` int(10) NOT NULL,
   `id_usuario` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Dumping data for table `sigue`
+--
+
+INSERT INTO `sigue` (`id_actividad`, `id_usuario`) VALUES
+(9, 7);
 
 -- --------------------------------------------------------
 
@@ -302,7 +317,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id_actividad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_actividad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `eventos`
