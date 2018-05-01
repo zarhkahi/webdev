@@ -10,6 +10,40 @@ img {
 	height: auto;
 }
 
+/*---------------------------------SAMUEL CODE STARTS HERE---------------------------------------------*/
+
+.site {
+	display: grid;
+	grid-template-columns: 1fr 6fr;
+	grid-template-rows: 1fr 4fr 0.25fr;
+	grid-template-areas: 
+		"title title"
+		"sidebar main"
+		"footer footer";
+}
+
+.header {
+	grid-area: title;
+	background-color: #596666;
+}
+
+.sidebar {
+	grid-area: sidebar;
+	background-color: #adafaf;
+}
+
+.maincontent {
+	grid-area: main;
+	background-color: #878787;
+}
+
+.footer {
+	grid-area: footer;
+	background-color: tomato;
+}
+
+/*---------------------------------SAMUEL CODE ENDS HERE--------------------------------------------*/
+
 .row::after {
 	content: "";
 	clear: both;
@@ -478,11 +512,12 @@ div.nameFollowing .linkName:hover:after{
 */
 
 .box {
-  background-color: #444;
-  color: #fff;
-  border-radius: 5px;
-  padding: 20px;
-  font-size: 100%;
+	grid-area: main;
+	background-color: #444;
+	color: #fff;
+	border-radius: 5px;
+	padding: 20px;
+	font-size: 100%;
 }
 
 .box:nth-child(even) {

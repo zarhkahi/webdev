@@ -29,7 +29,7 @@ function mostrarContenido() {
     $events = array();
     $events = \es\ucm\fdi\aw\Evento::allEvents();
     if($events){
-			$html .= " <div class=\"wrapper\">";
+			$html .= '<div class="site">';
       foreach( $events as $item => $event) { 
 				$html .= '<div class="box"><form method="POST" action="event.php" class="null" enctype="">
         <input class="null" name="event" value="'. $event['id_evento'] . '" type="hidden" readonly>	

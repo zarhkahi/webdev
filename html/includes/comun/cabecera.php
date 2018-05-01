@@ -19,8 +19,8 @@ function mostrarSaludo() {
 ?>
 
 	
-<div id="cabecera">
-	<h1>E-Vents</h1>
+<div class="headercontent">
+	<h1 class= "hch1">E-Vents</h1>
 	<div class = "Buscar">
 		 <form method = "GET" action = "search.php">
 		 <fieldset>	<input name="search" placeholder="Buscar " type="text">	
