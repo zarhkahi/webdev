@@ -19,7 +19,7 @@ require_once __DIR__.'/includes/config.php';
 
 	<div class="col-10" id="contenido">
 		<h1>Formulario para Borrar Evento </h1>
-		<?php $formEvento = new \es\ucm\fdi\aw\FormulariosEvento('elimina', $_POST['id_e']); 
+		<?php $formEvento = new \es\ucm\fdi\aw\FormulariosEvento('elimina', $_POST['id_delete']); 
 		$formEvento->gestiona(); ?> 
 	</div>
 

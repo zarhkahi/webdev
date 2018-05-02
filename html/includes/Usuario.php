@@ -159,6 +159,16 @@ class Usuario {
     return false;
   }
 
+  public static function checkFollow($id_u, $id_f){
+    $app = App::getSingleton();
+    $conn = $app->conexionBd();
+    $query = sprintf("SELECT * FROM Seguidores WHERE id_usuario = %s AND id_siguiendo = %s", $conn->real_escape_string($id_u), $conn->real_escape_string($id_f));
+    $rs = $conn->query($query);
+    if($rs && $rs->num_rows > 0)
+      return true;
+    return false;
+  }
+
   public static function getFollower($id_u){ //s when all changed
     $app = App::getSingleton();
     $conn = $app->conexionBd();

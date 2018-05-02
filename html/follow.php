@@ -35,11 +35,11 @@ function mostrarContenido() {
 				$html .= "<div>This user hasn't yet created and Event</div>";
 			}
 
-			$html .=  '<div><p><form method="POST" action="follow.php?unfollow=true" class="null">
+			$html .=  '<div><form method="POST" action="follow.php?unfollow=true" class="null">
 					<input class="null" name="id_u" value="'. $app->idUsuario() . '" type="hidden" readonly>
 					<input class="null" name="id_f" value="'. $id_user['id_siguiendo'] . '" type="hidden" readonly>
-        	<button class="buttonCont" type="submit"><span class="button__inner">Unfollow</span></button>
-					</form></p><p>Followers ';
+        	<button class="buttonFollow buttonDelete" type="submit"><span class="button__inner">Unfollow</span></button>
+					</form><p>Followers ';
 			($id_folowers) ? $html .= sizeof($id_folowers) . '</p>' : $html .= '0</p>';
 	
 			$html .= "</div></div>";

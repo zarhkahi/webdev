@@ -8,7 +8,7 @@ require_once __DIR__.'/includes/config.php';
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   	<link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
-  	<title>Create Event</title>
+  	<title>Crear Evento</title>
 </head>
 <body>
 <div id="contenedor">

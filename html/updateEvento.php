@@ -17,7 +17,7 @@ require_once __DIR__.'/includes/config.php';
 
 	<div class="col-10" id="contenido">
 		<h1>Formulario para Actualizar Evento </h1>
-		<?php $formEvento = new \es\ucm\fdi\aw\FormulariosEvento('actualiza',$_POST['id_e']);//,$_POST['id_e']); 
+		<?php $formEvento = new \es\ucm\fdi\aw\FormulariosEvento('actualiza',$_POST['id_update']);//,$_POST['id_e']); 
 		$formEvento->gestiona(); ?>
 	</div>
 

@@ -13,16 +13,27 @@ function mostrarContenido() {
     $user = aw\Usuario::searchUserById($id);
     $app = aw\Aplicacion::getSingleton();
 	  if ($user) {
-      $html = "<h1>" . $user->nombre() . " " . $user->apellidos() . "</h1><br><p> Email: " . $user->email() . "</p><br><p>Member since: "  . $user->fecha() . "</p><br>";
-      if($app->usuarioLogueado()){
+      $html = '<div class="cont"><div class="wrapperEvent">
+      <div class="event-title"><div class="nested">Nº Followers/Following</div><div class="nested"><h1>' . $user->nombre() . ' ' . $user->apellidos() . '</h1></div>';
+      if($app->usuarioLogueado()){//COMPROBAR SI YA ESTA SEGUIDO
         $id_u = $app->idUsuario();
-        if ($id != $id_u) {
-          $html .='<form method="POST" action="user.php?follow=true" class="null" enctype="">
+        if ($id != $id_u) {//id="follow"
+          if(aw\Usuario::checkFollow($id_u, $user->id()) === TRUE){
+            $html .=  '<div><form method="POST" action="follow.php?unfollow=true" class="null">
+					    <input class="null" name="id_u" value="'. $id_u . '" type="hidden" readonly>
+					    <input class="null" name="id_f" value="'. $user->id() . '" type="hidden" readonly>
+        	    <button class="buttonFollow buttonDelete" type="submit"><span class="button__inner">Unfollow</span></button>
+					    </form></div>';
+          }
+          else{
+          $html .='<div class="nested"><form method="POST" action="user.php?follow=true" class="null" enctype="">
                   <input class="null" name="user" value="'. $id . '" type="hidden" readonly>	
-                  <button type="submit" id="follow">Follow</button>
-                  </form>';
+                  <button class="buttonFollow" type="submit" ><span class="button__inner">Follow</span></button>
+                  </form></div>';
+          }
         }
       }
+      $html .= '</div><div class="event-inf"><div class="nested"> Email: '. $user->email() . '</div><div class="nested">Member since: '  . $user->fecha() . '</div></div></div></div>';
 	  } else 
 		  $html = "Error 404"; 
   }
