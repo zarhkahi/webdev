@@ -1,60 +1,15 @@
+/*----------------------------------------------Import Fonts---------------------------------------------------------*/
+
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400);
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
 
+
+/*----------------------------------------------BODY RESPONSIVE STRUCTURE--------------------------------------------*/
+
+/*Needed??*/
 * {
 	box-sizing: border-box;
 }
-
-img {
-	max-width: 100%;
-	height: auto;
-}
-
-/*---------------------------------SAMUEL CODE STARTS HERE---------------------------------------------*/
-
-.site {
-	display: grid;
-	grid-gap: 10px;
-	grid-template-areas: 
-		"title"
-		"sidebar"
-		"main"
-		"footer";
-}
-
-.header {
-	grid-area: title;
-	background-color: #596666;
-}
-
-.sidebar {
-	grid-area: sidebar;
-	background-color: #adafaf;
-}
-
-.maincontent {
-	grid-area: main;
-	background-color: #878787;
-}
-
-.footer {
-	grid-area: footer;
-	background-color: tomato;
-}
-
-@media (min-width: 500px) {
-	.site {
-		display: grid;
-		grid-gap: 0px;
-		grid-template-columns: 1fr 6fr;
-		grid-template-rows: 1fr 4fr 0.25fr;
-		grid-template-areas: 
-			"title title"
-			"sidebar main"
-			"footer footer";
-	}
-}
-/*---------------------------------SAMUEL CODE ENDS HERE--------------------------------------------*/
 
 .row::after {
 	content: "";
@@ -85,12 +40,6 @@ img {
 	}
 }
 
-.menu ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
 
 body {
 	font-family: 'Lato', sans-serif;
@@ -98,12 +47,6 @@ body {
 	width: 100%;
 	margin: 0px; 
 }
-/*
-@media only screen and (max-width: 600px) {
-	body {
-			background-color: rgb(67, 158, 189);
-	}
-}*/
 
 div#contenedor {
 	width: 100%;
@@ -111,17 +54,17 @@ div#contenedor {
 	margin: 0px; 
 }
 
-h1 {
-	font-family: 'arial';
-}
 
-h3 {
-	color: rgb(255, 255, 255);
+
+
+/*----------------------------------------------header/cabezera----------------------------------------------*/
+
+div#cabecera h1 {
 	font-family: 'arial';
 }
 
 div#cabecera {
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 	padding: 15px;
 		
 	/*padding: 2%;
@@ -142,16 +85,21 @@ div#cabecera a:hover {
 	text-decoration: underline;
 } 
 
+div.saludo {
+	width: 100%;
+	text-align: right;
+}
+
+/*----------------------------------------------Menu/sidebarIzq-----------------------------------------------*/
 
 div#sidebar-left {
 	/*width: 15%;
     float: left;
     padding: 15px;*/
-		border: 1px solid red;
-		/*
-	padding: 2%; 
+	/*padding: 2%; 
 	float: left;
 	width: 13%;*/
+	/*border: 1px solid red;*/
 	background-color: #1d292d;
 }
 
@@ -167,36 +115,54 @@ div#sidebar-left {
   }
 }
 
+.menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.menu h3 {
+	color: rgb(255, 255, 255);
+	font-family: 'arial';
+}
+
+/*----------------------------------------------contenido/Content----------------------------------------------*/
+
 
 div#contenido {
 	/*width: 85%;
-  float: left;
-  padding: 15px;*/
-	border: 1px solid red;
+  	float: left;
+ 	 padding: 15px;*/
 	/*
 	padding:2%;
 	float:left;
 	width: 79%;*/
+	/*border: 1px solid red;*/
 	min-height: 600px;
 	color: #2f2d2d;
 	background-color: #ece9e7;
 	text-align: justify;
 }
 
-div#pie {
-  font-size: 12px;
-	padding: 15px;
-		
-	clear: both;
-	/*padding: 20px;*/
-	background-color: #000000;
-	color: white;
-	text-align: center;
-}
 
-div.saludo {
-	width: 100%;
-	text-align: right;
+/*----------------------------------------------Footer/pie-----------------------------------------------------*/
+
+div#pie {
+	font-size: 12px;
+	  padding: 15px;
+		  
+	  clear: both;
+	  /*padding: 20px;*/
+	  background-color: #000000;
+	  color: white;
+	  text-align: center;
+  }
+
+/*----------------------------------------------Generic tags----------------------------------------------------*/
+
+img {
+	max-width: 100%;
+	height: auto;
 }
 
 fieldset {
@@ -226,49 +192,16 @@ label {
 button {
 	margin-left: 100px;
 } 
-	
 
-/*-------------------------------NOIDEA-----------------------------*/
 
-#searchButton {
-	
-	margin-left: -0px;
-	background: none!important;
-	/*color: inherit;*/
-	color:#2175FF;
-	border: none; 
-	padding: 0!important;
-	font: inherit;
-	/*border is optional*/
-	/*border-bottom: 1px solid #444; */
-	cursor: pointer;
 
-}
+/*-----------------------------------------------Vista Contenido/Vista Follow--------------------------------------------*/
 
-div#search {
-	width: 900px;
-	margin: auto;
-	border: 1px solid black;
-	background-color: #aaaaaa;
-	margin-top: 30px;
-}
-
-#follow {
-    background:none!important;
-     border:none; 
-     padding:0!important;
-    
-    /*optional*/
-    font-family:arial,sans-serif; /*input has OS specific font-family*/
-     color:#069;
-     text-decoration:underline;
-     cursor:pointer;
-}
 
 .eventCont, .followCont{
 	width: 40%;
 	border-style: solid;
-	border-color: #3F51B5;
+	border-color: rgb(0, 0, 0);
 	border-width: 4px;
 	margin-top: 15px;
 	display: flex;
@@ -292,6 +225,12 @@ div#search {
 
 @media only screen and (min-width: 1151px) {
 	.eventCont, .followCont{
+		width: 50%;
+	}
+}
+
+@media only screen and (min-width: 1400px) {
+	.eventCont, .followCont{
 		width: 40%;
 	}
 }
@@ -311,11 +250,13 @@ div.nameFollowing button, div.nameFollowing h2{
 }
 
 div.nameFollowing{
-	box-sizing: border-box
+	box-sizing: border-box;
+	text-align: left;
 }
 
 div.nameFollowing button {
-	margin-left: -159px;
+	margin-left: -0px;
+	text-align: left;
 	background: none!important;
 	border: none; 
 	padding: 0!important;
@@ -367,142 +308,14 @@ div.nameFollowing .linkName:hover:after{
 }*/
  
 
-.miniEvent p{
-	text-align: center;
-	color: rgb(0, 0, 0);
-	margin: 0px;
-	padding: 0px;
-	border: 0px;
-}
-.miniEvent{
-	border-style: solid;
-	border-color: rgb(0, 0, 0);
-	background-color: rgb(25, 59, 87);
-}
-
-.miniEvent .imgEventMini{
-	width: 100%;
-}
-
-
-/*-------------------------------BUTTON CONTENIDO-----------------------------*/
-
-/*
-.buttonCont{
-	margin-left: -0px;
-	background: none!important;
-	color:#2175FF;
-	border: none; 
-	padding: 0!important;
-	font: inherit;
-	/*border is optional*/
-	/*border-bottom: 1px solid #444; *//*
-	cursor: pointer;
-}*/
-
-.buttonCont {
-	margin-left: -0px;
-	padding: 0!important;
-	border: none;
-  	background-color: #ebebf0;
-  	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  	-webkit-user-select: none;
-		-moz-user-select: none;
-      	-ms-user-select: none;
-        	user-select: none;
-  	position: relative;
-  	z-index: 1;
-  	padding: 0;
-}
-
-.buttonCont:before {
-	content: "";
-  	position: absolute;
-  	z-index: -1;
-  	width: 10px;
-  	right: 0;
-  	top: 0;
-  	bottom: 0;
-  	background-color: rgba(0, 10, 50, 0.2);
-  	-webkit-transition: -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
-  	transition: -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
-  	transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
-  	transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9), -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
-  	-webkit-transform: translate3D(0, 0, 0);
-        	transform: translate3D(0, 0, 0);
-}
-.buttonCont:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #ebebf0;
-  z-index: -1;
-}
-.buttonCont:hover:before, .buttonCont:focus:before {
-  -webkit-transform: translate3D(10px, 0, 0);
-          transform: translate3D(10px, 0, 0);
-}
-.buttonCont:active:before {
-  -webkit-transform: translate3D(0, 0, 0);
-          transform: translate3D(0, 0, 0);
-}
-.buttonCont:focus, .buttonCont:active {
-  outline: none;
-}
 
 
 
-.buttonCont .button__inner {
-  	text-transform: uppercase;
-	letter-spacing: 0.15em;
-	font-size: 15px;
-  	color: #333;
-  	padding: 1em 1.5em;
-  	background-color: #fbfbfb;
-  	display: block;
-  	width: 100%;
-  	height: 100%;
-  	-webkit-transition: -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
-  	transition: -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
-  	transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
-  	transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9), -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
-  	position: relative;
-}
 
-@media only screen and (max-width: 408px) {
-  .buttonCont .button__inner{
-    font-size: 10px;
-  }
-}
-.buttonCont:hover .button__inner, .buttonCont:focus .button__inner {
-  -webkit-transform: translate3D(0, -10px, 0);
-          transform: translate3D(0, -10px, 0);
-}
-.buttonCont:active .button__inner {
-  -webkit-transform: translate3D(0, 0, 0);
-          transform: translate3D(0, 0, 0);
-}
-.buttonCont:hover .button__inner, .buttonCont:focus .button__inner {
-  background-color: #fff;
-}
 
-.buttonCont--secondary {
-  background-color: #00d18e;
-  z-index: 0;
-}
-.buttonCont--secondary:after {
-  background-color: #00d18e;
-}
-.buttonCont--secondary .button__inner {
-  background-color: #00ffb2;
-}
-.buttonCont--secondary:hover .button__inner, .buttonCont--secondary:focus .button__inner {
-  background-color: #11ffb3;
-}
+
+/*-----------------------------------------------Vista Index------------------------------------------------*/
+
 
 /*
 .wrapper {
@@ -523,13 +336,13 @@ div.nameFollowing .linkName:hover:after{
 }
 */
 
+/*
 .box {
-	grid-area: main;
-	background-color: #444;
-	color: #fff;
-	border-radius: 5px;
-	padding: 20px;
-	font-size: 100%;
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 100%;
 }
 
 .box:nth-child(even) {
@@ -544,22 +357,10 @@ div.nameFollowing .linkName:hover:after{
         grid-template-columns: repeat(10, 225px);
     }
 
-
-/*
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
 */
 
 
-/*-------------------------------SEARCH-----------------------------*/
+/*-----------------------------------------------Form Search------------------------------------------------*/
 
 
 
@@ -574,20 +375,302 @@ div.nameFollowing .linkName:hover:after{
   }
 
 
-  /*----------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------
-  */
+
+  /*----------------------------------------------Vista Evento-------------------------------------------------*/
+  .cont {box-sizing: border-box;} /*users too*/
+
+  .wrapperEvent {
+	display: grid;
+	grid-template-columns: repeat(12, [col-start] 1fr);
+	grid-gap: 20px;
+  }
+  
+  .wrapperEvent > * {
+	grid-column: col-start / span 12;
+  }
+
+  .event-title h1, .event-img{
+	  text-align: center;
+  }
+  .event-title form{
+	text-align: right;
+}
+
+  
+  @media (min-width: 500px) {
+  
+ 
+  .event-content, .event-com {
+	grid-column: col-start 4 / span 9;
+  }
+  }
+  
+  @media (min-width: 700px) {
+	.event-title {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.event-img{
+		grid-column: col-start  / span 12;
+	  	grid-row: 2 / 4;
+	}
+	.event-inf{
+		
+		grid-column: col-start  / span 12;
+		grid-row: 4 / 5;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.event-content {
+	  grid-column: col-start  / span 12;
+	  grid-row: 5 / 6;
+	}
+
+	.event-com {
+	  grid-column: col-start / span 12;
+	}
+  }
 
 
+
+/*---------------------------------------------- MiniEvento---------------------------------------------------*/
+
+.miniEvent p{
+	text-align: center;
+	color: rgb(0, 0, 0);
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+.miniEvent{
+	border-style: solid;
+	border-color: rgb(0, 0, 0);
+	background-color: rgba(62, 69, 75, 0.836);/*rgba(25, 59, 87, 0.836);*/
+}
+
+.miniEvent .imgEventMini{
+	width: 100%;
+}
+
+
+
+/*----------------------------------------------Vista Usuario------------------------------------------------*/
+
+
+#follow {
+    background:none!important;
+     border:none; 
+     padding:0!important;
+    
+    /*optional*/
+    font-family:arial,sans-serif; /*input has OS specific font-family*/
+     color:#069;
+     text-decoration:underline;
+     cursor:pointer;
+}
+
+  .wrapperUser {
+	display: grid;
+	grid-template-columns: repeat(12, [col-start] 1fr);
+	grid-gap: 20px;
+  }
+  
+  .wrapperUSer > * {
+	grid-column: col-start / span 12;
+  }
+
+  .user-title h1, .user-img{
+	  text-align: center;
+  }
+  .user-title form{
+	text-align: right;
+}
+
+  
+  @media (min-width: 500px) {
+  
+ 
+  .user-content, .user-com {
+	grid-column: col-start 4 / span 9;
+  }
+  }
+  
+  @media (min-width: 700px) {
+	.user-title {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.user-img{
+		grid-column: col-start  / span 12;
+	  	grid-row: 2 / 4;
+	}
+	.user-inf{
+		
+		grid-column: col-start  / span 12;
+		grid-row: 4 / 5;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.user-content {
+	  grid-column: col-start  / span 12;
+	  grid-row: 5 / 6;
+	}
+
+	.user-com {
+	  grid-column: col-start / span 12;
+	}
+  }
+
+
+
+/*----------------------------------------------Vista Search-----------------------------------------------------*/
+
+#searchButton {
+	margin-left: -0px;
+	background: none!important;
+	/*color: inherit;*/
+	color:#2175FF;
+	border: none; 
+	padding: 0!important;
+	font: inherit;
+	/*border is optional*/
+	/*border-bottom: 1px solid #444; */
+	cursor: pointer;
+
+}
+
+div#search {
+	width: 900px;
+	margin: auto;
+	border: 1px solid black;
+	background-color: #aaaaaa;
+	margin-top: 30px;
+}
+
+
+/*----------------------------------------------Buttons Edit Delete--------------------------------------------*/
+
+
+.buttonEdit, .buttonFollow {
+	margin-left: -0px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	padding: 0!important;
+	border: none;
+  	background-color: #ebebf0;
+  	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  	-webkit-user-select: none;
+		-moz-user-select: none;
+      	-ms-user-select: none;
+        	user-select: none;
+  	position: relative;
+  	z-index: 1;
+  	padding: 0;
+}
+
+.buttonEdit:before, .buttonFollow:before {
+	content: "";
+  	position: absolute;
+  	z-index: -1;
+  	width: 10px;
+  	right: 0;
+  	top: 0;
+  	bottom: 0;
+  	background-color: rgba(0, 10, 50, 0.2);
+  	-webkit-transition: -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  	transition: -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  	transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  	transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9), -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  	-webkit-transform: translate3D(0, 0, 0);
+        	transform: translate3D(0, 0, 0);
+}
+.buttonEdit:after, .buttonFollow:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ebebf0;
+  z-index: -1;
+}
+.buttonEdit:hover:before, .buttonEdit:focus:before, .buttonFollow:hover:before, .buttonFollow:focus:before {
+  -webkit-transform: translate3D(10px, 0, 0);
+          transform: translate3D(10px, 0, 0);
+}
+.buttonEdit:active:before, .buttonFollow:active:before {
+  -webkit-transform: translate3D(0, 0, 0);
+          transform: translate3D(0, 0, 0);
+}
+.buttonEdit:focus, .buttonEdit:active, .buttonFollow:focus, .buttonFollow:active {
+  outline: none;
+}
+
+
+
+.buttonEdit .button__inner, .buttonFollow .button__inner{
+  	text-transform: uppercase;
+	letter-spacing: 0.15em;
+	font-size: 15px;
+  	color: #333;
+  	padding: 1em 1.5em;
+  	background-color: #fbfbfb;
+  	display: block;
+  	width: 100%;
+  	height: 100%;
+  	-webkit-transition: -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  	transition: -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  	transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  	transition: transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9), -webkit-transform 0.6s cubic-bezier(0, 0.9, 0.13, 0.9);
+  	position: relative;
+}
+
+@media only screen and (max-width: 408px) {
+  .buttonEdit .button__inner, .buttonFollow .button__inner{
+    font-size: 10px;
+  }
+}
+.buttonEdit:hover .button__inner, .buttonEdit:focus .button__inner, .buttonFollow:hover .button__inner, .buttonFollow:focus .button__inner {
+  -webkit-transform: translate3D(0, -10px, 0);
+          transform: translate3D(0, -10px, 0);
+}
+.buttonEdit:active .button__inner, .buttonFollow:active .button__inner {
+  -webkit-transform: translate3D(0, 0, 0);
+          transform: translate3D(0, 0, 0);
+}
+.buttonEdit:hover .button__inner, .buttonEdit:focus .button__inner, .buttonFollow:hover .button__inner, .buttonFollow:focus .button__inner {
+  background-color: #fff;
+}
+
+.buttonDelete {
+	color: #fff;
+  	background-color: #252525;
+  	/*#00d18e*/
+  	z-index: 0;
+}
+.buttonDelete:after {
+	color: #fff;
+  background-color: #252525;
+  /*#00d18e*/
+}
+.buttonDelete .button__inner {
+	color: #fff;
+  background-color: #000000;
+  /*#00ffb2*/
+}
+.buttonDelete:hover .button__inner, .buttonDelete:focus .button__inner {
+	color: #fff;
+  background-color: #000000;
+  /*#11ffb3*/
+}
+
+
+
+
+
+/*----------------------------------------------Links Menu--------------------------------------------*/
 
 div#sidebar-left a, div#sidebar-left a:visited {
 	color: white;
@@ -602,7 +685,6 @@ div#sidebar-left a:hover {
 } */
 
 
-
 div#sidebar-left a, div#sidebar-left a > span {
   	position: relative;
   	/*color: inherit;*/
@@ -614,41 +696,26 @@ div#sidebar-left a:before, div#sidebar-left a:after, div#sidebar-left a > span:b
   	transition: transform .5s ease;
 }
 
-.effect-3 {
+.underlineBlue {
   display: inline-block;
   overflow: hidden;
 }
-.effect-3:before {
+.underlineBlue:before {
   left: 0;
   bottom: 0;
   width: 100%;
   height: 2px;
-  background: #0883a4;
+  background: #c5c5c5;
+  /*#0883a4*/
   transform: translateX(-100%);
 }
-.effect-3:hover:before {
+.underlineBlue:hover:before {
   transform: translateX(0);
 }
 
 
 
-
-/*0883a4
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
-*/
-
-
-
-
+/*----------------------------------------------Links Search Users(Most likely not needed)--------------------------------------------*/
 
 
 .link--arrowed {
@@ -683,18 +750,7 @@ div#sidebar-left a:before, div#sidebar-left a:after, div#sidebar-left a > span:b
 
 
 
-	/*
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
------------------------------------------------------------------
-*/
+/*---------------------------------------------- TRASH--------------------------------------------*/
 
 
 
