@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2018 at 09:09 PM
+-- Generation Time: May 02, 2018 at 11:59 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -39,13 +39,15 @@ CREATE TABLE `actividades` (
 --
 
 INSERT INTO `actividades` (`id_actividad`, `fecha`, `id_usuario`) VALUES
-(1, '2018-04-29 18:42:30', 5),
-(2, '2018-04-30 00:03:56', 4),
-(3, '2018-04-30 00:04:30', 4),
-(4, '2018-04-30 00:05:23', 6),
-(5, '2018-04-30 00:06:03', 7),
-(6, '2018-04-30 00:06:46', 8),
-(9, '2018-05-01 14:52:35', 4);
+(1, '2018-05-02 18:05:56', 1),
+(2, '2018-05-02 18:08:10', 3),
+(3, '2018-05-02 18:09:28', 4),
+(4, '2018-05-02 18:10:01', 4),
+(5, '2018-05-02 18:10:38', 4),
+(6, '2018-05-02 18:11:36', 5),
+(7, '2018-05-02 18:12:08', 5),
+(8, '2018-05-02 18:12:33', 5),
+(9, '2018-05-02 20:15:03', 5);
 
 -- --------------------------------------------------------
 
@@ -101,7 +103,9 @@ INSERT INTO `crea` (`id_actividad`, `id_evento`) VALUES
 (3, 3),
 (4, 4),
 (5, 5),
-(6, 6);
+(6, 6),
+(7, 7),
+(9, 8);
 
 -- --------------------------------------------------------
 
@@ -115,21 +119,23 @@ CREATE TABLE `eventos` (
   `fecha` date NOT NULL,
   `lugar` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `precio` int(5) DEFAULT NULL,
-  `descripcion` varchar(60) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `id_usuario` int(10) NOT NULL
+  `id_usuario` int(10) NOT NULL,
+  `descripcion` varchar(1000) COLLATE utf8mb4_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Dumping data for table `eventos`
 --
 
-INSERT INTO `eventos` (`id_evento`, `nombre`, `fecha`, `lugar`, `precio`, `descripcion`, `id_usuario`) VALUES
-(1, 'Imagen', '2018-04-30', 'A', 12, 'A', 5),
-(2, 'BEvents', '2018-04-30', 'Ml', 50000, 'AA', 4),
-(3, 'CasTTT', '2018-04-30', 'Ad', 122, 'As', 4),
-(4, 'Handover', '2018-04-30', 'LA MONIKA', 300, 'FF', 6),
-(5, 'One More', '2018-04-30', 'Duff', 123, 'SWE', 7),
-(6, 'ANOTHER ONE', '2018-04-30', 'SSS', 12345, '123.', 8);
+INSERT INTO `eventos` (`id_evento`, `nombre`, `fecha`, `lugar`, `precio`, `id_usuario`, `descripcion`) VALUES
+(1, 'User EEVNT', '2018-05-07', 'FAR FAR AWAY', 1, 1, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the'),
+(2, 'A EVENT ups', '2018-05-10', 'FAR FAR WELL NOT THAT FAR', 4, 3, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.  The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied '),
+(3, 'BEvents', '2018-05-09', 'Form', 100, 4, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.  The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied '),
+(4, 'ANOTHER ONE', '2018-05-12', 'FAR ENOUGHT', 1000, 4, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.  The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied '),
+(5, 'WorkTTT', '2018-05-21', 'FAR ENOUGHT', 123, 4, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.  The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied '),
+(6, 'CasTTT', '2018-05-18', 'Form', 3, 5, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.  The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied '),
+(7, 'NO IDEA', '2018-05-10', 'Duff', 17, 5, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.  The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied '),
+(8, 'TEST new FORM', '2018-05-11', 'FAR ENOUGHT', 10, 5, 'scacascscscsc');
 
 -- --------------------------------------------------------
 
@@ -138,11 +144,22 @@ INSERT INTO `eventos` (`id_evento`, `nombre`, `fecha`, `lugar`, `precio`, `descr
 --
 
 CREATE TABLE `imagen` (
-  `id_imagen` int(10) NOT NULL,
   `id_evento` int(10) NOT NULL,
-  `tipo` char(15) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `imagen` mediumblob NOT NULL
+  `ruta` varchar(1000) COLLATE utf8mb4_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Dumping data for table `imagen`
+--
+
+INSERT INTO `imagen` (`id_evento`, `ruta`) VALUES
+(1, 'C:\\xampp\\htdocs\\AW\\includes\\fotos-eventos\\1.jpg'),
+(2, 'C:\\xampp\\htdocs\\AW\\includes\\fotos-eventos\\2.jpg'),
+(3, 'C:\\xampp\\htdocs\\AW\\includes\\fotos-eventos\\3.jpg'),
+(4, 'C:\\xampp\\htdocs\\AW\\includes\\fotos-eventos\\4.jpg'),
+(5, 'C:\\xampp\\htdocs\\AW\\includes\\fotos-eventos\\5.jpg'),
+(6, 'C:\\xampp\\htdocs\\AW\\includes\\fotos-eventos\\6.jpg'),
+(7, 'C:\\xampp\\htdocs\\AW\\includes\\fotos-eventos\\7.jpg');
 
 -- --------------------------------------------------------
 
@@ -179,7 +196,7 @@ CREATE TABLE `seguidores` (
 --
 
 INSERT INTO `seguidores` (`id_usuario`, `id_siguiendo`) VALUES
-(4, 7);
+(5, 4);
 
 -- --------------------------------------------------------
 
@@ -197,7 +214,7 @@ CREATE TABLE `sigue` (
 --
 
 INSERT INTO `sigue` (`id_actividad`, `id_usuario`) VALUES
-(9, 7);
+(8, 4);
 
 -- --------------------------------------------------------
 
@@ -278,7 +295,6 @@ ALTER TABLE `eventos`
 -- Indexes for table `imagen`
 --
 ALTER TABLE `imagen`
-  ADD PRIMARY KEY (`id_imagen`),
   ADD KEY `id_evento` (`id_evento`);
 
 --
@@ -317,19 +333,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id_actividad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_actividad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id_evento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `imagen`
---
-ALTER TABLE `imagen`
-  MODIFY `id_imagen` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_evento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -351,66 +361,66 @@ ALTER TABLE `usuarios`
 -- Constraints for table `actividades`
 --
 ALTER TABLE `actividades`
-  ADD CONSTRAINT `actividades_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+  ADD CONSTRAINT `Actividades_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
 
 --
 -- Constraints for table `asistentes`
 --
 ALTER TABLE `asistentes`
-  ADD CONSTRAINT `asistentes_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
-  ADD CONSTRAINT `asistentes_ibfk_2` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id_evento`);
+  ADD CONSTRAINT `Asistentes_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
+  ADD CONSTRAINT `Asistentes_ibfk_2` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id_evento`);
 
 --
 -- Constraints for table `asistira`
 --
 ALTER TABLE `asistira`
-  ADD CONSTRAINT `asistira_ibfk_1` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`),
-  ADD CONSTRAINT `asistira_ibfk_2` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id_evento`);
+  ADD CONSTRAINT `Asistira_ibfk_1` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`),
+  ADD CONSTRAINT `Asistira_ibfk_2` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id_evento`);
 
 --
 -- Constraints for table `comenta`
 --
 ALTER TABLE `comenta`
-  ADD CONSTRAINT `comenta_ibfk_1` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`);
+  ADD CONSTRAINT `Comenta_ibfk_1` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`);
 
 --
 -- Constraints for table `crea`
 --
 ALTER TABLE `crea`
-  ADD CONSTRAINT `crea_ibfk_1` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`),
-  ADD CONSTRAINT `crea_ibfk_2` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id_evento`);
+  ADD CONSTRAINT `Crea_ibfk_1` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`),
+  ADD CONSTRAINT `Crea_ibfk_2` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id_evento`);
 
 --
 -- Constraints for table `eventos`
 --
 ALTER TABLE `eventos`
-  ADD CONSTRAINT `eventos_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+  ADD CONSTRAINT `Eventos_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
 
 --
 -- Constraints for table `imagen`
 --
 ALTER TABLE `imagen`
-  ADD CONSTRAINT `imagen_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id_evento`);
+  ADD CONSTRAINT `Imagen_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id_evento`);
 
 --
 -- Constraints for table `seguidores`
 --
 ALTER TABLE `seguidores`
-  ADD CONSTRAINT `seguidores_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
-  ADD CONSTRAINT `seguidores_ibfk_2` FOREIGN KEY (`id_siguiendo`) REFERENCES `usuarios` (`id_usuario`);
+  ADD CONSTRAINT `Seguidores_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
+  ADD CONSTRAINT `Seguidores_ibfk_2` FOREIGN KEY (`id_siguiendo`) REFERENCES `usuarios` (`id_usuario`);
 
 --
 -- Constraints for table `sigue`
 --
 ALTER TABLE `sigue`
-  ADD CONSTRAINT `sigue_ibfk_1` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`),
-  ADD CONSTRAINT `sigue_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+  ADD CONSTRAINT `Sigue_ibfk_1` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`),
+  ADD CONSTRAINT `Sigue_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
 
 --
 -- Constraints for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`);
+  ADD CONSTRAINT `Usuarios_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
