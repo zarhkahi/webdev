@@ -35,7 +35,7 @@ class Actividad {
     $app = App::getSingleton();
     $conn = $app->conexionBd();
     $id_u = $datos['id_usuario'];
-    $query = sprintf("INSERT INTO Actividades (id_usuario) VALUES ($id_u)");
+    $query = sprintf("INSERT INTO actividades (id_usuario) VALUES ($id_u)");
     $rs = $conn->query($query);
     if ($rs) {
       $id_actividad = $conn->insert_id;
@@ -43,16 +43,16 @@ class Actividad {
       switch ($datos['tipo']) {
         case 'crea':
             //self::creaAct($fila['id_actividad'], $datos['id_evento']);
-            $query = sprintf("INSERT INTO Crea (id_evento, id_actividad) VALUES ( $id_evento, $id_actividad)");
+            $query = sprintf("INSERT INTO crea (id_evento, id_actividad) VALUES ( $id_evento, $id_actividad)");
             break;
         case "asiste":
             //self::asisteAct($fila['id_actividad'], $datos['id_evento']);
-            $query = sprintf("INSERT INTO Asistira (id_actividad, id_evento) VALUES ($id_actividad, $id_evento)");
+            $query = sprintf("INSERT INTO asistira (id_actividad, id_evento) VALUES ($id_actividad, $id_evento)");
             break;
         case "sigue":
             $id_f = $datos['id_siguiendo'];
             //self::sigueAct($id_actividad, $datos['id_siguiendo']);
-            $query = sprintf("INSERT INTO Sigue (id_actividad, id_usuario) VALUES ($id_actividad, $id_f)");
+            $query = sprintf("INSERT INTO sigue (id_actividad, id_usuario) VALUES ($id_actividad, $id_f)");
             break;
         case "comenta":
             self::comentaAct($id_actividad, $datos['descripcion']);
@@ -82,25 +82,25 @@ class Actividad {
     switch ($datos['tipo']) {
       case 'crea':
           $id_actividad = $datos['id_actividad'];
-          $query = sprintf("DELETE FROM Crea WHERE id_actividad=$id_actividad");
+          $query = sprintf("DELETE FROM crea WHERE id_actividad=$id_actividad");
           $rs = $conn->query($query);
-          $query = sprintf("DELETE FROM Actividades WHERE id_actividad=$id_actividad");
+          $query = sprintf("DELETE FROM actividades WHERE id_actividad=$id_actividad");
           $rs = $conn->query($query);
           break;
       case "asiste":
           break;
       case "sigue":
           $id_f = $datos['id_siguiendo'];
-          $query = sprintf("SELECT id_actividad FROM Sigue WHERE id_usuario = %s", $conn->real_escape_string($id_f));
+          $query = sprintf("SELECT id_actividad FROM sigue WHERE id_usuario = %s", $conn->real_escape_string($id_f));
           $searchAct = $conn->query($query);
           if ($searchAct && $searchAct->num_rows == 1){
             $value = $searchAct->fetch_assoc();
             $id_a = $value['id_actividad'];
 
-            $query = sprintf("DELETE FROM Sigue WHERE id_actividad = %s", $conn->real_escape_string($id_a));
+            $query = sprintf("DELETE FROM sigue WHERE id_actividad = %s", $conn->real_escape_string($id_a));
             $conn->query($query);
 
-            $query = sprintf("DELETE FROM Actividades WHERE id_actividad = %s", $conn->real_escape_string($id_a));
+            $query = sprintf("DELETE FROM actividades WHERE id_actividad = %s", $conn->real_escape_string($id_a));
             $conn->query($query);
 
             return true;
@@ -134,7 +134,7 @@ class Actividad {
       $conn = $app->conexionBd();
       foreach ($followers as $value) {
         $id_usu = $value['id_siguiendo'];
-        $query = sprintf("SELECT id_actividad FROM Actividades WHERE id_usuario = $id_usu ");//AND fecha >= $fecha");
+        $query = sprintf("SELECT id_actividad FROM actividades WHERE id_usuario = $id_usu ");//AND fecha >= $fecha");
         $getAct = $conn->query($query);
         if($getAct && $getAct->num_rows > 0){
           while($id_a = $getAct->fetch_assoc()){
@@ -153,7 +153,7 @@ class Actividad {
   public function crea($id_a){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT id_evento FROM Crea WHERE id_actividad = $id_a", $conn->real_escape_string($id_a));
+    $query = sprintf("SELECT id_evento FROM crea WHERE id_actividad = $id_a", $conn->real_escape_string($id_a));
     $getE = $conn->query($query);
     if($getE && $getE->num_rows == 1){
       $id_e = $getE->fetch_assoc();
@@ -167,7 +167,7 @@ class Actividad {
   public function asiste($id_a){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT id_evento FROM Asistira WHERE id_actividad = $id_a");
+    $query = sprintf("SELECT id_evento FROM asistira WHERE id_actividad = $id_a");
     $getE = $conn->query($query);
     if($getE && $getE->num_rows == 1){
       $id_e = $getE->fetch_assoc();
@@ -181,7 +181,7 @@ class Actividad {
   public function sigue($id_a){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT id_usuario FROM Sigue WHERE id_actividad = $id_a");
+    $query = sprintf("SELECT id_usuario FROM sigue WHERE id_actividad = $id_a");
     $getUsu = $conn->query($query);
     if($getUsu && $getUsu->num_rows == 1){
       $id_u = $getUsu->fetch_assoc();

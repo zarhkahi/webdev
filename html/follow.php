@@ -69,29 +69,34 @@ if (isset($_GET['unfollow'])) {
 
 ?><!DOCTYPE html>
 <html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  	<link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
-  	<title>Contenido</title>
-</head>
-<body>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+			<link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
+			<title>Contenido</title>
+	</head>
 
-<div id="contenedor">
-<?php
-$app->doInclude('comun/cabecera.php');
-$app->doInclude('comun/sidebarIzq.php');
-?>
-<div class="col-10" id="contenido">
+<div class="site">
+		<div class="header">
+			<?php
+				$app->doInclude('comun/cabecera.php');
+			?>
+		</div>
 
-		<h1>Following</h1>
-		<?= mostrarContenido() ?>
+		<div class="sidebar">
+			<?php
+				$app->doInclude('comun/sidebarIzq.php');
+			?>
+		</div>
 
-	
+		<div class="maincontent">
+			<?= mostrarContenido() ?>
+		</div>
+
+		<div class= "footer"> 
+			<?php
+				$app->doInclude('comun/pie.php');
+			?>
+		</div>
 </div>
-<?php
-$app->doInclude('comun/pie.php');
-?>
-</div>
-</body>
 </html>

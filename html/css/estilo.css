@@ -2,11 +2,104 @@
 
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400);
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400i,900');
 
+/*---------------------------------SAMUEL CODE STARTS HERE---------------------------------------------*/
+
+
+/*----------------------------------Variables---------------------------*/
+
+
+
+/*----------------------------------End Variables-----------------------*/
+*, *::before, *::after{
+	box-sizing: border-box;
+}
+
+.site {
+	display: grid;
+	grid-gap: 10px;
+	/*max-width: 960px;*/
+	grid-template-areas: 
+		"title"
+		"sidebar"
+		"main"
+		"footer";
+}
+
+.header {
+	grid-area: title;
+	background-color: #596666;
+}
+
+.sidebar {
+	grid-area: sidebar;
+	background-color: #adafaf;
+}
+
+.maincontent {
+	grid-area: main;
+	background-color: #878787;
+}
+
+.footer {
+	grid-area: footer;
+	background-color: tomato;
+}
+
+@media (min-width: 760px) {
+	.site {
+		display: grid;
+		grid-gap: 0px;
+		grid-template-columns: 1fr 6fr;
+		grid-template-rows: 1fr 4fr 0.25fr;
+		/*max-width: 960px;*/
+		grid-template-areas: 
+			"title title"
+			"sidebar main"
+			"footer footer";
+	}
+}
+
+/*---------------------------------Common classes description-------------------*/
+
+.webTitle {
+	text-transform: uppercase;
+	font-weight: 300;
+	font-size: 5rem;
+	color: #f8f8f8;
+	margin-top: 0;
+	margin: 0;
+	line-height: 1;
+}
+
+body {
+	font-family: "Raleway", sans-serif;
+	font-weight: 300;
+	line-height: 1.6;
+	color: #f8f8f8;
+	margin: 0;
+}
+
+.search {
+	overflow: hidden;
+}
+.search input {
+	width: 120px;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+}
+
+search input:focus {
+	width: 100%;
+}
+
+/*---------------------------------Common classes description end---------------*/
+/*---------------------------------SAMUEL CODE ENDS HERE--------------------------------------------*/
 
 /*----------------------------------------------BODY RESPONSIVE STRUCTURE--------------------------------------------*/
 
-/*Needed??*/
+/*Needed??
 * {
 	box-sizing: border-box;
 }
@@ -34,38 +127,39 @@
 .col-12 {width: 100%;}
 
 @media only screen and (max-width: 768px) {
-	/* For mobile phones: */
+	/* For mobile phones: 
 	[class*="col-"] {
 			width: 100%;
 	}
-}
+}*/
 
 
-body {
+/*body {
 	font-family: 'Lato', sans-serif;
 	background-color: #CDCDCD;
 	width: 100%;
 	margin: 0px; 
-}
+}*/
 
-div#contenedor {
+/*div#contenedor {
 	width: 100%;
 	background-color: #1d292d;
 	margin: 0px; 
-}
+}*/
 
 
 
 
 /*----------------------------------------------header/cabezera----------------------------------------------*/
 
-div#cabecera h1 {
+
+/*div#cabecera h1 {
 	font-family: 'arial';
-}
+}*/
 
 div#cabecera {
 	/*border: 1px solid red;*/
-	padding: 15px;
+	/*padding: 15px;*/
 		
 	/*padding: 2%;
 	width: auto;*/
@@ -85,14 +179,19 @@ div#cabecera a:hover {
 	text-decoration: underline;
 } 
 
-div.saludo {
+.welcome {
 	width: 100%;
 	text-align: right;
+	color: #f8f8f8;
 }
 
 /*----------------------------------------------Menu/sidebarIzq-----------------------------------------------*/
 
-div#sidebar-left {
+.left-sidebar {
+	font-family: "Raleway", sans-serif;
+	font-weight: 300;
+	color: #f8f8f8;
+	/*line-height: 1.6;*/
 	/*width: 15%;
     float: left;
     padding: 15px;*/
@@ -100,7 +199,7 @@ div#sidebar-left {
 	float: left;
 	width: 13%;*/
 	/*border: 1px solid red;*/
-	background-color: #1d292d;
+	/*background-color: #1d292d;*/
 }
 
 @media screen and (min-width: 600px) {
@@ -121,10 +220,10 @@ div#sidebar-left {
 	padding: 0;
 }
 
-.menu h3 {
+/*.menu h3 {
 	color: rgb(255, 255, 255);
 	font-family: 'arial';
-}
+}*/
 
 /*----------------------------------------------contenido/Content----------------------------------------------*/
 
@@ -147,16 +246,16 @@ div#contenido {
 
 /*----------------------------------------------Footer/pie-----------------------------------------------------*/
 
-div#pie {
+/*div#pie {
 	font-size: 12px;
 	  padding: 15px;
 		  
 	  clear: both;
-	  /*padding: 20px;*/
+	  /*padding: 20px;
 	  background-color: #000000;
 	  color: white;
 	  text-align: center;
-  }
+  }*/
 
 /*----------------------------------------------Generic tags----------------------------------------------------*/
 
@@ -746,182 +845,3 @@ div#sidebar-left a:before, div#sidebar-left a:after, div#sidebar-left a > span:b
 	stroke-dashoffset: 0;
 	}
 	
-
-
-
-
-/*---------------------------------------------- TRASH--------------------------------------------*/
-
-
-
-
-
-/*
-
-
-
-	@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400);
-	@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
-
-	input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-		color: #aca49c;
-		font-size: 0.875em;
-	}
-	
-	input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder {
-		color: #bbb5af;
-	}
-	
-	input::-moz-placeholder, textarea::-moz-placeholder {
-		color: #aca49c;
-		font-size: 0.875em;
-	}
-	
-	input:focus::-moz-placeholder, textarea:focus::-moz-placeholder {
-		color: #bbb5af;
-	}
-	
-	input::placeholder, textarea::placeholder {
-		color: #aca49c;
-		font-size: 0.875em;
-	}
-	
-	input:focus::placeholder, textarea::focus:placeholder {
-		color: #bbb5af;
-	}
-	
-	input::-ms-placeholder, textarea::-ms-placeholder {
-		color: #aca49c;
-		font-size: 0.875em;
-	}
-	
-	input:focus::-ms-placeholder, textarea:focus::-ms-placeholder {
-		color: #bbb5af;
-	}
-	
-	/* on hover placeholder *//*
-	
-	input:hover::-webkit-input-placeholder, textarea:hover::-webkit-input-placeholder {
-		color: #e2dedb;
-		font-size: 0.875em;
-	}
-	
-	input:hover:focus::-webkit-input-placeholder, textarea:hover:focus::-webkit-input-placeholder {
-		color: #cbc6c1;
-	}
-	
-	input:hover::-moz-placeholder, textarea:hover::-moz-placeholder {
-		color: #e2dedb;
-		font-size: 0.875em;
-	}
-	
-	input:hover:focus::-moz-placeholder, textarea:hover:focus::-moz-placeholder {
-		color: #cbc6c1;
-	}
-	
-	input:hover::placeholder, textarea:hover::placeholder {
-		color: #e2dedb;
-		font-size: 0.875em;
-	}
-	
-	input:hover:focus::placeholder, textarea:hover:focus::placeholder {
-		color: #cbc6c1;
-	}
-	
-	input:hover::placeholder, textarea:hover::placeholder {
-		color: #e2dedb;
-		font-size: 0.875em;
-	}
-	
-	input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
-		color: #cbc6c1;
-	}
-	
-
-	
-	header {
-		position: relative;
-		margin: 100px 0 25px 0;
-		font-size: 2.3em;
-		text-align: center;
-		letter-spacing: 7px;
-	}
-	
-	#register {
-		position: relative;
-		width: 500px;
-		margin: 50px auto 100px auto;
-	}
-	
-	input {
-		font-family: 'Lato', sans-serif;
-		font-size: 0.875em;
-		width: 470px;
-		height: 50px;
-		padding: 0px 15px 0px 15px;
-		
-		background: transparent;
-		outline: none;
-		color: #726659;
-		
-		border: solid 1px #b3aca7;
-		border-bottom: none;
-		
-		transition: all 0.3s ease-in-out;
-		-webkit-transition: all 0.3s ease-in-out;
-		-moz-transition: all 0.3s ease-in-out;
-		-ms-transition: all 0.3s ease-in-out;
-	}
-	
-	input:hover {
-		background: #b3aca7;
-		color: #e2dedb;
-	}
-	
-	textarea {
-		width: 470px;
-		max-width: 470px;
-		height: 110px;
-		max-height: 110px;
-		padding: 15px;
-		
-		background: transparent;
-		outline: none;
-		
-		color: #726659;
-		font-family: 'Lato', sans-serif;
-		font-size: 0.875em;
-		
-		border: solid 1px #b3aca7;
-		
-		transition: all 0.3s ease-in-out;
-		-webkit-transition: all 0.3s ease-in-out;
-		-moz-transition: all 0.3s ease-in-out;
-		-ms-transition: all 0.3s ease-in-out;
-	}
-	
-	textarea:hover {
-		background: #b3aca7;
-		color: #e2dedb;
-	}
-	
-	#submit {
-		width: 502px;
-		
-		padding: 0;
-		margin: -5px 0px 0px 0px;
-		
-		font-family: 'Lato', sans-serif;
-		font-size: 0.875em;
-		color: #42403f;
-		
-		outline:none;
-		cursor: pointer;
-		
-		border: solid 1px #b3aca7;
-		border-top: none;
-	}
-	
-	#submit:hover {
-		color: #e2dedb;
-	}*/

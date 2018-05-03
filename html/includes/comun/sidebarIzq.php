@@ -14,7 +14,7 @@ $app = aw\Aplicacion::getSingleton();
 			if ($app->usuarioLogueado()) {
 				echo "<li><a class=\"effect-3\" href=", $app->resuelve('/contenido.php'), ">Your Events</a></li>";
 				echo "<li><a class=\"effect-3\" href=", $app->resuelve('/follow.php'), ">Following</a></li>";
-				echo "<li><a class=\"effect-3\" href=", $app->resuelve('/createEvento.php'), ">Crear Evento</a></li>";
+				echo "<li><a class=\"effect-3\" href=", $app->resuelve('/createEvento.php'), ">Create Event</a></li>";
 				
 			}
 			else

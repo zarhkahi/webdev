@@ -35,7 +35,7 @@ class Usuario {
     if ($user && $user->compruebaPassword($password)) {
       $app = App::getSingleton();
       $conn = $app->conexionBd();
-      $query = sprintf("SELECT R.nombre FROM Roles R, Usuarios U WHERE U.id_rol = R.id_rol AND U.id_usuario=%s", $conn->real_escape_string($user->id));
+      $query = sprintf("SELECT R.nombre FROM roles R, usuarios U WHERE U.id_rol = R.id_rol AND U.id_usuario=%s", $conn->real_escape_string($user->id));
       $rs = $conn->query($query);
       if ($rs) {
         while($fila = $rs->fetch_assoc()) { 
@@ -51,7 +51,7 @@ class Usuario {
   public static function buscaUsuario($email) {
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT * FROM Usuarios WHERE email='%s'", $conn->real_escape_string($email));
+    $query = sprintf("SELECT * FROM usuarios WHERE email='%s'", $conn->real_escape_string($email));
     $rs = $conn->query($query);
     if ($rs && $rs->num_rows == 1) {
       $fila = $rs->fetch_assoc();
@@ -65,7 +65,7 @@ class Usuario {
   public static function searchUserById($id_u) {
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT * FROM Usuarios WHERE id_usuario='%s'", $conn->real_escape_string($id_u));
+    $query = sprintf("SELECT * FROM usuarios WHERE id_usuario='%s'", $conn->real_escape_string($id_u));
     $rs = $conn->query($query);
     if ($rs && $rs->num_rows == 1) {
       $fila = $rs->fetch_assoc();
@@ -79,7 +79,7 @@ class Usuario {
   public static function register($email, $nombre, $apellidos, $password) {
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("INSERT INTO Usuarios (email, nombre, apellidos, password, id_rol) VALUES ('%s', '%s', '%s', '%s', 1)", $conn->real_escape_string($email), $conn->real_escape_string($nombre), $conn->real_escape_string($apellidos), password_hash($password, PASSWORD_DEFAULT));
+    $query = sprintf("INSERT INTO usuarios (email, nombre, apellidos, password, id_rol) VALUES ('%s', '%s', '%s', '%s', 1)", $conn->real_escape_string($email), $conn->real_escape_string($nombre), $conn->real_escape_string($apellidos), password_hash($password, PASSWORD_DEFAULT));
     if ($conn->query($query) === TRUE){
       return true;
     }
@@ -91,7 +91,7 @@ class Usuario {
     $conn = $app->conexionBd();
     $value = htmlspecialchars($value);
     $value = $conn->real_escape_string($value);
-    $query = sprintf("SELECT * FROM Usuarios WHERE nombre LIKE '%%".$value."%%' OR apellidos LIKE '%%".$value."%%'");
+    $query = sprintf("SELECT * FROM usuarios WHERE nombre LIKE '%%".$value."%%' OR apellidos LIKE '%%".$value."%%'");
     $rs = $conn->query($query);
     if ($rs && $rs->num_rows > 0) {
         $users = array();
@@ -110,12 +110,12 @@ class Usuario {
     $app = App::getSingleton();
     $conn = $app->conexionBd();
 
-    $query = sprintf("SELECT COUNT(*) AS total FROM Seguidores WHERE id_usuario = %s AND id_siguiendo = %s", $conn->real_escape_string($id_u), $conn->real_escape_string($id_f));
+    $query = sprintf("SELECT COUNT(*) AS total FROM seguidores WHERE id_usuario = %s AND id_siguiendo = %s", $conn->real_escape_string($id_u), $conn->real_escape_string($id_f));
     $rv = $conn->query($query);
     $values = $rv->fetch_assoc();
 
-    $query = sprintf("INSERT INTO Seguidores (id_usuario, id_siguiendo) SELECT * FROM (SELECT '$id_u', '$id_f') AS tmp WHERE NOT EXISTS (
-      SELECT id_usuario, id_siguiendo FROM Seguidores WHERE id_usuario = '$id_u' AND id_siguiendo = $id_f) LIMIT 1;");
+    $query = sprintf("INSERT INTO seguidores (id_usuario, id_siguiendo) SELECT * FROM (SELECT '$id_u', '$id_f') AS tmp WHERE NOT EXISTS (
+      SELECT id_usuario, id_siguiendo FROM seguidores WHERE id_usuario = '$id_u' AND id_siguiendo = $id_f) LIMIT 1;");
     if($rs = $conn->query($query)){
       if ($values['total'] == 0) {
         $act = array('tipo' => "sigue", 'id_evento' => null, 'id_usuario' => $id_u, 'id_siguiendo' => $id_f, 'descripcion' => null);
@@ -131,7 +131,7 @@ class Usuario {
   public static function unfollow($id_u, $id_f){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("DELETE FROM Seguidores WHERE id_usuario = $id_u AND id_siguiendo = $id_f");
+    $query = sprintf("DELETE FROM seguidores WHERE id_usuario = $id_u AND id_siguiendo = $id_f");
     if($rs = $conn->query($query)){
       $act = array('tipo' => "sigue", 'id_evento' => null, 'id_usuario' => $id_u, 'id_siguiendo' => $id_f);
       if(!Actividad::eliminarActividad($act))
@@ -146,7 +146,7 @@ class Usuario {
   public static function getFollowing($id_u){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT id_siguiendo FROM Seguidores WHERE id_usuario = $id_u");
+    $query = sprintf("SELECT id_siguiendo FROM seguidores WHERE id_usuario = $id_u");
     $rs = $conn->query($query);
     if($rs && $rs->num_rows > 0){
       $followers = array();
@@ -162,7 +162,7 @@ class Usuario {
   public static function checkFollow($id_u, $id_f){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT * FROM Seguidores WHERE id_usuario = %s AND id_siguiendo = %s", $conn->real_escape_string($id_u), $conn->real_escape_string($id_f));
+    $query = sprintf("SELECT * FROM seguidores WHERE id_usuario = %s AND id_siguiendo = %s", $conn->real_escape_string($id_u), $conn->real_escape_string($id_f));
     $rs = $conn->query($query);
     if($rs && $rs->num_rows > 0)
       return true;
@@ -172,7 +172,7 @@ class Usuario {
   public static function getFollower($id_u){ //s when all changed
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT id_usuario FROM Seguidores WHERE id_siguiendo = $id_u");
+    $query = sprintf("SELECT id_usuario FROM seguidores WHERE id_siguiendo = $id_u");
     $rs = $conn->query($query);
     if($rs && $rs->num_rows > 0){
       $followers = array();
@@ -190,7 +190,7 @@ class Usuario {
   public static function getMyFollowers($id_u){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT id_usuario FROM Seguidores WHERE id_siguiendo = $id_u");
+    $query = sprintf("SELECT id_usuario FROM seguidores WHERE id_siguiendo = $id_u");
     $rs = $conn->query($query);
     if($rs && $rs->num_rows > 0){
       $followers = array();

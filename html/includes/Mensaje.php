@@ -23,7 +23,7 @@ class Mensaje {
     $result = [];
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = "SELECT M.id, U.id AS usuario, U.username, M.mensaje, M.idMensajePadre FROM Mensajes M, Usuarios U WHERE U.id = M.usuario";
+    $query = "SELECT M.id, U.id AS usuario, U.username, M.mensaje, M.idMensajePadre FROM mensajes M, usuarios U WHERE U.id = M.usuario";
     if($idMensajePadre) {
       $query = $query . ' AND M.idMensajePadre = %s';
       $query = sprintf($query, $conn->real_escape_string($idMensajePadre));
@@ -42,7 +42,7 @@ class Mensaje {
     $result = null;
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf('SELECT M.id, U.id AS usuario, U.username, M.mensaje, M.idMensajePadre FROM Mensajes M, Usuarios U WHERE U.id = M.usuario AND M.id = %s;', $conn->real_escape_string($idMensaje));
+    $query = sprintf('SELECT M.id, U.id AS usuario, U.username, M.mensaje, M.idMensajePadre FROM mensajes M, usuarios U WHERE U.id = M.usuario AND M.id = %s;', $conn->real_escape_string($idMensaje));
     $rs = $conn->query($query);
     if ($rs && $rs->row_count == 1) {
       while($fila = $rs->fetch_assoc()) {
@@ -57,7 +57,7 @@ class Mensaje {
     $result = false;
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("INSERT INTO Mensajes (usuario, mensaje, idMensajePadre) VALUES (%s, '%s', %s)", $conn->real_escape_string($mensaje->usuario), $conn->real_escape_string($mensaje->mensaje), !is_null($mensaje->idMensajePadre)?$mensaje->idMensajePadre : 'NULL');
+    $query = sprintf("INSERT INTO mensajes (usuario, mensaje, idMensajePadre) VALUES (%s, '%s', %s)", $conn->real_escape_string($mensaje->usuario), $conn->real_escape_string($mensaje->mensaje), !is_null($mensaje->idMensajePadre)?$mensaje->idMensajePadre : 'NULL');
     print_r($query);
     $result = $conn->query($query);
     if ($result) {

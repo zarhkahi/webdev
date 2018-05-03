@@ -16,19 +16,26 @@ function mostrarSaludo() {
   return $html;
 }
 
-?>
+?><!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+      <div class= "headerContent">
+        <h1 class= "webTitle">E-Vents</h1>
+        <p>Your N*1 place to create, share and follow events!</p>
+      </div>
 
-	
-<div class="headercontent">
-	<h1 class= "hch1">E-Vents</h1>
-	<div class = "Buscar">
-		 <form method = "GET" action = "search.php">
-		 <fieldset>	<input name="search" placeholder="Buscar " type="text">	
-			<input type="submit" class="inputSearch" value="Buscar"/></fieldset>
-		</form>
-	</div>
-	<div class="saludo">
-	  <?=	mostrarSaludo() ?>
-	</div>
-</div>
+      <div class = "search">
+          <form method = "GET" action = "search.php">
+            <input name="search" placeholder="Buscar " type="text">	
+            <input type="submit" class="inputSearch" value="Buscar"/>
+          </form>
+      </div>
+
+      <div class="welcome">
+          <?=	mostrarSaludo() ?>
+      </div>
+</html>
 
