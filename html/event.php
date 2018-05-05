@@ -87,18 +87,28 @@ function mostrarImg(){
   <link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
   <title>Evento</title>
 </head>
-<body>
-  <div id="contenedor">
-    <?php
-      $app->doInclude('comun/cabecera.php');
-      $app->doInclude('comun/sidebarIzq.php');
-    ?>
-    <div class="col-10" id="contenido">
+
+<div class="site">
+		<div class="header">
+			<?php
+				$app->doInclude('comun/cabecera.php');
+			?>
+		</div>
+
+		<div class="sidebar">
+			<?php
+				$app->doInclude('comun/sidebarIzq.php');
+			?>
+		</div>
+
+		<div class="maincontent">
 	    <?= mostrarContenido() ?>
     </div>
-    <?php
-      $app->doInclude('comun/pie.php');
-    ?>
-  </div>
-</body>
+
+		<div class= "footer"> 
+			<?php
+				$app->doInclude('comun/pie.php');
+			?>
+		</div>
+</div>
 </html>

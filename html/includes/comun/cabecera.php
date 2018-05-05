@@ -29,7 +29,7 @@ function mostrarSaludo() {
 
       <div class = "search">
           <form method = "GET" action = "search.php">
-            <input name="search" placeholder="Buscar " type="text">	
+            <input type="text" name="search" placeholder="Buscar ">	
             <input type="submit" class="inputSearch" value="Buscar"/>
           </form>
       </div>

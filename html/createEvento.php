@@ -29,7 +29,7 @@ require_once __DIR__.'/includes/config.php';
 			<?php $formEvento = new \es\ucm\fdi\aw\FormulariosEvento('crea'); $formEvento->gestiona(); ?>
 		</div>
 
-		<div class= "footer"> 
+		<div class="footer"> 
 			<?php
 				$app->doInclude('comun/pie.php');
 			?>

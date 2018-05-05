@@ -9,13 +9,21 @@ require_once __DIR__.'/includes/config.php';
   <link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
   <title>Admin</title>
 </head>
-<body>
-<div id="contenedor">
-	<?php
-		$app->doInclude('comun/cabecera.php');
-		$app->doInclude('comun/sidebarIzq.php');
-	?>
-	<div id="contenido">
+
+<div class="site">
+		<div class="header">
+			<?php
+				$app->doInclude('comun/cabecera.php');
+			?>
+		</div>
+
+		<div class="sidebar">
+			<?php
+				$app->doInclude('comun/sidebarIzq.php');
+			?>
+		</div>
+
+		<div class="maincontent">
 	<?php
 		if ($app->tieneRol('admin', 'Acceso Denegado', 'No tienes permisos suficientes para administrar la web.')) {
 				echo "<h1>Consola de administración</h1>";
@@ -23,10 +31,10 @@ require_once __DIR__.'/includes/config.php';
 		}
 	?>
 		</div>
-	<?php
-		$app->doInclude('comun/sidebarDer.php');
-		$app->doInclude('comun/pie.php');
-	?>
+		<div class= "footer"> 
+			<?php
+				$app->doInclude('comun/pie.php');
+			?>
+		</div>
 </div>
-</body>
 </html>
