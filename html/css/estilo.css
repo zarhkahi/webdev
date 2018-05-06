@@ -671,8 +671,8 @@ search input:focus {
 	cursor: pointer;
 
 }
-
-/*.search {
+/*
+.search {
 	width: 900px;
 	margin: auto;
 	border: 1px solid black;
@@ -680,7 +680,7 @@ search input:focus {
 	margin-top: 30px;
 }
 
-
+*/
 
 	.search-title {
 		border-style: solid;
@@ -718,7 +718,7 @@ search input:focus {
 		text-align: right;
 	}
 
-*/
+
 
 	/*
 @media only screen and (max-width: 768px) {
@@ -1056,7 +1056,81 @@ search input:focus {
 
 
 
-/*----------------------------------------------Vista Search-----------------------------------------------------*/
+/*------------------------------------------FormsUpdate/Create/Delete/Login/Register-----------------------------------------------------*/
+
+button.field {
+	border:0;
+	margin: 20px;
+	width: 500px;
+	padding: 20px;
+	font-size: 25px;
+	background-color: #555555;
+	text-align: center;
+	color:white;
+} 
+
+button.field,button.fieldDelete:hover {
+	cursor: pointer;
+}
+
+button.fieldDelete{
+	border:0;
+	width: 200px;
+	margin: auto;
+	padding: 30px;
+	font-size: 25px;
+	text-align: center;
+	background-color: #d8a787d5;
+	color:white;
+}
+
+input.field,textarea.field{
+	border:0;
+	width: 500px;
+	border-radius: 0px;
+	font-size:16px;
+	background-color: #d3d0cea8;
+}
+
+input.fieldDatePrice{
+	border:0;
+	border-radius: 5px;
+	font-size:16px;
+	background-color: #d3d0ce;
+}
+
+textarea.field{
+	min-height: 100px;
+	max-height: 200px;
+	max-width: 500px;
+	min-width: 500px;
+}
+
+fieldset.formEvents{
+	border:0;
+	width: 500px;
+	color: rgb(80, 78, 78);
+	font-size: 20px;
+	text-align: left;
+	background-color: #d3d0ce;
+	border-radius: 5px;
+	position: relative;
+	padding: 20px;
+	margin: auto;
+}
+
+fieldset.formDeleteEvents{
+	border:0;
+	width: 500px;
+	color: rgb(80, 78, 78);
+	font-size: 20px;
+	background-color: #d3d0ce;
+	border-radius: 5px;
+	position: relative;
+	padding: 25px;
+	justify-content: space-between;
+	margin: auto;
+}
 
 
 
