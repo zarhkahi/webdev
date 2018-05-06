@@ -25,8 +25,8 @@ function mostrarSaludo() {
         <p>Your N*1 place to create, share and follow events!</p>
       </div>
       <div class = "search">
-      <form method = "GET" action = "searchEvents.php">
-		  <fieldset>	<input name="search" placeholder="Buscar " type="text">	
+      <form class = "formSearch" method = "GET" action = "searchEvents.php">
+		  <fieldset>	<input type="text" name="search" placeholder="Buscar ">	
 		  <input type="submit" class="inputSearch" value="Buscar"/></fieldset>
 		  </form>
       </div>

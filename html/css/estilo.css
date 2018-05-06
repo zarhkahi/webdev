@@ -44,7 +44,9 @@ body {
 .site {
 	display: grid;
 	grid-gap: 0px;
-	grid-template: auto;
+	/*grid-template: auto;*/
+	grid-template-columns: 100%;
+	grid-template-rows: 1fr auto 4fr 0.25fr;
 	grid-template-areas: 
 		"title"
 		"sidebar"
@@ -174,9 +176,9 @@ img {
 }
 
 fieldset {
-	border: 1px solid black;
+	border: none;
 	width: 16em;
-	text-align: right;
+	text-align: center;
 	margin: 0 auto;
 }
 
@@ -622,7 +624,7 @@ div.nameFollowing button {
 }
 
 .formSearch input[type=text]:focus {
-	width: 50%;
+	width: 100%;
 }
 
 
@@ -642,7 +644,7 @@ div.nameFollowing button {
 	border-radius: 0px;
   }
 
-
+*/
 .search {
 	overflow: hidden;
 }
@@ -654,7 +656,7 @@ div.nameFollowing button {
 
 search input:focus {
 	width: 100%;
-}*/
+}
 
 #searchButton {
 	margin-left: -0px;
@@ -670,7 +672,7 @@ search input:focus {
 
 }
 
-.search {
+/*.search {
 	width: 900px;
 	margin: auto;
 	border: 1px solid black;
@@ -716,7 +718,7 @@ search input:focus {
 		text-align: right;
 	}
 
-
+*/
 
 	/*
 @media only screen and (max-width: 768px) {
