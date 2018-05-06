@@ -4,7 +4,32 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400i,900');
 
-/*---------------------------------SAMUEL CODE STARTS HERE---------------------------------------------*/
+
+/*---------------------------------Common classes description-------------------*/
+
+.webTitle {
+	text-transform: uppercase;
+	font-weight: 300;
+	font-size: 5rem;
+	color: #f8f8f8;
+	margin-top: 0;
+	margin: 0;
+	margin-left: 1;
+	line-height: 1;
+}
+
+body {
+	font-family: "Raleway", sans-serif;
+	font-weight: 300;
+	line-height: 1.6;
+	color: #f8f8f8;
+	margin: 0;
+}
+
+/*---------------------------------Common classes description end---------------*/
+
+
+/*----------------------------------------------BODY RESPONSIVE STRUCTURE--------------------------------------------*/
 
 *, *::before, *::after{
 	box-sizing: border-box;
@@ -21,26 +46,13 @@
 		"footer";
 }
 
-.header {
-	grid-area: title;
-	background-color: #596666;
-}
-
-.sidebar {
-	grid-area: sidebar;
-	background-color: #adafaf;
-}
 
 .maincontent {
 	grid-area: main;
 	background-color: #878787;
 }
 
-.footer {
-	grid-area: footer;
-	background-color: #000000;
-	text-align: center;
-}
+
 
 @media (min-width: 760px) {
 	.site {
@@ -55,51 +67,13 @@
 	}
 }
 
-/*---------------------------------Common classes description-------------------*/
-
-.webTitle {
-	text-transform: uppercase;
-	font-weight: 300;
-	font-size: 5rem;
-	color: #f8f8f8;
-	margin-top: 0;
-	margin: 0;
-	line-height: 1;
-}
-
-body {
-	font-family: "Raleway", sans-serif;
-	font-weight: 300;
-	line-height: 1.6;
-	color: #f8f8f8;
-	margin: 0;
-}
-
-.search {
-	/*overflow: hidden;*/
-	justify-items: center;
-}
-.search input[type=text] {
-	border: none;
-	border-bottom: lightsteelblue;
-	width: 120px;
-	-webkit-transition: width 0.4s ease-in-out;
-	transition: width 0.4s ease-in-out;
-}
-
-search input[type=text]:focus {
-	width: 100%;
-}
-
-/*---------------------------------Common classes description end---------------*/
-/*---------------------------------SAMUEL CODE ENDS HERE--------------------------------------------*/
-
-/*----------------------------------------------BODY RESPONSIVE STRUCTURE--------------------------------------------*/
-
-
 
 /*----------------------------------------------header/cabezera----------------------------------------------*/
 
+.header {
+	grid-area: title;
+	background-color: #596666;
+}
 
 .welcome {
 	width: 100%;
@@ -107,7 +81,13 @@ search input[type=text]:focus {
 	color: #f8f8f8;
 }
 
+
 /*----------------------------------------------Menu/sidebarIzq-----------------------------------------------*/
+
+.sidebar {
+	grid-area: sidebar;
+	background-color: #adafaf;
+}
 
 .left-sidebar {
 	font-family: "Raleway", sans-serif;
@@ -126,7 +106,6 @@ search input[type=text]:focus {
     font-size: 17px;
   }
 }
-
 
 .menu ul {
 	list-style-type: none;
@@ -156,16 +135,11 @@ div#contenido {
 
 /*----------------------------------------------Footer/pie-----------------------------------------------------*/
 
-/*div#pie {
-	font-size: 12px;
-	  padding: 15px;
-		  
-	  clear: both;
-	  /*padding: 20px;
-	  background-color: #000000;
-	  color: white;
-	  text-align: center;
-  }*/
+.footer {
+	grid-area: footer;
+	background-color: #000000;
+	text-align: center;
+}
 
 /*----------------------------------------------Generic tags----------------------------------------------------*/
 
@@ -271,57 +245,10 @@ div.nameFollowing button {
 	padding: 0!important;
 
 	position: relative;
-  	/*background-color: transparent;*/
   	cursor: pointer;
   	outline: none;
   	font-size: 14px;
 }
-
-/*
-div.nameFollowing button {
-	position: relative;
-  	padding: 0;
-  	border: 0;
-  	background-color: transparent;
-  	cursor: pointer;
-  	outline: none;
-  	font-size: 14px;
-  	margin: 0;
-}
-
-div.nameFollowing .linkName{
-	color: #000000;
-
-}
-
-div.nameFollowing .linkName:after, div.nameFollowing .linkName:before{
-	content: '';
-    display: block;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: #000000;
-    transition: all 0.3s ease;
-    transform: scale(0.85);
-}
-
-div.nameFollowing .linkName:hover:before{
-	top: 0;
-	transform: scale(1);
-}
-
-div.nameFollowing .linkName:hover:after{
-	transform: scale(1);
-}*/
- 
-
-
-
-
-
-
 
 /*-----------------------------------------------Vista Index------------------------------------------------*/
 
@@ -330,7 +257,22 @@ div.nameFollowing .linkName:hover:after{
 
 /*-----------------------------------------------Form Search------------------------------------------------*/
 
+.formSearch {
+	align-content: center;
+	position: relative;
+	font-family: "Raleway", sans-serif;
+}
+.formSearch input[type=text] {
+	border: none;
+	border-bottom: lightsteelblue;
+	width: 120px;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+}
 
+.formSearch input[type=text]:focus {
+	width: 50%;
+}
 
 
 /*----------------------------------------------Vista Evento-------------------------------------------------*/
@@ -698,4 +640,3 @@ div#sidebar-left a:before, div#sidebar-left a:after, div#sidebar-left a > span:b
   .link--arrowed:hover .arrow-icon--circle {
 	stroke-dashoffset: 0;
 	}
-	

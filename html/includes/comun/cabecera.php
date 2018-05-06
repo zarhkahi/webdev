@@ -22,13 +22,14 @@ function mostrarSaludo() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   </head>
+
       <div class= "headerContent">
         <h1 class= "webTitle">E-Vents</h1>
         <p>Your N*1 place to create, share and follow events!</p>
       </div>
 
       <div class = "search">
-          <form method = "GET" action = "search.php">
+          <form class = "formSearch" method = "GET" action = "search.php">
             <input type="text" name="search" placeholder="Buscar ">	
             <input type="submit" class="inputSearch" value="Buscar"/>
           </form>
@@ -37,5 +38,5 @@ function mostrarSaludo() {
       <div class="welcome">
           <?=	mostrarSaludo() ?>
       </div>
-</html>
 
+</html>
