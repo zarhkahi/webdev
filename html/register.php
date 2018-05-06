@@ -10,29 +10,19 @@ require_once __DIR__.'/includes/config.php';
 	<link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
   	<title>Registro</title>
 </head>
-
-
+<body>
 <div class="site">
-		<div class="header">
-			<?php
-				$app->doInclude('comun/cabecera.php');
-			?>
-		</div>
-
-		<div class="sidebar">
-			<?php
-				$app->doInclude('comun/sidebarIzq.php');
-			?>
-		</div>
-
+	<?php
+		$app->doInclude('comun/cabecera.php');
+		$app->doInclude('comun/sidebarIzq.php');
+	?>
+	
 		<div class="maincontent">
-			<?php $formRegister = new \es\ucm\fdi\aw\FormularioUsuario('register'); $formRegister->gestiona(); ?>
+			<?php $formRegister = new \es\ucm\fdi\aw\FormularioRegistro(); $formRegister->gestiona(); ?>
 		</div>
-		
-		<div class= "footer"> 
-			<?php
-				$app->doInclude('comun/pie.php');
-			?>
-		</div>
+	<?php
+		$app->doInclude('comun/pie.php');
+	?>
 </div>
+</body>
 </html>

@@ -13,8 +13,11 @@ function mostrarContenido() {
     $user = aw\Usuario::searchUserById($id);
     $app = aw\Aplicacion::getSingleton();
 	  if ($user) {
+      $followers = aw\Usuario::getFollower($user->id());
+      $following = aw\Usuario::getFollowing($user->id());
       $html = '<div class="cont"><div class="wrapperEvent">
-      <div class="event-title"><div class="nested">Nº Followers/Following</div><div class="nested"><h1>' . $user->nombre() . ' ' . $user->apellidos() . '</h1></div>';
+      <div class="user-title"><div class="nested">Followers: '. (($followers == false) ? '0' : count($followers)) . '<br> Following: ' . (($following == false) ? '0' : count($following)) .'</div>
+      <div class="nested"><h1>' . $user->nombre() . ' ' . $user->apellidos() . '</h1></div>';
       if($app->usuarioLogueado()){//COMPROBAR SI YA ESTA SEGUIDO
         $id_u = $app->idUsuario();
         if ($id != $id_u) {//id="follow"
@@ -33,7 +36,27 @@ function mostrarContenido() {
           }
         }
       }
-      $html .= '</div><div class="event-inf"><div class="nested"> Email: '. $user->email() . '</div><div class="nested">Member since: '  . $user->fecha() . '</div></div></div></div>';
+      $html .= '</div><div class="user-inf"><div class="nested"> Email: '. $user->email() . '</div><div class="nested">Member since: '  . $user->fecha() . '</div></div>';
+      $html .= '<div class="user-title"><h3>Last five E-vents:</h3></div>';
+
+      $events = \es\ucm\fdi\aw\Evento::userEvents($user->id(), 5);
+      $numShown = 5;
+        if($events){
+        $html .= '<div class="user-events">';
+          foreach( $events as $item => $event) { 
+          if($numShown > 0){
+            $html .= '<div class="single-event event' . $numShown . '">';
+            $html .= '<div class="miniEvent" ><form method="POST" action="event.php" id="' . $event['nombre'] . '" class="null">
+                    <input class="null" name="event" value="'. $event['id_evento'] . '" type="hidden" readonly>	
+                    <input class="imgEventMini" type="image" src="'. aw\Evento::showImageById($event['id_evento']).'" alt="Submit Form" /></form>';
+                    $html .= '<p>' . $event['nombre'] . '</p></div></div>';
+            $numShown = $numShown - 1;
+          }
+        }
+        $html .= "</div>";
+        }
+      $html .= "</div></div>";
+      //$html .= '</div><div class="user-events"><div class="nested"> Email: '. $user->email() . '</div><div class="nested">Member since: '  . $user->fecha() . '</div></div></div></div>';
 	  } else 
 		  $html = "Error 404"; 
   }
@@ -64,24 +87,19 @@ if (isset($_GET['follow'])) {
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
   <title>Usuario</title>
-  </head>
+</head>
+<body>
 <div class="site">
-		<div class="header">
-			<?php
-				$app->doInclude('comun/cabecera.php');
-			?>
-		</div>
-
-		<div class="sidebar">
-			<?php
-				$app->doInclude('comun/sidebarIzq.php');
-			?>
-		</div>
-
-		<div class= "footer"> 
-			<?php
-				$app->doInclude('comun/pie.php');
-			?>
-		</div>
+  <?php
+    $app->doInclude('comun/cabecera.php');
+    $app->doInclude('comun/sidebarIzq.php');
+  ?>
+  <div class="maincontent">
+	  <?= mostrarContenido() ?>
+  </div>
+  <?php
+    $app->doInclude('comun/pie.php');
+  ?>
 </div>
+</body>
 </html>

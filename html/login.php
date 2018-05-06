@@ -10,29 +10,20 @@ require_once __DIR__.'/includes/config.php';
   	<link rel="stylesheet" type="text/css" href="<?= $app->resuelve('/css/estilo.css') ?>" />
   	<title>Login</title>
 </head>
-
-
+<body>
 <div class="site">
-		<div class="header">
-			<?php
-				$app->doInclude('comun/cabecera.php');
-			?>
-		</div>
-
-		<div class="sidebar">
-			<?php
-				$app->doInclude('comun/sidebarIzq.php');
-			?>
-		</div>
+	<?php
+		$app->doInclude('comun/cabecera.php');
+		$app->doInclude('comun/sidebarIzq.php');
+	?>
 
 		<div class="maincontent">
-			<?php $formLogin = new \es\ucm\fdi\aw\FormularioUsuario("login"); $formLogin->gestiona(); ?>
+			<?php $formLogin = new \es\ucm\fdi\aw\FormularioLogin(); $formLogin->gestiona(); ?>
 		</div>
 		
-		<div class="footer"> 
-			<?php
-				$app->doInclude('comun/pie.php');
-			?>
-		</div>
-	</div>
+	<?php
+		$app->doInclude('comun/pie.php');
+	?>
+</div>
+</body>
 </html>

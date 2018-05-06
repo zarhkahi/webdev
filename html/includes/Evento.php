@@ -1,7 +1,7 @@
 <?php
 namespace es\ucm\fdi\aw;
 use es\ucm\fdi\aw\Aplicacion as App;
-use es\ucm\fdi\aw\Actividad as Actividad;
+use es\ucm\fdi\aw\ActividadCrea as ActCrea;
 class Evento {
   private $id_evento;
   private $nombre;
@@ -19,34 +19,33 @@ class Evento {
     $this->id_usuario = $id_usuario;
     $this->descripcion=$descripcion;
   }
-    public function deleteEvent(){
-      $app = App::getSingleton();
-      $conn = $app->conexionBd();
-      $act = array('tipo' => "crea", 'id_evento' => $id_e, 'id_usuario' => null, 'id_siguiendo' => null);
-      if( Actividad::eliminarActividad($act) === TRUE){
-        $query = sprintf("DELETE FROM imagen WHERE id_evento=$idEvent");
-        $rs = $conn->query($query);
-        $query = sprintf("DELETE FROM eventos WHERE id_evento=$idEvent");
-        $rs = $conn->query($query);
-        if ($rs===TRUE) 
-          return true;
-        else
-          return 'Error al eliminar el evento.';   
-       }
-      return 'Error al eliminar actividad.';   
+
+  public function deleteEvent(){
+    $app = App::getSingleton();
+    $conn = $app->conexionBd();
+    if( ActCrea::eliminarActividad($this->id_evento) === TRUE){
+      $query = sprintf("DELETE FROM Imagen WHERE id_evento=$this->id_evento");
+      $rs = $conn->query($query);
+      $query = sprintf("DELETE FROM Eventos WHERE id_evento=$this->id_evento");
+      $rs = $conn->query($query);
+      if ($rs===TRUE) 
+        return true;
+      else
+        return 'Error al eliminar el evento.';   
+    }
+    return 'Error al eliminar actividad.';   
    }
 
    
-  public static function createEvent($EventName, $EventDate, $EventLugar, $precio, $idUser,$EventDes) {
+  public static function createEvent($EventName, $EventDate, $EventLugar, $precio, $idUser, $EventDes) {
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("INSERT INTO eventos (nombre,fecha,lugar,precio,id_usuario,descripcion) VALUES('%s','%s','%s',$precio,$idUser,'%s')",$conn->real_escape_string($EventName),$conn->real_escape_string($EventDate),
+    $query = sprintf("INSERT INTO Eventos (nombre,fecha,lugar,precio,id_usuario,descripcion) VALUES('%s','%s','%s',$precio,$idUser,'%s')",$conn->real_escape_string($EventName),$conn->real_escape_string($EventDate),
             $conn->real_escape_string($EventLugar),$conn->real_escape_string($EventDes) );
     $rs = $conn->query($query);
     if ($rs===TRUE) {
-      $event=new Evento($conn->insert_id, $EventName, $EventDate, $EventLugar, $precio, $idUser,$EventDes);
-      $act = array('tipo' => "crea", 'id_evento' => $conn->insert_id, 'id_usuario' => $idUser, 'id_siguiendo' => null, 'descripcion' => null);
-      if(Actividad::crearActividad($act) === FALSE)
+      $event=new Evento($conn->insert_id, $EventName, $EventDate, $EventLugar, $precio, $idUser, $EventDes);
+      if(ActCrea::crearActividad($conn->insert_id, $idUser) === FALSE)
         return false;
       return $event;//new Evento($conn->insert_id, $nombre, $fecha, $lugar, $precio, $id_usuario);
     }   
@@ -59,7 +58,7 @@ class Evento {
   public static function searchEventById($id_evento) { //nombre
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT * FROM eventos WHERE id_evento='%s'", $conn->real_escape_string($id_evento));
+    $query = sprintf("SELECT * FROM Eventos WHERE id_evento='%s'", $conn->real_escape_string($id_evento));
     $rs = $conn->query($query);
     if ($rs && $rs->num_rows == 1) {
       $fila = $rs->fetch_assoc();
@@ -72,7 +71,7 @@ class Evento {
 public static function searchEventByName($EventName,$idUser) { //nombre
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT * FROM eventos WHERE nombre='%s' and id_usuario=$idUser", $conn->real_escape_string($EventName));
+    $query = sprintf("SELECT * FROM Eventos WHERE nombre='%s' and id_usuario=$idUser", $conn->real_escape_string($EventName));
     $rs = $conn->query($query);
     if ($rs and $rs->num_rows > 0) {
       $rs->free();
@@ -85,7 +84,7 @@ public static function searchEventByName($EventName,$idUser) { //nombre
     $conn = $app->conexionBd();
     $value = htmlspecialchars($value);
     $value = $conn->real_escape_string($value);
-    $query = sprintf("SELECT * FROM eventos WHERE nombre LIKE '%%".$value."%%' OR lugar LIKE '%%".$value."%%'");
+    $query = sprintf("SELECT * FROM Eventos WHERE nombre LIKE '%%".$value."%%' OR lugar LIKE '%%".$value."%%'");
     $rs = $conn->query($query);
     if ($rs && $rs->num_rows > 0) {
       $events = array();
@@ -102,13 +101,13 @@ public static function searchEventByName($EventName,$idUser) { //nombre
   public function deleteImage(){
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT ruta FROM imagen WHERE id_evento=$this->id_evento");
+    $query = sprintf("SELECT ruta FROM Imagen WHERE id_evento=$this->id_evento");
     if($rs = $conn->query($query)){
       $fila = $rs->fetch_assoc();
       //$rs-<free;
       $rutaArchivo =$fila['ruta']; //Obtengo la dir.
       if(unlink($rutaArchivo)){
-        $query = sprintf("DELETE FROM imagen WHERE id_evento=$this->id_evento");
+        $query = sprintf("DELETE FROM Imagen WHERE id_evento=$this->id_evento");
       return  $conn->query($query) ? true : 'Error al borrar el archivo. ';
       }
     }
@@ -122,9 +121,9 @@ public static function searchEventByName($EventName,$idUser) { //nombre
       $extension = substr(strrchr($nombreOriginal, "."), 1); //Obtengo la extension del archivo.
       $rutaArchivo = dirname(__DIR__).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'fotos-eventos'.DIRECTORY_SEPARATOR.$this->id_evento.'.'.$extension;
       if (file_exists($rutaArchivo) )
-		    $query = sprintf("UPDATE imagen SET ruta='%s' WHERE id_evento=$this->id_evento",$conn->real_escape_string($rutaArchivo));
+		    $query = sprintf("UPDATE Imagen SET ruta='%s' WHERE id_evento=$this->id_evento",$conn->real_escape_string($rutaArchivo));
       else
-		    $query = sprintf("INSERT INTO imagen (id_evento,ruta) VALUES($this->id_evento,'%s')",$conn->real_escape_string($rutaArchivo));
+		    $query = sprintf("INSERT INTO Imagen (id_evento,ruta) VALUES($this->id_evento,'%s')",$conn->real_escape_string($rutaArchivo));
 	  if(move_uploaded_file($rutaTemporal​, $rutaArchivo)){
 		    $rs = $conn->query($query);
         return $rs;
@@ -135,15 +134,60 @@ public static function searchEventByName($EventName,$idUser) { //nombre
     return 'No exsiste el archivo tmp. ';
   }
 
+public  function showImageById($id_evento){
+    $app = App::getSingleton();
+    $conn = $app->conexionBd();
+    $query = sprintf("SELECT ruta 
+                      FROM Imagen
+                      WHERE id_evento=$id_evento");
+    $rs = $conn->query($query);
+    if($rs && $rs->num_rows > 0){
+      while($row = $rs->fetch_assoc())
+        $foto = $row['ruta'];
+      $rs->free();
+      return substr($foto,15);//13 Container
+    }
+      
+   }
+
   public function updateEvent() {
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("UPDATE eventos SET nombre='%s',fecha='%s',lugar='%s',precio=$this->precio,descripcion='%s'  WHERE id_evento=$this->id_evento",
+    $query = sprintf("UPDATE Eventos SET nombre='%s',fecha='%s',lugar='%s',precio=$this->precio,descripcion='%s'  WHERE id_evento=$this->id_evento",
       $conn->real_escape_string($this->nombre),$conn->real_escape_string($this->fecha),$conn->real_escape_string($this->lugar),$conn->real_escape_string($this->descripcion));
     $rs = $conn->query($query);
     return $rs===TRUE ? true : 'Error al actualizar el evento. ';
   }
  //--
+
+  public function getNumEvents($num, $time = null, $type = null, $place = null) {
+    $app = App::getSingleton();
+    $conn = $app->conexionBd();
+    if($type == 'near')
+      $query = sprintf("SELECT * FROM Eventos WHERE lugar = '%s' ORDER BY id_evento DESC LIMIT %s", $conn->real_escape_string($place), $conn->real_escape_string($num));
+    else if($type == 'last')
+      $query = sprintf("SELECT * FROM Eventos ORDER BY id_evento DESC LIMIT %s", $conn->real_escape_string($num));
+    else if($type == 'next'){
+      $today = date("Y-m-d");
+      $limit = date("Y-m-d", strtotime('+'. $time  . 'week'));
+      $query = sprintf("SELECT * FROM Eventos WHERE fecha >=  '%s' AND fecha <= '%s' ORDER BY id_evento DESC LIMIT %s", $conn->real_escape_string($today), 
+      $conn->real_escape_string($limit), $conn->real_escape_string($num));
+    }
+    //$query = sprintf("SELECT * FROM Eventos ORDER BY id_evento DESC LIMIT %s", $conn->real_escape_string($num));
+    //$query = sprintf("SELECT * FROM Eventos LIMIT %s", $conn->real_escape_string($num));
+    $rs = $conn->query($query);
+    if($rs && $rs->num_rows > 0){
+      $events = array();
+      while($row = $rs->fetch_assoc()){
+        array_push($events,$row);
+      }
+      $rs->free();
+      return $events;
+    }
+    else
+      return false;
+  }
+
   public function allEvents() {
     $app = App::getSingleton();
     $conn = $app->conexionBd();
@@ -161,11 +205,14 @@ public static function searchEventByName($EventName,$idUser) { //nombre
     else
       return false;
   }
-  //He quitado el if de usuario logueado por que ya lo compuebas en contenido y al profe eso no le gusta ;)
-  public function userEvents($id) {
+ 
+  public function userEvents($id, $num = null) {
     $app = App::getSingleton();
     $conn = $app->conexionBd();
-    $query = sprintf("SELECT * FROM eventos WHERE id_usuario = $id");
+    if($num == null)
+    $query = sprintf("SELECT * FROM Eventos WHERE id_usuario = $id");
+    else
+    $query = sprintf("SELECT * FROM Eventos WHERE id_usuario = $id ORDER BY id_evento DESC LIMIT %s", $conn->real_escape_string($num));
     $rs = $conn->query($query);
     if($rs && $rs->num_rows > 0){
       $events = array();
@@ -181,17 +228,15 @@ public static function searchEventByName($EventName,$idUser) { //nombre
     else
       return false;
   }
+  /* THEY WILL BE DELETE SOON
   public function showAllEvents() {
     $html = "Lista de eventos: <br>";
     $events = array();
     $events = Evento::allEvents();
-    //$html = implode (" <br> " , $events);
     if($events){
       foreach( $events as $item => $event) {
-        //echo $item.': id is '.$event['id'].', size is '.$event['size'];
         $html .= "<h1>" . $event['nombre'] . "</h1> <br>" . "<p> Fecha:" . $event['fecha'] . " Precio:"  . $event['precio'] . "€ Lugar: " . $event['lugar'] . "</p> <br>";
-        //$html .= "<br> <p>" . $event['nombre'] . "</p>";
-        //$html = "A";
+
       }
    }
    else{
@@ -204,7 +249,6 @@ public static function searchEventByName($EventName,$idUser) { //nombre
     $events = Evento::userEvents($id);
     if($events){
       foreach ($events as $item => $event){
-        //$html .= "<1h>" . $item->nombre_evento() . "</1h> \n" . "<p>" . $item->fecha_evento() . " "  . $item->precio_evento() . "</p> \n";
         $html .= "<h1>" . $event['nombre'] . "</h1> <br>" . "<p> Fecha:" . $event['fecha'] . " Precio:"  . $event['precio'] . "€ Lugar: " . $event['lugar'] . "</p> <br>";
       }
     }
@@ -212,7 +256,7 @@ public static function searchEventByName($EventName,$idUser) { //nombre
       $html .= "No hay eventos.";
     }
     return $html;
-  }
+  }*/
 	//--
   public function id_evento() {
     return $this->id_evento;
@@ -236,6 +280,11 @@ public static function searchEventByName($EventName,$idUser) { //nombre
     return $this->descripcion;
   }
 //--
+
+
+  public function cambiarId($nuevo_nombre) {
+    $this->id_evento = $nuevo_nombre;
+  }
   public function cambiarName($nuevo_nombre) {
     $this->nombre = $nuevo_nombre;
   }

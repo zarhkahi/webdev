@@ -2,7 +2,7 @@
 
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400);
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,400i,900');
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400i,900);
 
 
 /*---------------------------------Common classes description-------------------*/
@@ -19,11 +19,17 @@
 }
 
 body {
-	font-family: "Raleway", sans-serif;
+	font-family: 'Lato', sans-serif;
 	font-weight: 300;
 	line-height: 1.6;
 	color: #f8f8f8;
 	margin: 0;
+}
+
+.site{
+	width: 100%;
+	background-color: #1d292d;
+	margin: 0px;
 }
 
 /*---------------------------------Common classes description end---------------*/
@@ -37,7 +43,7 @@ body {
 
 .site {
 	display: grid;
-	grid-gap: 5px;
+	grid-gap: 0px;
 	grid-template: auto;
 	grid-template-areas: 
 		"title"
@@ -48,8 +54,12 @@ body {
 
 
 .maincontent {
+	
 	grid-area: main;
-	background-color: #878787;
+	min-height: 600px;
+	color: #2f2d2d;
+	background-color: #ece9e7;
+	text-align: justify;
 }
 
 
@@ -72,8 +82,22 @@ body {
 
 .header {
 	grid-area: title;
-	background-color: #596666;
+	padding: 5px;
+	background-color: #0f1b1f;
+	color: white;
 }
+
+.header a, .header a:visited {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+} 
+
+.header a:hover {
+	color: #878787;
+	font-weight: bold;
+	text-decoration: underline;
+} 
 
 .welcome {
 	width: 100%;
@@ -86,7 +110,7 @@ body {
 
 .sidebar {
 	grid-area: sidebar;
-	background-color: #adafaf;
+	background-color: #1d292d;
 }
 
 .left-sidebar {
@@ -96,7 +120,8 @@ body {
 }
 
 .lSidebarContent {
-	font-family: "Raleway", sans-serif;
+	font-family: 'arial', sans-serif;;
+	/*font-family: "Raleway", sans-serif;*/
 	color: white;
 	font-weight: bold;
 }
@@ -171,21 +196,159 @@ label {
 	margin-right: 0.5em;
 	display: block;
 }
-
+/*
 button {
 	margin-left: 100px;
+} */
+
+
+
+/*------------------------------------------FormsUpdate/Create/Delete/Login/Register-----------------------------------------------------*/
+/*
+button.field {
+	border:0;
+	margin: 20px;
+	width: 500px;
+	padding: 20px;
+	font-size: 25px;
+	background-color: #d8a887;
+	text-align: center;
+	color:white;
+} 
+
+button.field,button.fieldDelete:hover {
+	cursor: pointer;
+}
+
+button.fieldDelete{
+	border:0;
+	width: 200px;
+	margin: auto;
+	padding: 30px;
+	font-size: 25px;
+	text-align: center;
+	background-color: #d8a787d5;
+	color:white;
+}
+
+input.field,textarea.field{
+	border:0;
+	width: 500px;
+	border-radius: 5px;
+	font-size:16px;
+	background-color: #d3d0cea8;
+}
+
+input.fieldDatePrice{
+	border:0;
+	border-radius: 5px;
+	font-size:16px;
+	background-color: #d3d0ce;
+}
+
+textarea.field{
+	min-height: 100px;
+	max-height: 200px;
+	max-width: 500px;
+	min-width: 500px;
+}
+
+fieldset.formEvents{
+	border:0;
+	width: 500px;
+	color: rgb(80, 78, 78);
+	font-size: 20px;
+	text-align: left;
+	background-color: #d3d0ce;
+	border-radius: 5px;
+	position: relative;
+	padding: 20px;
+	margin: auto;
+}
+
+fieldset.formDeleteEvents{
+	border:0;
+	width: 500px;
+	color: rgb(80, 78, 78);
+	font-size: 20px;
+	background-color: #d3d0ce;
+	border-radius: 5px;
+	position: relative;
+	padding: 25px;
+	justify-content: space-between;
+	margin: auto;
+}
+*/
+
+/*--------------------------------------------Multiple times used ----------------------------------------------------------*/
+.wrapperContent, .wrapperIndex, .wrapperEvent, .wrapperUSer, .wrapperFollow, .wrapperSearch {
+	padding-bottom: 5px;
+	display: grid;
+	grid-template-columns: repeat(12, [col-start] 1fr);
+	grid-gap: 20px;
+	
+}
+.wrapperContent > *, .wrapperIndex > *, .wrapperEvent > *, .wrapperUSer > *, .wrapperFollow > *, .wrapperSearch > * {
+	grid-column: col-start / span 12;
+}
+/*
+.wrapperSearch > * {
+	overflow: hidden;
+	grid-column: col-start / span 12;
+}*/
+.cont {
+	margin-top: 10px;
+	margin-left: 50px; /*research pack*/
+	margin-right: 50px;
+		box-sizing: border-box;
 } 
 
 
 
 /*-----------------------------------------------Vista Contenido/Vista Follow--------------------------------------------*/
+/*font-size: 80px; play with it
+	font-size:10vw; h1
+*/
+/*
+.wrapperContent {
+	padding-bottom: 5px;
+	display: grid;
+	grid-template-columns: repeat(12, [col-start] 1fr);
+	grid-gap: 20px;
+}
 
+.wrapperContent > * {
+	grid-column: col-start / span 12;
+}*/
+
+.content-title h2, .follow-title h2{
+		text-align: left;
+		margin: 5px;
+}
+	
+
+
+.content-title, .follow-title{
+	border-style: solid;
+	border-color: rgb(0, 0, 0);
+	border-width: 1px;
+}
+/*>1280px margin cont less*/
+.content-title, .follow-title{
+	grid-column: col-start  / span 12;
+}
+.content-events, .follow-user{
+	grid-column: col-start  / span 12;
+}
+
+
+/******************************/
 
 .eventCont, .followCont{
 	width: 40%;
 	border-style: solid;
 	border-color: rgb(0, 0, 0);
-	border-width: 4px;
+	border-width: 3px;
 	margin-top: 15px;
 	display: flex;
 	flex-flow: row nowrap;
@@ -193,30 +356,71 @@ button {
 	box-sizing: border-box;
 }
 
+.eventCont h1{
+	font-size:1vw;
+}
+.eventCont p{
+	font-size:.9vw;
+}
+
 @media only screen and (max-width: 768px) {
 	.eventCont, .followCont{
 		width: 100%;
+	}
+	.eventCont h1{
+		font-size:3vw;
+	}
+	.eventCont p{
+		font-size:2vw;
+	}
+	.followCont .miniEvent{
+		display: none;
 	}
 }
 
 @media only screen and (min-width: 768px) {
 	.eventCont, .followCont{
+		width: 100%;
+		/*height: 15%;*/
+	}
+	.eventCont h1{
+		font-size:2.1vw;
+	}
+	.eventCont p{
+		font-size:1.4vw;
+	}
+}
+
+@media only screen and (min-width: 990px) {
+	.eventCont, .followCont{
 		width: 60%;
 		/*height: 15%;*/
 	}
+	.eventCont h1{
+		font-size:1.2vw;
+	}
+	.eventCont p{
+		font-size:1vw;
+	}
 }
 
-@media only screen and (min-width: 1151px) {
+@media only screen and (min-width: 1280px) {
 	.eventCont, .followCont{
 		width: 50%;
 	}
-}
-
-@media only screen and (min-width: 1400px) {
-	.eventCont, .followCont{
-		width: 40%;
+	.eventCont h1{
+		font-size:1vw;
+	}
+	.eventCont p{
+		font-size:.9vw;
 	}
 }
+/*
+@media only screen and (min-width: 1400px) {
+	.eventCont, .followCont{
+		width: 50%;
+	}
+}*/
 
 .eventCont>div, .followCont>div{
 	/*background-color: rgb(25, 59, 87);*/
@@ -230,6 +434,9 @@ button {
 div.nameFollowing button, div.nameFollowing h2{
 	text-transform:capitalize;
 	text-align: left;
+}
+div.nameFollowing h2, div.nameFollowing h1{
+	margin: 0px;	
 }
 
 div.nameFollowing{
@@ -245,15 +452,159 @@ div.nameFollowing button {
 	padding: 0!important;
 
 	position: relative;
+  	/*background-color: transparent;*/
   	cursor: pointer;
   	outline: none;
   	font-size: 14px;
 }
 
+ 
+/*---Imagen---*//*
+.imgEventMini {
+	opacity: 1;
+	display: block;
+	width: 100%;
+	height: auto;
+	transition: .5s ease;
+	backface-visibility: hidden;
+  }
+  
+  .middle {
+	transition: .5s ease;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%)
+  }
+  
+  .test:hover .imgEventMini {
+	opacity: 0.3;
+  }
+  
+  .test:hover .middle {
+	opacity: 1;
+  }
+  
+  .eventMiniName {
+	background-color: #4CAF50;
+	color: white;
+	font-size: 16px;
+	padding: 16px 32px;
+  }*/
+
+
+
+
+
+
 /*-----------------------------------------------Vista Index------------------------------------------------*/
 
+/*
+.wrapperIndex {
+	padding-bottom: 5px;
+	display: grid;
+	grid-template-columns: repeat(12, [col-start] 1fr);
+	grid-gap: 20px;
+}
+
+.wrapperIndex > * {
+	grid-column: col-start / span 12;
+}
+*/
+  	.index-title h1{
+		/*align-items: center;*/
+  		text-align: center;
+	}
+	
+	.index-title h2{
+		text-align: left;
+		margin: 2px;
+	}
+	
+
+  	.index-sigue {
+		padding: 2px;
+		border-style: solid;
+		border-color: rgb(0, 0, 0);
+		border-width: 1px;
+  	}
+
+  	.index-title {
+		border-style: solid;
+		border-color: rgb(0, 0, 0);
+		border-width: 1px;
+	}
+/*>1280px margin cont less*/
+
+@media only screen and (min-width: 250px) {
+
+  	.index-contLogout, .user-events{
+		grid-column: col-start  / span 12;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.single-event h1{
+		font-size:5.1vw;
+	}
+	.single-event p{
+		font-size:3.4vw;
+	}
+
+}
+
+@media only screen and (min-width: 770px) {
+	.index-title {
+		display: grid;
+	}
+	.index-content {
+  		grid-column: col-start  / span 12;
+		/*grid-row: 5 / 6;*/
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.index-contLogout, .user-events{
+		grid-column: col-start  / span 12;
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+	}
+	.index-contLogout .event1{
+		visibility: visible;
+	}
+
+	
+	.single-event h1{
+		font-size:2.4vw;
+	}
+	.single-event p{
+		font-size:1.4vw;
+	}
+
+}
+
+.single-event{
+	width: 100%;
+	border-style: solid;
+	border-color: rgb(0, 0, 0);
+	border-width: 4px;
+	margin-bottom: 5px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	box-sizing: border-box;
+}
 
 
+.single-event>div{
+	/*background-color: rgb(25, 59, 87);*/
+	color: rgb(0, 0, 0);
+	text-align: center;
+	width: 100%;
+	font-size: 100%;
+	margin: 4px;
+}
 
 /*-----------------------------------------------Form Search------------------------------------------------*/
 
@@ -275,155 +626,35 @@ div.nameFollowing button {
 }
 
 
-/*----------------------------------------------Vista Evento-------------------------------------------------*/
-  .cont {box-sizing: border-box;} /*users too*/
 
-  .wrapperEvent {
-	display: grid;
-	grid-template-columns: repeat(12, [col-start] 1fr);
-	grid-gap: 20px;
-  }
-  
-  .wrapperEvent > * {
-	grid-column: col-start / span 12;
+
+/*-----------------------------------------------Vista Search------------------------------------------------*/
+
+
+
+/*data-positional="{&quot;on_right_side&quot;:true,&quot;left_side&quot;:355,&quot;right_side&quot;:1013}"*/
+/**
+.Buscar fieldset {
+	position: relative;
+	display: inline-block;
+	background: #fff;
+	border: none;
+	border-radius: 0px;
   }
 
-  .event-title h1, .event-img{
-	  text-align: center;
-  }
-  .event-title form{
-	text-align: right;
+
+.search {
+	overflow: hidden;
+}
+.search input {
+	width: 120px;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
 }
 
-  
-  @media (min-width: 500px) {
-  
- 
-  .event-content, .event-com {
-	grid-column: col-start 4 / span 9;
-  }
-  }
-  
-  @media (min-width: 700px) {
-	.event-title {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-	}
-	.event-img{
-		grid-column: col-start  / span 12;
-	  	grid-row: 2 / 4;
-	}
-	.event-inf{
-		
-		grid-column: col-start  / span 12;
-		grid-row: 4 / 5;
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-	}
-	.event-content {
-	  grid-column: col-start  / span 12;
-	  grid-row: 5 / 6;
-	}
-
-	.event-com {
-	  grid-column: col-start / span 12;
-	}
-  }
-
-
-
-/*---------------------------------------------- MiniEvento---------------------------------------------------*/
-
-.miniEvent p{
-	text-align: center;
-	color: rgb(0, 0, 0);
-	margin: 0px;
-	padding: 0px;
-	border: 0px;
-}
-
-.miniEvent{
-	border-style: solid;
-	border-color: rgb(0, 0, 0);
-	background-color: rgba(62, 69, 75, 0.836);/*rgba(25, 59, 87, 0.836);*/
-}
-
-.miniEvent .imgEventMini{
+search input:focus {
 	width: 100%;
-}
-
-
-
-/*----------------------------------------------Vista Usuario------------------------------------------------*/
-
-
-#follow {
-    background:none!important;
-     border:none; 
-     padding:0!important;
-    
-    /*optional*/
-    font-family:arial,sans-serif; /*input has OS specific font-family*/
-     color:#069;
-     text-decoration:underline;
-     cursor:pointer;
-}
-
-  .wrapperUser {
-	display: grid;
-	grid-template-columns: repeat(12, [col-start] 1fr);
-	grid-gap: 20px;
-  }
-  
-  .wrapperUSer > * {
-	grid-column: col-start / span 12;
-  }
-
-  .user-title h1, .user-img{
-	  text-align: center;
-  }
-  .user-title form{
-	text-align: right;
-}
-
-  
-  @media (min-width: 500px) {
-  
- 
-  .user-content, .user-com {
-	grid-column: col-start 4 / span 9;
-  }
-  }
-  
-  @media (min-width: 700px) {
-	.user-title {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-	}
-	.user-img{
-		grid-column: col-start  / span 12;
-	  	grid-row: 2 / 4;
-	}
-	.user-inf{
-		
-		grid-column: col-start  / span 12;
-		grid-row: 4 / 5;
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-	}
-	.user-content {
-	  grid-column: col-start  / span 12;
-	  grid-row: 5 / 6;
-	}
-
-	.user-com {
-	  grid-column: col-start / span 12;
-	}
-  }
-
-
-
-/*----------------------------------------------Vista Search-----------------------------------------------------*/
+}*/
 
 #searchButton {
 	margin-left: -0px;
@@ -439,13 +670,392 @@ div.nameFollowing button {
 
 }
 
-div#search {
+.search {
 	width: 900px;
 	margin: auto;
 	border: 1px solid black;
 	background-color: #aaaaaa;
 	margin-top: 30px;
 }
+
+
+
+	.search-title {
+		border-style: solid;
+		border-color: rgb(0, 0, 0);
+		border-width: 1px;
+	}
+
+	.search-title h2{
+		text-align: left;
+		margin: 2px;
+	}
+
+	.search-title h3{
+		text-align: left;
+		margin: 2px;
+	}
+
+	.search-title{
+		grid-column: col-start  / span 12;
+	}
+	.content-search{
+		grid-column: col-start  / span 12;
+	}
+	.search-switch{
+		grid-column: col-start  / span 12;
+	}
+
+	.search-switch {
+		grid-column: col-start  / span 12;
+		display: grid;
+	  	grid-template-columns: repeat(2, 1fr);
+	}
+
+	.search-switch .formSearchUser{
+		text-align: right;
+	}
+
+
+
+	/*
+@media only screen and (max-width: 768px) {
+	.eventCont, .followCont{
+		width: 100%;
+	}
+	.eventCont h1{
+		font-size:3vw;
+	}
+	.eventCont p{
+		font-size:2vw;
+	}
+}*/
+
+@media only screen and (max-width: 490px) {
+	.content-search{
+		font-size:3.7vw;
+	}
+	.search-title h1{
+		font-size:5.5vw;
+	}
+	.search-title h3{
+		font-size:4.1vw;
+	}
+	.formSearchUser .button-switch {
+		padding: 10px 40px;
+		font-size:3vw;
+	}
+	.formSearchEvent .button-switch{
+		padding: 10px 30px;
+		font-size:3vw;
+	}
+}
+
+@media only screen and (min-width: 490px) {
+	.button-switch {
+		padding: 15px 70px;
+	  }
+}
+
+
+	.button-switch {
+		margin: 0%;
+		background-color:  transparent;
+		letter-spacing: 4px;
+		color: black;
+		border: 1px solid black;
+		text-transform: uppercase;
+		position: relative;
+		overflow: hidden;
+		cursor: pointer;
+	  }
+	.button-switch span {
+		font-family: sans-serif;
+		position: relative;
+		z-index: 100;
+	}
+	.button-switch:before, .button-switch:after {
+		content: '';
+		color: white;
+		position: absolute;
+		display: block;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+	}
+	
+	.searchEvent:after span{
+		color: white;
+	}
+
+	.button-switch:before {
+	
+		-webkit-transform: translate3d(-100%, 0, 0);
+				transform: translate3d(-100%, 0, 0);
+		background-color: #1d292d;
+		border: 1px solid #1d292d;
+		-webkit-transition: -webkit-transform 300ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+		transition: -webkit-transform 300ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+		transition: transform 300ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+		transition: transform 300ms cubic-bezier(0.55, 0.055, 0.675, 0.19), -webkit-transform 300ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	}
+	.button-switch:after {
+		
+		background-color: black;
+		border: 1px solid black;
+		-webkit-transform: translate3d(100%, 0, 0);
+				transform: translate3d(100%, 0, 0);
+		-webkit-transition: -webkit-transform 300ms 300ms cubic-bezier(0.16, 0.73, 0.58, 0.62);
+		transition: -webkit-transform 300ms 300ms cubic-bezier(0.16, 0.73, 0.58, 0.62);
+		transition: transform 300ms 300ms cubic-bezier(0.16, 0.73, 0.58, 0.62);
+		transition: transform 300ms 300ms cubic-bezier(0.16, 0.73, 0.58, 0.62), -webkit-transform 300ms 300ms cubic-bezier(0.16, 0.73, 0.58, 0.62);
+	}
+	.button-switch:hover:before {
+		-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+	}
+	.button-switch:hover:after {
+		-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+	}
+
+	.button-switch:hover, .button-switch:focus {
+		color: #fff;
+	  }
+
+
+  /*----------------------------------------------Vista Evento-------------------------------------------------*/
+  	/*users too*/
+/*
+  .wrapperEvent {
+	display: grid;
+	grid-template-columns: repeat(12, [col-start] 1fr);
+	grid-gap: 20px;
+  }
+  
+  .wrapperEvent > * {
+	grid-column: col-start / span 12;
+  }*/
+
+  	.event-title h1{
+	  text-align: center;
+  	}
+  	.event-title form{
+		text-align: right;
+	}
+
+	.event-img{
+		display: block;
+    	/*margin-left: auto;
+    	margin-right: auto;
+		width: 50%;*/
+		height: auto; 
+		width: 100%; 
+		text-align:center;
+	}
+
+	
+	/*
+	
+@media only screen and (min-width: 768px) {
+	.eventCont, .followCont{
+		width: 60%;
+	}
+}
+
+@media only screen and (min-width: 1151px) {
+	.eventCont, .followCont{
+		width: 50%;
+	}
+}
+
+@media only screen and (min-width: 1400px) {
+	.eventCont, .followCont{
+		width: 40%;
+	}
+}
+*/
+
+
+	@media only screen and (max-width: 768px) {
+		.event-title form{
+			text-align: center;
+		  }
+		  .cont {
+			margin-left: 0px;
+			margin-right: 0px;
+		} 
+	}
+
+  @media only screen and (min-width: 500px) {
+  	.event-content, .event-com {
+			grid-column: col-start 4 / span 9;
+	  }
+		.cont {
+			margin-left: 0px;
+			margin-right: 0px;
+		} 
+  }
+  
+  @media only screen and (min-width: 700px) {
+		.event-title {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+		}
+	
+		.event-img{
+			grid-column: col-start  / span 12;
+	  	grid-row: 2 / 4;
+		}
+		.event-inf{
+			grid-column: col-start  / span 12;
+			grid-row: 4 / 5;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+		}
+		.event-content {
+	  	grid-column: col-start  / span 12;
+	  	grid-row: 5 / 6;
+		}
+
+		.event-com {
+	  	grid-column: col-start / span 12;
+		}
+		/*.cont {
+			margin-left: 50px;
+			margin-right: 50px;
+		} */
+
+	}
+	
+	@media only screen and (min-width: 1151px) {
+		.cont {
+			margin-left: 25px;
+			margin-right: 25px;
+		} 
+	}
+
+
+
+/*---------------------------------------------- MiniEvento---------------------------------------------------*/
+
+.miniEvent p{
+	text-align: center;
+	color: rgb(0, 0, 0);
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	top: 160px;
+	/*position: relative;*/
+}
+
+.miniEvent{
+	border-style: solid;
+	border-color: rgb(0, 0, 0);
+	background-color: rgba(62, 69, 75, 0.836);/*rgba(25, 59, 87, 0.836);*/
+/*
+	width:200px;
+    height:200px;
+    overflow:hidden;
+    position: relative;*/
+	
+}
+
+.miniEvent .imgEventMini{
+	/*idth: 315px;*/
+	width: 100%;
+	max-height: 190px;
+	/*position: absolute;
+	top: -50%;
+    left: -50%;
+    top: -100px;
+    left: -100px;*/
+}
+
+/*
+.imgEventMini {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}
+
+.imgEventMini:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+}*/
+
+
+/*----------------------------------------------Vista Usuario------------------------------------------------*/
+/*
+
+#follow {
+    background:none!important;
+     border:none; 
+     padding:0!important;
+    
+    /*optional*//*
+    font-family:arial,sans-serif; /*input has OS specific font-family*//*
+     color:#069;
+     text-decoration:underline;
+     cursor:pointer;
+}*/
+/*
+  .wrapperUser {
+	display: grid;
+	grid-template-columns: repeat(12, [col-start] 1fr);
+	grid-gap: 20px;
+  }
+  
+  .wrapperUSer > * {
+	grid-column: col-start / span 12;
+  }
+*/
+  .user-title h1{
+	  text-align: center;
+	}
+	.user-title h3{
+	 margin: 2px;
+  }
+  .user-title form{
+	text-align: right;
+}
+
+  /*
+  @media only screen and (min-width: 500px) {
+  
+  .user-content, .user-com {
+	grid-column: col-start 4 / span 9;
+  }
+  }*/
+  
+  @media only screen and (min-width: 700px) {
+	.user-title {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.user-inf{
+		
+		grid-column: col-start  / span 12;
+		grid-row: 2 / 3;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}/*
+	.user-content {
+	  grid-column: col-start  / span 12;
+	  grid-row: 5 / 6;
+	}
+
+	.user-com {
+	  grid-column: col-start / span 12;
+	}*/
+  }
+
+
+
+/*----------------------------------------------Vista Search-----------------------------------------------------*/
+
 
 
 /*----------------------------------------------Buttons Edit Delete--------------------------------------------*/
@@ -571,31 +1181,35 @@ div#search {
 
 /*----------------------------------------------Links Menu--------------------------------------------*/
 
-div#sidebar-left a, div#sidebar-left a:visited {
+.eft-sidebar a, .left-sidebar a:visited {
 	color: white;
 	font-weight: bold;
 	text-decoration: none;
 	font-family:'arial'
 } 
+/*
+div#sidebar-left a:hover {
+	color: #878787;
+	text-decoration: none;
+} */
 
 
-
-div#sidebar-left a, div#sidebar-left a > span {
+.left-sidebar a, .left-sidebar a > span {
   	position: relative;
   	/*color: inherit;*/
   	text-decoration: none;
 }
-div#sidebar-left a:before, div#sidebar-left a:after, div#sidebar-left a > span:before, div#sidebar-left a > span:after {
+.left-sidebar a:before, .left-sidebar a:after, .left-sidebar a > span:before, .left-sidebar a > span:after {
 	content: '';
   	position: absolute;
   	transition: transform .5s ease;
 }
 
-.underlineBlue {
+.lSidebarContent {
   display: inline-block;
   overflow: hidden;
 }
-.underlineBlue:before {
+.lSidebarContent:before {
   left: 0;
   bottom: 0;
   width: 100%;
@@ -604,7 +1218,7 @@ div#sidebar-left a:before, div#sidebar-left a:after, div#sidebar-left a > span:b
   /*#0883a4*/
   transform: translateX(-100%);
 }
-.underlineBlue:hover:before {
+.lSidebarContent:hover:before {
   transform: translateX(0);
 }
 
@@ -640,3 +1254,9 @@ div#sidebar-left a:before, div#sidebar-left a:after, div#sidebar-left a > span:b
   .link--arrowed:hover .arrow-icon--circle {
 	stroke-dashoffset: 0;
 	}
+	
+
+
+
+
+/*---------------------------------------------- TRASH--------------------------------------------*/
