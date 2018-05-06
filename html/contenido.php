@@ -5,7 +5,6 @@ require_once __DIR__.'/includes/config.php';
 use es\ucm\fdi\aw;
 
 function mostrarContenido() {
-	$html = '<div class="site-content">';
 	$html = '<div class="wrapperContent">';
 	$html .= '<div class="content-title"><h2> Last E-VENTS created.</h2></div>';
   	$app = aw\Aplicacion::getSingleton();
@@ -26,18 +25,19 @@ function mostrarContenido() {
       			$html .=  '<form method="POST" action="deleteEvento.php" class="null" enctype="">
         			<input class="null" name="id_delete" value="'. $event['id_evento'] . '" type="hidden" readonly>	
         			<button class="buttonEdit buttonDelete" type="submit"><span class="button__inner">Delete</span></button>
-        			</form></div>';
+					</form></div>';
 				$html .= "</div>";
 		  }
+		  	$html .= "</div>";
 		}
 		else{
 		  $html .= '<div class="content-title"><h3>No tienes eventos.</h3></div>';
 		}
-		$html .= '</div></div>';
+		$html .= '</div>';
 		return $html;
 
 	}
-	$html .= '</div></div>';
+	$html .= '</div>';
   return $html;
 }
 
