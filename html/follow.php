@@ -87,7 +87,9 @@ $app->doInclude('comun/cabecera.php');
 $app->doInclude('comun/sidebarIzq.php');
 ?>
 <div class="maincontent">
+	<div class="site-content">
 		<?= mostrarContenido() ?>
+	</div>
 </div>
 <?php
 $app->doInclude('comun/pie.php');

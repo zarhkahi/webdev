@@ -95,7 +95,9 @@ if (isset($_GET['follow'])) {
     $app->doInclude('comun/sidebarIzq.php');
   ?>
   <div class="maincontent">
-	  <?= mostrarContenido() ?>
+    <div class="site-content">
+	    <?= mostrarContenido() ?>
+    </div>
   </div>
   <?php
     $app->doInclude('comun/pie.php');

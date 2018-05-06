@@ -5,7 +5,7 @@ require_once __DIR__.'/includes/config.php';
 use es\ucm\fdi\aw;
 
 function mostrarContenido() {
-	//$html = '<div class="cont">';
+	$html = '<div class="site-content">';
 	$html = '<div class="wrapperContent">';
 	$html .= '<div class="content-title"><h2> Last E-VENTS created.</h2></div>';
   	$app = aw\Aplicacion::getSingleton();
@@ -57,7 +57,9 @@ function mostrarContenido() {
 		$app->doInclude('comun/sidebarIzq.php');
 	?>
 	<div class="maincontent">
-		<?= mostrarContenido() ?>
+		<div class="site-content">
+			<?= mostrarContenido() ?>
+		</div>
 	</div>
 	<?php
 	$app->doInclude('comun/pie.php');

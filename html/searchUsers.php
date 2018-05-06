@@ -59,7 +59,9 @@ function mostrarContenido() {
 	?>
 
 	<div class="maincontent">
-		<?= mostrarContenido() ?>
+        <div class="site-content">
+            <?= mostrarContenido() ?>
+        </div>
 	</div>
 	
 	<?php

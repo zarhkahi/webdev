@@ -18,7 +18,9 @@ require_once __DIR__.'/includes/config.php';
 	?>
 	
 		<div class="maincontent">
-			<?php $formRegister = new \es\ucm\fdi\aw\FormularioRegistro(); $formRegister->gestiona(); ?>
+			<div class="site-content">
+				<?php $formRegister = new \es\ucm\fdi\aw\FormularioRegistro(); $formRegister->gestiona(); ?>
+			</div>
 		</div>
 	<?php
 		$app->doInclude('comun/pie.php');

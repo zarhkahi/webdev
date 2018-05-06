@@ -22,12 +22,12 @@ function mostrarSaludo() {
 <div class="header">
 <div class= "headerContent">
         <h1 class= "webTitle">E-Vents</h1>
-        <p>Your N*1 place to create, share and follow events!</p>
+        <!--<img src="/AW/img/logo.svg" width="32" height"32">-->
       </div>
       <div class = "search">
       <form class = "formSearch" method = "GET" action = "searchEvents.php">
-		  <fieldset>	<input type="text" name="search" placeholder="Buscar ">	
-		  <input type="submit" class="inputSearch" value="Buscar"/></fieldset>
+		  <input type="text" name="search" placeholder="Buscar ">	
+		  <input type="submit" class="inputSearch" value="Buscar"/>
 		  </form>
       </div>
       <div class="welcome">

@@ -20,7 +20,9 @@ $app->logout();
 	?>
 
 		<div class="maincontent">
-			<h1>Hasta pronto!</h1>
+			<div class="site-content">
+				<h1>Hasta pronto!</h1>
+			</div>
 		</div>
 		
 	<?php

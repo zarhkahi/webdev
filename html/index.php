@@ -8,12 +8,12 @@ function mostrarContenido() {
   $html = '';
   $app = aw\Aplicacion::getSingleton();
 	if ($app->usuarioLogueado()) {
-		$html = '<div class="cont">';
+		$html = '<div class="site-content">';
 		$html .= mostrarActividadCrea($app->idUsuario(), 4);
 		$html .= mostrarActividadSigue($app->idUsuario(), 4);
 		$html .= '</div>';
 	} else {
-		$html = '<div class="cont">';
+		$html = '<div class="site-content">';
 		$html .= mostrarLastEvents(6);
 		$html .= '</div>';
   }
