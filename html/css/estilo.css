@@ -1,39 +1,9 @@
 /*----------------------------------------------Import Fonts---------------------------------------------------------*/
 
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400);
-@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400i,900);
 
-
-/*---------------------------------Common classes description-------------------*/
-
-.webTitle {
-	text-transform: uppercase;
-	font-weight: 300;
-	font-size: 5rem;
-	color: #f8f8f8;
-	margin-top: 0;
-	margin: 0;
-	margin-left: 1;
-	line-height: 1;
-}
-
-body {
-	font-family: 'Lato', sans-serif;
-	font-weight: 300;
-	line-height: 1.6;
-	color: #f8f8f8;
-	margin: 0;
-}
-
-.site{
-	width: 100%;
-	background-color: #1d292d;
-	margin: 0px;
-}
-
-
-/*----------------------------------------------BODY RESPONSIVE STRUCTURE--------------------------------------------*/
+/*----------------------------------------------Responsive Structure--------------------------------------------*/
 
 *, *::before, *::after{
 	box-sizing: border-box;
@@ -44,7 +14,7 @@ body {
 	grid-gap: 0px;
 	/*grid-template: auto;*/
 	grid-template-columns: 100%;
-	grid-template-rows: 1fr auto 4fr 0.25fr;
+	grid-template-rows: 150px auto 4fr 40px;
 	grid-template-areas: 
 		"title"
 		"sidebar"
@@ -65,8 +35,8 @@ body {
 	.site {
 		display: grid;
 		grid-gap: 0px;
-		grid-template-columns: 1fr 6fr;
-		grid-template-rows: 1fr 4fr 0.25fr;
+		grid-template-columns: 1.2fr 6fr;
+		grid-template-rows: 150px 4fr 50px;
 		grid-template-areas: 
 			"title title"
 			"sidebar main"
@@ -82,6 +52,15 @@ body {
 	padding: 7px;
 	background-color: #0f1b1f;
 	color: white;
+}
+
+@media only screen and (max-width: 450px) {
+	.headerContent h1{
+		font-size:15vw; 
+	}
+	.welcome {
+		font-size:4vw;
+	}
 }
 
 .header a, .header a:visited {
@@ -102,6 +81,16 @@ body {
 	color: #f8f8f8;
 }
 
+.webTitle {
+	text-transform: uppercase;
+	font-weight: 300;
+	font-size: 5rem;
+	color: #f8f8f8;
+	margin-top: 0;
+	margin: 0;
+	margin-left: 1;
+	line-height: 1;
+}
 
 /*----------------------------------------------Menu/sidebarIzq-----------------------------------------------*/
 
@@ -111,22 +100,19 @@ body {
 }
 
 .left-sidebar {
-	font-family: "Raleway", sans-serif;
-	font-weight: 300;
-	color: #f8f8f8;
 	padding: 7px;
 }
 
 .lSidebarContent {
-	font-family: 'arial', sans-serif;;
-	/*font-family: "Raleway", sans-serif;*/
+	font-family: 'arial', sans-serif;
+	font-weight: 300;
 	color: white;
 	font-weight: bold;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 600px) {
   .left-sidebar {
-    font-size: 17px;
+    font-size: 4vw;
   }
 }
 
@@ -143,17 +129,21 @@ body {
 }
 
 
-/*----------------------------------------------contenido/Content----------------------------------------------*/
+/*----------------------------------------------Body----------------------------------------------*/
 
 
-div#contenido {
-	/*width: 85%;
-  	float: left;
- 	padding: 15px;*/
-	min-height: 600px;
-	color: #2f2d2d;
-	background-color: #ece9e7;
-	text-align: justify;
+body {
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	line-height: 1.6;
+	color: #000000;
+	margin: 0;
+}
+
+.site{
+	width: 100%;
+	background-color: #1d292d;
+	margin: 0px;
 }
 
 
@@ -165,53 +155,43 @@ div#contenido {
 	text-align: center;
 }
 
-/*----------------------------------------------Generic tags----------------------------------------------------*/
+.imgFooter{
+	margin-top: 5px;
+	width: 30px;
+	height: 30px;
+}
+
+@media (min-width: 760px) {
+	.imgFooter{
+		margin-top: 5px;
+		width: 42px;
+		height: 42px;
+	}
+}
+
+
+/*--------------------------------------------Multiple times used ----------------------------------------------------------*/
 
 img {
 	max-width: 100%;
 	height: auto;
 }
 
-fieldset {
-	border: none;
-	width: 16em;
-	text-align: center;
-	margin: 0 auto;
-}
 
-legend {
-	color: #fff;
-	background: #303030;
-	text-align: left;
-	border: 1px solid black;
-	padding: 2px 6px;
-} 
-
-label {
-	width: 4em;
-	float: left;
-	text-align: left;
-	margin-right: 0.5em;
-	display: block;
-}
-
-
-
-/*--------------------------------------------Multiple times used ----------------------------------------------------------*/
-.wrapperContent, .wrapperIndex, .wrapperEvent, .wrapperUSer, .wrapperFollow, .wrapperSearch {
+.wrapper{
 	padding-bottom: 5px;
 	display: grid;
 	grid-template-columns: repeat(12, [col-start] 1fr);
 	grid-gap: 20px;
 	
 }
-.wrapperContent > *, .wrapperIndex > *, .wrapperEvent > *, .wrapperUSer > *, .wrapperFollow > *, .wrapperSearch > * {
+.wrapper > * {
 	grid-column: col-start / span 12;
 }
 
 .site-content {
 	margin-top: 10px;
-	margin-left: 50px; /*research pack*/
+	margin-left: 50px;
 	margin-right: 50px;
 	box-sizing: border-box;
 } 
@@ -224,8 +204,7 @@ label {
 }
 
 
-
-/*-----------------------------------------------Vista Contenido/Vista Follow--------------------------------------------*/
+/*-----------------------------------------------Vista Contenido & Vista Follow--------------------------------------------*/
 
 
 .content-title h2, .follow-title h2{
@@ -271,12 +250,12 @@ label {
 		width: 100%;
 	}
 	.eventCont h1{
-		font-size:3vw;
+		font-size:5vw;
 	}
 	.eventCont p{
-		font-size:2vw;
+		font-size:3vw;
 	}
-	.followCont .miniEvent{
+	.followCont .miniEvent, .no-event, .eventCont .miniEvent{
 		display: none;
 	}
 }
@@ -298,7 +277,7 @@ label {
 		width: 60%;
 	}
 	.eventCont h1{
-		font-size:1.2vw;
+		font-size:1.5vw;
 	}
 	.eventCont p{
 		font-size:1vw;
@@ -310,7 +289,7 @@ label {
 		width: 50%;
 	}
 	.eventCont h1{
-		font-size:1vw;
+		font-size:1.2vw;
 	}
 	.eventCont p{
 		font-size:.9vw;
@@ -325,17 +304,17 @@ label {
 	margin: 4px;
 }
 
+div.nameFollowing{
+	box-sizing: border-box;
+	text-align: left;
+}
+
 div.nameFollowing button, div.nameFollowing h2{
 	text-transform:capitalize;
 	text-align: left;
 }
 div.nameFollowing h2, div.nameFollowing h1{
 	margin: 0px;	
-}
-
-div.nameFollowing{
-	box-sizing: border-box;
-	text-align: left;
 }
 
 div.nameFollowing button {
@@ -353,6 +332,7 @@ div.nameFollowing button {
 
 
 /*-----------------------------------------------Vista Index------------------------------------------------*/
+
 
 .index-title h1{
 	/*align-items: center;*/
@@ -392,6 +372,9 @@ div.nameFollowing button {
 	.single-event p{
 		font-size:3.4vw;
 	}
+	.index-title{
+		font-size:3.1vw;
+	}
 
 }
 
@@ -421,6 +404,10 @@ div.nameFollowing button {
 	}
 	.single-event p{
 		font-size:1.4vw;
+	}
+
+	.index-title{
+		font-size:1vw;
 	}
 
 }
@@ -457,7 +444,6 @@ div.nameFollowing button {
 
 .formSearch input[type=text] {
 	border: none;
-	border-bottom: lightsteelblue;
 	width: 120px;
 	-webkit-transition: width 0.4s ease-in-out;
 	transition: width 0.4s ease-in-out;
@@ -646,7 +632,9 @@ search input:focus {
 	border-color: white;
 	border-width: 1px;
 }
-  /*----------------------------------------------Vista Evento-------------------------------------------------*/
+  
+
+/*----------------------------------------------Vista Evento-------------------------------------------------*/
 
 
 .event-title h1{
@@ -675,16 +663,16 @@ search input:focus {
 		margin-left: 5px;
 		margin-right: 5px;
 	} 
+	
 }
 
 @media only screen and (min-width: 500px) {
-  	.event-content, .event-com {
-			grid-column: col-start 4 / span 9;
-	  }
+  
 	.site-content {
 		margin-left: 5px;
 		margin-right: 5px;
 	} 
+	
 }
 
 
@@ -706,14 +694,7 @@ search input:focus {
 		grid-template-columns: repeat(3, 1fr);
 	}
 	
-	.event-content {
-		grid-column: col-start  / span 12;
-	  	grid-row: 5 / 6;
-	}
 
-	.event-com {
-	  	grid-column: col-start / span 12;
-	}
 		/*.cont {
 			margin-left: 50px;
 			margin-right: 50px;
@@ -731,7 +712,9 @@ search input:focus {
 
 /*---------------------------------------------- MiniEvento---------------------------------------------------*/
 
+
 .miniEvent p{
+	font-family: "Raleway", sans-serif;
 	text-align: center;
 	color: rgb(0, 0, 0);
 	margin: 0px;
@@ -787,11 +770,16 @@ search input:focus {
 	margin: 2px;
 }
 
+
 .user-title form{
-	text-align: right;
+	text-align: center;
 }
 
 @media only screen and (min-width: 700px) {
+	.user-title form{
+		text-align: right;
+	}
+
 	.user-title {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
@@ -808,6 +796,26 @@ search input:focus {
 
 
 /*------------------------------------------FormsUpdate/Create/Delete/Login/Register-----------------------------------------------------*/
+.form-content{
+	width: 50%;
+}
+
+
+.formEvents legend {
+	color: #fff;
+	background: #303030;
+	text-align: left;
+	border: 1px solid black;
+	padding: 2px 6px;
+} 
+
+.formEvents label {
+	width: 4em;
+	float: left;
+	text-align: left;
+	margin-right: 0.5em;
+	display: block;
+}
 
 button.field {
 	border:0;
@@ -815,7 +823,7 @@ button.field {
 	width: 200px;
 	padding:12px 20px;
 	font-size: 25px;
-	background-color: #555555;/*NEGRO GRISACEO*/
+	background-color: #555555;
 	text-align: center;
 	color:white;
 } 
@@ -837,34 +845,36 @@ button.fieldDelete{
 }
 
 input.field,textarea.field{
-	border:0;
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;
-	border-radius: 5px;
+	border-radius: 0px;
 	font-size:16px;
 	background-color: #d3d0cea8;
+	border: solid;
+	border-color: rgba(124, 124, 124, 0.705);
+	border-width: 1px;
 }
 
 input.fieldDatePrice{
-	border:0;
-	border-radius: 5px;
 	font-size:16px;
 	background-color: #d3d0ce;
+	border: solid;
+	border-color: rgba(124, 124, 124, 0.705);
+	border-width: 1px;
 }
 
 textarea.field{
 	min-height: 100px;
 	max-height: 200px;
 	max-width: 500px;
-	min-width: 500px;
+	min-width: 100px;
 	resize:vertical;
 }
 
 fieldset.formEvents{
 	border:0;
-	width: 100px;
-
+	width: 100%;
 	color: rgb(80, 78, 78);
 	font-size: 20px;
 	text-align: left;
@@ -876,7 +886,6 @@ fieldset.formEvents{
 fieldset.formDeleteEvents{
 	border:0;
 	width: 100%;
-	
 	color: rgb(80, 78, 78);
 	font-size: 20px;
 	background-color: #d3d0ce;
@@ -887,11 +896,45 @@ fieldset.formDeleteEvents{
 	margin: auto;
 }
 
-@media screen and(max-width: 200px){
-	.input.field,.textarea.field,.button.field{
+@media screen and (max-width: 600px) {
+	.form-title h1{
+		font-size:5vw;
+	}
+}
+
+@media (max-width: 760px) {
+	.formEvents button.field {
+		width: 130px;
+		margin: 5px 0px;
+		padding: 12px 5px;
+		font-size: 15px;
+	} 
+
+	.fieldImg{
+		width: 130px;
+	}
+
+	.formEvents input.fieldDatePrice{
+		font-size:12px;
+	}
+	
+	.formEvents input.field,.formEvents textarea.field{
+		font-size:12px;		
+	}
+
+}
+
+@media (max-width: 1000px) {
+	.form-content{
 		width: 100%;
-       		margin-top: 0;
-    }
+	}
+}
+
+@media screen and(min-width: 200px){
+	.input.field, .textarea.field, .button.field, .input.fieldDatePrice{
+		width: 100%;
+       	margin-top: 0;
+	}
 }
 
 

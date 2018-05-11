@@ -13,7 +13,7 @@ function mostrarContenido() {
     $event = aw\Evento::searchEventById($id);
 	  if ($event) {
 		  //$html = "<div class= 'event'> <h1>" . $event->nombre_evento() . "</h1><br><p>Fecha: " . $event->fecha_evento() . "</p><br><p> Precio: "  . $event->precio_evento() . "€ </p><br><p>Lugar: " . $event->lugar_evento() . "</p></div><br>";
-      $html = '<div class="cont"><div class="wrapperEvent">
+      $html = '<div class="cont"><div class="wrapper">
         <div class="event-title"><div class="nested"></div><div class="nested"><h1>'. $event->nombre_evento() . '</h1></div>';
      
       if($app->usuarioLogueado() && ($event->id_usuario() == $app->idUsuario())){

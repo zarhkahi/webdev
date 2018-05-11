@@ -19,8 +19,8 @@ require_once __DIR__.'/includes/config.php';
 
 		<div class="maincontent">
 			<div class="site-content">
-				<h1>Formulario para Crear el Evento </h1>
-				<?php $formEvento = new \es\ucm\fdi\aw\FormCrearEvento(); $formEvento->gestiona(); ?>
+				<div class="form-title"><h1>Crear el Evento </h1></div>
+				<div class="form-content"><?php $formEvento = new \es\ucm\fdi\aw\FormCrearEvento(); $formEvento->gestiona(); ?></div>
 			</div>
 		</div>
 

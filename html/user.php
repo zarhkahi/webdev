@@ -15,7 +15,7 @@ function mostrarContenido() {
 	  if ($user) {
       $followers = aw\Usuario::getFollower($user->id());
       $following = aw\Usuario::getFollowing($user->id());
-      $html = '<div class="cont"><div class="wrapperEvent">
+      $html = '<div class="cont"><div class="wrapper">
       <div class="user-title"><div class="nested">Followers: '. (($followers == false) ? '0' : count($followers)) . '<br> Following: ' . (($following == false) ? '0' : count($following)) .'</div>
       <div class="nested"><h1>' . $user->nombre() . ' ' . $user->apellidos() . '</h1></div>';
       if($app->usuarioLogueado()){//COMPROBAR SI YA ESTA SEGUIDO

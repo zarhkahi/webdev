@@ -6,7 +6,7 @@ use es\ucm\fdi\aw;
 
 function mostrarContenido() {
 	//$html = '<div class="cont">';
-	$html = '<div class="wrapperFollow">';
+	$html = '<div class="wrapper">';
 	$html .= '<div class="follow-title"><h2>Users you follow.</h2></div>';
   $app = aw\Aplicacion::getSingleton();
 	if ($app->usuarioLogueado()) {
@@ -32,7 +32,7 @@ function mostrarContenido() {
                 $html .= '<p>' . $event['nombre'] . '</p></div>';
 				}
 				else{
-					$html .= "<div>This user hasn't yet created and Event</div>";
+					$html .= '<div class="no-event">Aún no tiene eventos</div>';
 				}
 
 				$html .=  '<div><form method="POST" action="follow.php?unfollow=true" class="null">

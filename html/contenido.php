@@ -5,7 +5,7 @@ require_once __DIR__.'/includes/config.php';
 use es\ucm\fdi\aw;
 
 function mostrarContenido() {
-	$html = '<div class="wrapperContent">';
+	$html = '<div class="wrapper">';
 	$html .= '<div class="content-title"><h2> Last E-VENTS created.</h2></div>';
   	$app = aw\Aplicacion::getSingleton();
 	if ($app->usuarioLogueado()) {//Aint needed

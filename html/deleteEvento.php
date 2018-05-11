@@ -19,9 +19,9 @@ require_once __DIR__.'/includes/config.php';
 
 	<div class="maincontent">
 		<div class="site-content">
-			<h1>Formulario para Borrar Evento </h1>
-			<?php $formEvento = new \es\ucm\fdi\aw\FormEliminarEvento($_POST['id_delete']); $formEvento->gestiona(); ?>
-		</div> 
+				<div class="form-title"><h1>Formulario para Borrar Evento </h1></div>
+				<div class="form-content"><?php $formEvento = new \es\ucm\fdi\aw\FormEliminarEvento($_POST['id_delete']); $formEvento->gestiona(); ?></div>
+		</div>
 	</div>
 
 	<?php

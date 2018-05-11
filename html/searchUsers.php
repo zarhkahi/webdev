@@ -7,7 +7,7 @@ use es\ucm\fdi\aw;
 function mostrarContenido() {
     $value = $_GET['search'];
     $min_length = 3;
-    $html = '<div class="wrapperSearch">';
+    $html = '<div class="wrapper">';
     $html .='<div class="search-switch"><div><form method = "GET" action = "searchEvents.php" class="formSearchEvent">
         <input class="null" name="search" value="'. $value . '" type="hidden" readonly>	
 		<button class="button-switch"><span>E-vents</span></button>

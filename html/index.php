@@ -28,7 +28,7 @@ function mostrarActividadCrea($id_u, $count) {
 	$listaCrea = aw\ActividadCrea::recopilarActividadCreaSeguidores($id_u);
 	if(!empty($listaCrea)){
 		foreach( $listaCrea as $item) {
-			$html .= '<div class="wrapperIndex">';
+			$html .= '<div class="wrapper">';
 			$html .= '<div class="index-title"><h1>' . aw\Usuario::searchUserById($item['id_f'])->nombre(). ' ha creado: </h1></div><div class="index-content">';
 			$listaAct = $item['listaAct'];
 			foreach( $listaAct as $act) {
@@ -61,7 +61,7 @@ function mostrarActividadSigue($id_u, $count) {
 	$numShown = $count;
 	$listaSigue = aw\ActividadSigue::recopilarActividadSigueSeguidores($id_u);
 		if(!empty($listaSigue)){
-			$html .= '<div class="wrapperIndex">';
+			$html .= '<div class="wrapper">';
 			foreach( $listaSigue as $item) {
 				$listaAct = $item['listaAct'];
 				foreach( $listaAct as $act) {
@@ -87,7 +87,7 @@ function mostrarActividadSigue($id_u, $count) {
 
 
 function mostrarLastEvents($count) {
-	$html = '<div class="wrapperIndex">';
+	$html = '<div class="wrapper">';
 	$html .= '<div class="index-title"><h1> Welcome to E-VENTS </h1></div>';
 	$html .= '<div class="index-title"><h2> Last E-VENTS created.</h2></div>';
 	$events = \es\ucm\fdi\aw\Evento::getNumEvents($count, null, 'last');

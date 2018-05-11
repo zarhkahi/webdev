@@ -21,7 +21,7 @@ $app->logout();
 
 		<div class="maincontent">
 			<div class="site-content">
-				<h1>Hasta pronto!</h1>
+				<div class="form-title"><h1>Hasta pronto!</h1></div>
 			</div>
 		</div>
 		

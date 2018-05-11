@@ -19,7 +19,7 @@ require_once __DIR__.'/includes/config.php';
 	
 		<div class="maincontent">
 			<div class="site-content">
-				<?php $formRegister = new \es\ucm\fdi\aw\FormularioRegistro(); $formRegister->gestiona(); ?>
+				<div class="form-content"><?php $formRegister = new \es\ucm\fdi\aw\FormularioRegistro(); $formRegister->gestiona(); ?></div>
 			</div>
 		</div>
 	<?php
