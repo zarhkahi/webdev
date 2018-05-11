@@ -20,18 +20,21 @@ function mostrarSaludo() {
 
 	
 <div class="header">
-<div class= "headerContent">
-        <h1 class= "webTitle">E-Vents</h1>
-        <!--<img src="/AW/img/logo.svg" width="32" height"32">-->
-      </div>
-      <div class = "search">
+  <div class= "headerContent">
+      <h1 class= "webTitle">E-Vents</h1>
+      <!--<img src="/AW/img/logo.svg" width="32" height"32">-->
+  </div>
+      
+  <div class = "search">
       <form class = "formSearch" method = "GET" action = "searchEvents.php">
-		  <input type="text" name="search" placeholder="Buscar ">	
+      <input type="text" name="search" placeholder="Buscar ">	
 		  <input type="submit" class="inputSearch" value="Buscar"/>
 		  </form>
-      </div>
-      <div class="welcome">
-          <?=	mostrarSaludo() ?>
-      </div>
+  </div>
+
+  <div class="welcome">
+    <?=	mostrarSaludo() ?>
+  </div>
+  
 </div>
 
